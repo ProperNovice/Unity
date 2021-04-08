@@ -20,6 +20,12 @@ public class Test : MonoBehaviour
         // sv.setFront("f");
         // sv.setBack("f");
 
+        go.transform.localScale = new Vector2(1.5f, 1.5f);
+
+        sv.a();
+
+        sv.relocateCenter(0, 0);
+        sv.relocateTopLeft(0, 0);
 
     }
 
