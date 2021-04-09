@@ -12,16 +12,12 @@ public class Test : MonoBehaviour
     {
 
         GameObject go = Instantiate(this.prefab) as GameObject;
-        go.transform.parent = this.pivot.transform;        
+        go.transform.parent = this.pivot.transform;
 
         SpriteView sv = go.GetComponent<SpriteView>();
 
         sv.setFrontBack("f", "b");
         sv.relocateTopLeft(0, 353);
-
-        ManagerAnimation.INSTANCE.print();
-
-        
 
     }
 
