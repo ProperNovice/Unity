@@ -2,79 +2,79 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrayList : MonoBehaviour
+public class ArrayList<T>
 {
 
-    private List<GameObject> list = new List<GameObject>();
-    private List<GameObject> listState = new List<GameObject>();
-    private List<GameObject> listStart = new List<GameObject>();
+    private List<T> list = new List<T>();
+    private List<T> listState = new List<T>();
+    private List<T> listStart = new List<T>();
     public int maximumSize = -1;
 
 
-    public void addFirst(GameObject gameObject)
+    public void addFirst(T t)
     {
-        this.list.Insert(0, gameObject);
+        this.list.Insert(0, t);
     }
 
-    public void addLast(GameObject gameObject)
+    public void addLast(T t)
     {
-        this.list.Add(gameObject);
+        this.list.Add(t);
     }
 
-    public bool contains(GameObject gameObject)
+    public bool contains(T t)
     {
-        return this.list.Contains(gameObject);
+        return this.list.Contains(t);
     }
 
-    public GameObject getFirst()
+    public T getFirst()
     {
         return this.list[0];
     }
 
-    public GameObject getLast()
+    public T getLast()
     {
         return this.list[this.list.Count - 1];
     }
 
-    public GameObject get(int index)
+    public T get(int index)
     {
         return this.list[index];
     }
 
-    public void remove(GameObject gameObject)
+    public void remove(T t)
     {
-        this.list.Remove(gameObject);
+        this.list.Remove(t);
     }
 
-    public GameObject removeFirst()
+    public T removeFirst()
     {
 
-        GameObject gameObject = this.list[0];
+        T t = this.list[0];
         this.list.RemoveAt(0);
-        return gameObject;
+        return t;
 
     }
 
-    public GameObject removeLast()
+    public T removeLast()
     {
 
         int index = this.list.Count - 1;
 
-        GameObject gameObject = this.list[index];
-        this.list.Remove(gameObject);
-        return gameObject;
+        T t = this.list[index];
+        remove(t);
+        return t;
 
     }
 
-    public GameObject removeRandom()
+    public T removeRandom()
     {
 
         int index = Random.Int(0, this.list.Count - 1);
 
-        GameObject gameObject = get(index);
-        this.list.Remove(gameObject);
+        T t = get(index);
+        remove(t);
 
-        return gameObject;
+        return t;
 
     }
 
@@ -86,7 +86,7 @@ public class ArrayList : MonoBehaviour
     public void shuffle()
     {
 
-        List<GameObject> listTemp = new List<GameObject>();
+        List<T> listTemp = new List<T>();
 
         while (list.Count != 0)
             listTemp.Add(removeRandom());
