@@ -7,25 +7,27 @@ public class SpriteView : MonoBehaviour
 
     public Sprite Front, Back;
     private SpriteRenderer spriteRenderer;
+    private BoxCollider2D boxCollider2D;
 
     // Start is called before the first frame update
     void Awake()
     {
 
         this.spriteRenderer = GetComponent<SpriteRenderer>();
+        this.boxCollider2D = GetComponent<BoxCollider2D>();
 
         if (this.spriteRenderer.sprite != null)
         {
 
             this.Front = this.spriteRenderer.sprite;
-            GetComponent<BoxCollider2D>().size = this.Front.rect.size;
+            setBoxColliderSize();
 
         }
         else if (this.Front != null)
 
         {
             this.spriteRenderer.sprite = this.Front;
-            GetComponent<BoxCollider2D>().size = this.Front.rect.size;
+            setBoxColliderSize();
 
         }
 
@@ -53,14 +55,14 @@ public class SpriteView : MonoBehaviour
 
     private void OnMouseDown()
     {
-        flip();
+        setWidth(400);
     }
 
     public void setFront(string filePath)
     {
         this.Front = Resources.Load<Sprite>(filePath);
         this.spriteRenderer.sprite = this.Front;
-        GetComponent<BoxCollider2D>().size = this.Front.rect.size;
+        setBoxColliderSize();
     }
 
     public void setBack(string filePath)
@@ -76,8 +78,8 @@ public class SpriteView : MonoBehaviour
 
     public void relocateTopLeft(float x, float y)
     {
-        x += this.Front.rect.width / 2;
-        y -= this.Front.rect.height / 2;
+        x += this.Front.rect.width * this.gameObject.transform.localScale.x / 2;
+        y -= this.Front.rect.height * this.gameObject.transform.localScale.y / 2;
         relocateCenter(x, y);
     }
 
@@ -86,10 +88,35 @@ public class SpriteView : MonoBehaviour
         this.transform.localPosition = new Vector2(x, y);
     }
 
-    public void a()
+    public void setWidth(float width)
     {
-        Destroy(GetComponent<BoxCollider2D>());
-        this.gameObject.AddComponent<BoxCollider2D>();
+
+        float spriteWidth = this.Front.rect.width;
+        float scale = width / spriteWidth;
+
+        this.gameObject.transform.localScale = new Vector2(scale, scale);
+        setBoxColliderSize();
+
+    }
+
+    public void setHeight(float height)
+    {
+
+        float spriteHeight = this.Front.rect.height;
+        float scale = height / spriteHeight;
+
+        this.gameObject.transform.localScale = new Vector2(scale, scale);
+        setBoxColliderSize();
+
+    }
+
+    private void setBoxColliderSize()
+    {
+
+        float width = this.Front.rect.width * this.gameObject.transform.localScale.x;
+        float height = this.Front.rect.height * this.gameObject.transform.localScale.y;
+
+        this.boxCollider2D.size = new Vector2(width, height);
     }
 
 }
