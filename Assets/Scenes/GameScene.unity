@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235b60962dd4cef40b03974adc494aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pivot: {fileID: 1706025938}
   prefab: {fileID: 764608779315627465, guid: 977b0b72c353de443931b2d155588e37, type: 3}
 --- !u!4 &471642952
 Transform:
@@ -479,7 +480,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2113656703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e4a12c4e46c41b4b8052af152ba23fd, type: 3}
+  m_Script: {fileID: 11500000, guid: de6b0c6f3de57e34a80ef22eb63786f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumSize: -1
