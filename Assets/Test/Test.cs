@@ -22,6 +22,8 @@ public class Test : MonoBehaviour
 
         ManagerAnimation.INSTANCE.print();
 
+        
+
     }
 
     // Update is called once per frame
