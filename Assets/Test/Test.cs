@@ -5,49 +5,34 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
 
-    public GameObject pivot, prefab;
+    public GameObject prefab;
 
     // Start is called before the first frame update
     void Start()
     {
 
         GameObject go = Instantiate(this.prefab) as GameObject;
-        go.transform.parent = this.pivot.transform;
 
         SpriteView sv = go.GetComponent<SpriteView>();
 
         sv.setFrontBack("f", "b");
         sv.relocateTopLeft(0, 353);
 
-        ShutDown.execute();
+        List<A> list = new List<A>((A[])System.Enum.GetValues(typeof(A)));
+        ArrayList<A> arrayList = new ArrayList<A>((A[])System.Enum.GetValues(typeof(A)));
+
+        arrayList.shuffle();
+
+        foreach (A aq in arrayList)
+            Debug.Log(aq);
+
+        // ShutDown.execute();
 
     }
 
-    public class Li : IEnumerable
+    public enum A
     {
-
-        public List<A> l = new List<A>();
-
-        public IEnumerator GetEnumerator()
-        {
-            return l.GetEnumerator();
-        }
-
-    }
-
-    public class A
-    {
-
-        private int a;
-        public A(int a)
-        {
-            this.a = a;
-        }
-
-        public void print()
-        {
-            Debug.Log(a);
-        }
+        Q, W, E, R
 
     }
 

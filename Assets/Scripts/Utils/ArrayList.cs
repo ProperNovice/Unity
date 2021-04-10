@@ -8,8 +8,23 @@ public class ArrayList<T> : IEnumerable
     private List<T> list = new List<T>();
     private List<T> listState = new List<T>();
     private List<T> listStart = new List<T>();
-    public int maximumSize = -1;
+    private int maximumSize = -1;
 
+    public ArrayList()
+    {
+
+    }
+
+    public ArrayList(int maximumSize)
+    {
+        this.maximumSize = maximumSize;
+    }
+
+    public ArrayList(T[] list)
+    {
+        foreach (T t in list)
+            addLast(t);
+    }
 
     public void addFirst(T t)
     {
@@ -115,7 +130,7 @@ public class ArrayList<T> : IEnumerable
         return this.list.Count > this.maximumSize;
     }
 
-    public void addAll(ArrayList<T> list)
+    public void addRange(ArrayList<T> list)
     {
 
         foreach (T t in list)
