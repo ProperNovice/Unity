@@ -18,46 +18,6 @@ public class Test : MonoBehaviour
         sv.setFrontBack("f", "b");
         sv.relocateTopLeft(0, 353);
 
-        ArrayList<A> arrayList = new ArrayList<A>((A[])System.Enum.GetValues(typeof(A)));
-
-        arrayList.saveStart();
-        arrayList.shuffle();
-        arrayList.saveState();
-
-        foreach (A aq in arrayList)
-            Debug.Log(aq);
-
-        Debug.Log("about to clear");
-
-        arrayList.clear();
-
-        foreach (A aq in arrayList)
-            Debug.Log(aq);
-
-        Debug.Log("about to load state");
-
-        arrayList.loadState();
-
-        foreach (A aq in arrayList)
-            Debug.Log(aq);
-
-        ShutDown.execute();
-
-        Debug.Log("about to load start");
-
-        arrayList.loadStart();
-
-        foreach (A aq in arrayList)
-            Debug.Log(aq);
-
-        ShutDown.execute();
-
-    }
-
-    public enum A
-    {
-        Q, W, E, R
-
     }
 
     // Update is called once per frame
