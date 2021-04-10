@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrayList<T> : IEnumerable
+public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
 {
 
     private List<T> list = new List<T>();
@@ -141,5 +141,29 @@ public class ArrayList<T> : IEnumerable
     public IEnumerator GetEnumerator()
     {
         return this.list.GetEnumerator();
+    }
+
+    public void saveState()
+    {
+        this.listState.Clear();
+        this.listState.AddRange(this.list);
+    }
+
+    public void loadState()
+    {
+        this.list.Clear();
+        this.list.AddRange(this.listState);
+    }
+
+    public void saveStart()
+    {
+        this.listStart.Clear();
+        this.listStart.AddRange(this.list);
+    }
+
+    public void loadStart()
+    {
+        this.list.Clear();
+        this.list.AddRange(this.listStart);
     }
 }

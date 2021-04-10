@@ -208,7 +208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235b60962dd4cef40b03974adc494aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pivot: {fileID: 0}
   prefab: {fileID: 764608779315627465, guid: 977b0b72c353de443931b2d155588e37, type: 3}
 --- !u!4 &471642952
 Transform:
