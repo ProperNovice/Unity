@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrayList<T>
+public class ArrayList<T> : IEnumerable
 {
 
     private List<T> list = new List<T>();
@@ -115,4 +115,16 @@ public class ArrayList<T>
         return this.list.Count > this.maximumSize;
     }
 
+    public void addAll(ArrayList<T> list)
+    {
+
+        foreach (T t in list)
+            addLast(t);
+
+    }
+
+    public IEnumerator GetEnumerator()
+    {
+        return this.list.GetEnumerator();
+    }
 }

@@ -19,6 +19,36 @@ public class Test : MonoBehaviour
         sv.setFrontBack("f", "b");
         sv.relocateTopLeft(0, 353);
 
+        ShutDown.execute();
+
+    }
+
+    public class Li : IEnumerable
+    {
+
+        public List<A> l = new List<A>();
+
+        public IEnumerator GetEnumerator()
+        {
+            return l.GetEnumerator();
+        }
+
+    }
+
+    public class A
+    {
+
+        private int a;
+        public A(int a)
+        {
+            this.a = a;
+        }
+
+        public void print()
+        {
+            Debug.Log(a);
+        }
+
     }
 
     // Update is called once per frame
