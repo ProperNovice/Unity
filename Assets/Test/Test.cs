@@ -23,9 +23,6 @@ public class Test : MonoBehaviour
 
         sv.relocateTopLeft(0, v2.y);
 
-        SpriteList sl = ManagerList.INSTANCE.getList(EList.BOARD);
-        sl.print();
-
         ShutDown.execute("program ended");
 
     }

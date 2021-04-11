@@ -6,7 +6,7 @@ public class SpriteList : MonoBehaviour
 {
 
     [SerializeField] private EList eList;
-    [SerializeField] private Coordinates coordinates;
+    [SerializeField] private ListCredentials listCredentials;
 
     private void Awake()
     {
