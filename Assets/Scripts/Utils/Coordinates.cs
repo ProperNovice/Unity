@@ -2,29 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManagerList : MonoBehaviour
+public class Coordinates : MonoBehaviour
 {
-
-    public static ManagerList INSTANCE;
-
-    private void Awake()
-    {
-
-        if (INSTANCE != null)
-            return;
-
-        INSTANCE = this;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }

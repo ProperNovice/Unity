@@ -9,6 +9,10 @@ public class ManagerAnimation : MonoBehaviour
 
     private void Awake()
     {
+
+        if (INSTANCE != null)
+            return;
+
         INSTANCE = this;
     }
 

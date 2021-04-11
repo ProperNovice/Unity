@@ -81,6 +81,13 @@ public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
 
     }
 
+    public T remove(int index)
+    {
+        T t = get(index);
+        this.list.Remove(t);
+        return t;
+    }
+
     public T removeRandom()
     {
 
@@ -91,6 +98,11 @@ public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
 
         return t;
 
+    }
+
+    public int indexOf(T t)
+    {
+        return this.list.IndexOf(t);
     }
 
     public void clear()
@@ -110,7 +122,7 @@ public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
 
     }
 
-    public int count()
+    public int size()
     {
         return this.list.Count;
     }

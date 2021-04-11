@@ -5,12 +5,12 @@ using UnityEngine;
 public class Enums
 {
 
-    public enum EDirectionHorizontal
+    public enum DirectionHorizontalEnum
     {
         LEFT, RIGHT
     }
 
-    public enum EDirectionVertical
+    public enum DirectionVerticalEnum
     {
         UP, DOWN
     }

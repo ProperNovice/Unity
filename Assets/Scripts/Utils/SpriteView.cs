@@ -120,6 +120,11 @@ public class SpriteView : MonoBehaviour
 
     }
 
+    public void setVisible(bool value)
+    {
+        this.gameObject.SetActive(value);
+    }
+
     private void setBoxColliderSize()
     {
 
