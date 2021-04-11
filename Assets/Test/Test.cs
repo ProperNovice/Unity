@@ -23,14 +23,13 @@ public class Test : MonoBehaviour
 
         sv.relocateTopLeft(0, v2.y);
 
-        //ShutDown.execute("fluffy");
+        SpriteList sl = ManagerList.INSTANCE.getList(EList.BOARD);
+        sl.print();
+
+        ShutDown.execute("program ended");
 
     }
 
-    public enum Letters
-    {
-        A, B, C, D
-    }
 
     // Update is called once per frame
     void Update()

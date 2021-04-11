@@ -6,25 +6,24 @@ public class ManagerList : MonoBehaviour
 {
 
     public static ManagerList INSTANCE;
+    private Hashmap<EList, SpriteList> spriteLists = new Hashmap<EList, SpriteList>();
 
     private void Awake()
     {
-
         if (INSTANCE != null)
             return;
 
         INSTANCE = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public SpriteList getList(EList eList)
     {
-
+        return this.spriteLists.getValue(eList);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void addList(EList eList, SpriteList spriteList)
     {
-
+        this.spriteLists.put(eList, spriteList);
     }
+
 }

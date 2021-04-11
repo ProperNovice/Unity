@@ -15,4 +15,14 @@ public class Enums
         UP, DOWN
     }
 
+    public enum RearrangeTypeEnum
+    {
+        LINEAR, STATIC, PIVOT
+    }
+
+    public enum RelocateTypeEnum
+    {
+        TOP_LEFT, CENTER
+    }
+
 }

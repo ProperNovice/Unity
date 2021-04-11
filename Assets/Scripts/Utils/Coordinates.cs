@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coordinates : MonoBehaviour
+[System.Serializable]
+public class Coordinates
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private Vector2 coordinatesList, gapBetweenObjects;
+    [SerializeField] private int objectsPerRow;
+    [SerializeField] private float firstObjectX, firstObjectY;
+    [SerializeField] private Enums.RearrangeTypeEnum rearrangeTypeEnum;
+    [SerializeField] private Enums.DirectionHorizontalEnum directionHorizontalEnum;
+    [SerializeField] private Enums.DirectionVerticalEnum directionVerticalEnum;
+    [SerializeField] private Enums.RelocateTypeEnum relocateTypeEnum;
+
 }

@@ -15,6 +15,9 @@ public class Hashmap<K, V> : IEnumerable
 
     public void put(K key, V value)
     {
+        if (this.keys.contains(key))
+            ShutDown.execute("duplicate key in hashmap");
+
         this.keys.addLast(key);
         this.values.addLast(value);
     }
