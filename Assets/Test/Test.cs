@@ -16,7 +16,14 @@ public class Test : MonoBehaviour
         SpriteView sv = go.GetComponent<SpriteView>();
 
         sv.setFrontBack("f", "b");
-        sv.relocateTopLeft(0, 353);
+        // sv.relocateTopLeft(0, 353);
+
+        BoxCollider2D bc = go.GetComponent<BoxCollider2D>();
+        Vector2 v2 = bc.size;
+
+        sv.relocateTopLeft(0, v2.y);
+
+        Logger.log(v2);
 
     }
 

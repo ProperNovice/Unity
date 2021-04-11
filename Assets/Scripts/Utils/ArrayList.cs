@@ -138,6 +138,18 @@ public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
 
     }
 
+    public ArrayList<T> clone()
+    {
+
+        ArrayList<T> arrayList = new ArrayList<T>();
+
+        foreach (T t in this.list)
+            arrayList.addLast(t);
+
+        return arrayList;
+
+    }
+
     public IEnumerator GetEnumerator()
     {
         return this.list.GetEnumerator();

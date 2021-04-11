@@ -9,12 +9,17 @@ public class SpriteView : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider2D;
 
-    // Start is called before the first frame update
     void Awake()
     {
 
         this.spriteRenderer = GetComponent<SpriteRenderer>();
         this.boxCollider2D = GetComponent<BoxCollider2D>();
+
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
 
         if (this.spriteRenderer.sprite != null)
         {
@@ -53,11 +58,6 @@ public class SpriteView : MonoBehaviour
         this.spriteRenderer.sprite = this.Back;
     }
 
-    private void OnMouseDown()
-    {
-        setWidth(400);
-    }
-
     public void setFront(string filePath)
     {
         this.Front = Resources.Load<Sprite>(filePath);
@@ -83,9 +83,19 @@ public class SpriteView : MonoBehaviour
         relocateCenter(x, y);
     }
 
+    public void relocateTopLeft(Vector2 vector2)
+    {
+        relocateTopLeft(vector2.x, vector2.y);
+    }
+
     public void relocateCenter(float x, float y)
     {
         this.transform.localPosition = new Vector2(x, y);
+    }
+
+    public void relocateCenter(Vector2 vector2)
+    {
+        relocateCenter(vector2.x, vector2.y);
     }
 
     public void setWidth(float width)
@@ -117,6 +127,11 @@ public class SpriteView : MonoBehaviour
         float height = this.Front.rect.height * this.gameObject.transform.localScale.y;
 
         this.boxCollider2D.size = new Vector2(width, height);
+    }
+
+    private void OnMouseDown()
+    {
+
     }
 
 }
