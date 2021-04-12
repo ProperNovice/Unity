@@ -16,9 +16,4 @@ public class ManagerList : MonoBehaviour
         INSTANCE = this;
     }
 
-    private void Start()
-    {
-        this.deck.test();
-    }
-
 }

@@ -7,12 +7,12 @@ public class Enums
 
     public enum DirectionHorizontalEnum
     {
-        LEFT, RIGHT
+        RIGHT, LEFT
     }
 
     public enum DirectionVerticalEnum
     {
-        UP, DOWN
+        DOWN, UP
     }
 
     public enum RearrangeTypeEnum
@@ -20,9 +20,14 @@ public class Enums
         LINEAR, STATIC, PIVOT
     }
 
-    public enum RelocateTypeEnum
+    public enum RelocatePositionEnum
     {
         TOP_LEFT, CENTER
+    }
+
+    public enum AnimateSynchEnum
+    {
+        SYNCHRONOUS, ASYNCHRONOUS
     }
 
 }

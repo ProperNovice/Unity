@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
 {
 
     private List<T> list = new List<T>();
     private List<T> listState = new List<T>();
     private List<T> listStart = new List<T>();
-    private int maximumSize = -1;
+    [SerializeField] private int capacity = -1;
 
     public ArrayList()
     {
 
     }
 
-    public ArrayList(int maximumSize)
+    public ArrayList(int capacity)
     {
-        this.maximumSize = maximumSize;
+        this.capacity = capacity;
     }
 
     public ArrayList(T[] list)
@@ -132,14 +133,19 @@ public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
         return this.list.Count == 0;
     }
 
+    public void setCapacity(int capacity)
+    {
+        this.capacity = capacity;
+    }
+
     public bool isMaximumSize()
     {
-        return this.list.Count == this.maximumSize;
+        return this.list.Count == this.capacity;
     }
 
     public bool isOverSized()
     {
-        return this.list.Count > this.maximumSize;
+        return this.list.Count > this.capacity;
     }
 
     public void addRange(ArrayList<T> list)

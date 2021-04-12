@@ -12,21 +12,21 @@ public class Test : MonoBehaviour
     void Start()
     {
 
-        GameObject go = Instantiate(this.prefab) as GameObject;
-        SpriteView sv = go.GetComponent<SpriteView>();
+        for (int counter = 1; counter <= 10; counter++)
+        {
 
-        sv.setFrontBack("f", "b");
-        // sv.setWidth(100);
-        // sv.setHeight(400);
+            GameObject go = Instantiate(this.prefab) as GameObject;
+            SpriteView sv = go.GetComponent<SpriteView>();
 
-        Vector2 v2 = sv.getDimensions();
+            sv.setFrontBack("f", "b");
 
-        sv.relocateTopLeft(0, v2.y);
+        }
+
+        ManagerList.INSTANCE.deck.test();
 
         // ShutDown.execute("program ended");
 
     }
-
 
     // Update is called once per frame
     void Update()
