@@ -13,19 +13,17 @@ public class Test : MonoBehaviour
     {
 
         GameObject go = Instantiate(this.prefab) as GameObject;
-
         SpriteView sv = go.GetComponent<SpriteView>();
 
         sv.setFrontBack("f", "b");
+        // sv.setWidth(100);
+        // sv.setHeight(400);
 
-        BoxCollider2D bc = go.GetComponent<BoxCollider2D>();
-        Vector2 v2 = bc.size;
+        Vector2 v2 = sv.getDimensions();
 
         sv.relocateTopLeft(0, v2.y);
 
-        ManagerList.INSTANCE.deck.print();
-
-        ShutDown.execute("program ended");
+        // ShutDown.execute("program ended");
 
     }
 

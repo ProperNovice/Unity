@@ -172,8 +172,6 @@ MonoBehaviour:
       coordinatesList: {x: 0, y: 0}
       gapBetweenObjects: {x: 5, y: 5}
       objectsPerRow: -1
-      firstObjectX: 0
-      firstObjectY: 0
       rearrangeTypeEnum: 0
       directionHorizontalEnum: 1
       directionVerticalEnum: 1

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpriteView : MonoBehaviour
 {
 
-    public Sprite Front, Back;
+    public Sprite front, back;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider2D;
 
@@ -24,14 +24,14 @@ public class SpriteView : MonoBehaviour
         if (this.spriteRenderer.sprite != null)
         {
 
-            this.Front = this.spriteRenderer.sprite;
+            this.front = this.spriteRenderer.sprite;
             setBoxColliderSize();
 
         }
-        else if (this.Front != null)
+        else if (this.front != null)
 
         {
-            this.spriteRenderer.sprite = this.Front;
+            this.spriteRenderer.sprite = this.front;
             setBoxColliderSize();
 
         }
@@ -41,33 +41,33 @@ public class SpriteView : MonoBehaviour
     public void flip()
     {
 
-        if (this.spriteRenderer.sprite.Equals(this.Front))
-            this.spriteRenderer.sprite = this.Back;
-        else if (this.spriteRenderer.sprite.Equals(this.Back))
-            this.spriteRenderer.sprite = this.Front;
+        if (this.spriteRenderer.sprite.Equals(this.front))
+            this.spriteRenderer.sprite = this.back;
+        else if (this.spriteRenderer.sprite.Equals(this.back))
+            this.spriteRenderer.sprite = this.front;
 
     }
 
     public void flipFront()
     {
-        this.spriteRenderer.sprite = this.Front;
+        this.spriteRenderer.sprite = this.front;
     }
 
     public void flipBack()
     {
-        this.spriteRenderer.sprite = this.Back;
+        this.spriteRenderer.sprite = this.back;
     }
 
     public void setFront(string filePath)
     {
-        this.Front = Resources.Load<Sprite>(filePath);
-        this.spriteRenderer.sprite = this.Front;
+        this.front = Resources.Load<Sprite>(filePath);
+        this.spriteRenderer.sprite = this.front;
         setBoxColliderSize();
     }
 
     public void setBack(string filePath)
     {
-        this.Back = Resources.Load<Sprite>(filePath);
+        this.back = Resources.Load<Sprite>(filePath);
     }
 
     public void setFrontBack(string filePathFront, string filePathBack)
@@ -78,8 +78,8 @@ public class SpriteView : MonoBehaviour
 
     public void relocateTopLeft(float x, float y)
     {
-        x += this.Front.rect.width * this.gameObject.transform.localScale.x / 2;
-        y -= this.Front.rect.height * this.gameObject.transform.localScale.y / 2;
+        x += this.front.rect.width * this.gameObject.transform.localScale.x / 2;
+        y -= this.front.rect.height * this.gameObject.transform.localScale.y / 2;
         relocateCenter(x, y);
     }
 
@@ -101,7 +101,7 @@ public class SpriteView : MonoBehaviour
     public void setWidth(float width)
     {
 
-        float spriteWidth = this.Front.rect.width;
+        float spriteWidth = this.front.rect.width;
         float scale = width / spriteWidth;
 
         this.gameObject.transform.localScale = new Vector2(scale, scale);
@@ -112,12 +112,27 @@ public class SpriteView : MonoBehaviour
     public void setHeight(float height)
     {
 
-        float spriteHeight = this.Front.rect.height;
+        float spriteHeight = this.front.rect.height;
         float scale = height / spriteHeight;
 
         this.gameObject.transform.localScale = new Vector2(scale, scale);
         setBoxColliderSize();
 
+    }
+
+    public float getWidth()
+    {
+        return this.boxCollider2D.size.x;
+    }
+
+    public float getHeight()
+    {
+        return this.boxCollider2D.size.y;
+    }
+
+    public Vector2 getDimensions()
+    {
+        return this.boxCollider2D.size;
     }
 
     public void setVisible(bool value)
@@ -128,8 +143,8 @@ public class SpriteView : MonoBehaviour
     private void setBoxColliderSize()
     {
 
-        float width = this.Front.rect.width * this.gameObject.transform.localScale.x;
-        float height = this.Front.rect.height * this.gameObject.transform.localScale.y;
+        float width = this.front.rect.width * this.gameObject.transform.localScale.x;
+        float height = this.front.rect.height * this.gameObject.transform.localScale.y;
 
         this.boxCollider2D.size = new Vector2(width, height);
     }

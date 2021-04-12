@@ -8,26 +8,9 @@ public class SpriteList
 
     [SerializeField] private ListCredentials listCredentials;
 
-
-    private void Awake()
+    public void test()
     {
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    public void print()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
