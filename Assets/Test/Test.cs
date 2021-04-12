@@ -23,6 +23,8 @@ public class Test : MonoBehaviour
 
         sv.relocateTopLeft(0, v2.y);
 
+        ManagerList.INSTANCE.deck.print();
+
         ShutDown.execute("program ended");
 
     }

@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteList : MonoBehaviour
+[System.Serializable]
+public class SpriteList
 {
 
-    [SerializeField] private EList eList;
     [SerializeField] private ListCredentials listCredentials;
+
 
     private void Awake()
     {
@@ -16,12 +17,12 @@ public class SpriteList : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ManagerList.INSTANCE.addList(this.eList, this);
+
     }
 
     public void print()
     {
-        Logger.log(this.eList);
+
     }
 
     // Update is called once per frame

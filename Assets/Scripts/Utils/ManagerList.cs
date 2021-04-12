@@ -6,7 +6,7 @@ public class ManagerList : MonoBehaviour
 {
 
     public static ManagerList INSTANCE;
-    private Hashmap<EList, SpriteList> spriteLists = new Hashmap<EList, SpriteList>();
+    public SpriteList deck = new SpriteList();
 
     private void Awake()
     {
@@ -14,16 +14,6 @@ public class ManagerList : MonoBehaviour
             return;
 
         INSTANCE = this;
-    }
-
-    public SpriteList getList(EList eList)
-    {
-        return this.spriteLists.getValue(eList);
-    }
-
-    public void addList(EList eList, SpriteList spriteList)
-    {
-        this.spriteLists.put(eList, spriteList);
     }
 
 }
