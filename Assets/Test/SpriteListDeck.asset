@@ -21,4 +21,4 @@ MonoBehaviour:
     horizontaDirection: 0
     verticalDirection: 0
   arrayList:
-    capacity: 963
+    capacity: -1

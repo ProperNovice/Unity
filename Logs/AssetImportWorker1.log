@@ -416,3 +416,36 @@ Received Import Request.
   path: Assets/Scripts/Scriptable Objects
   artifactKey: Guid(9a6c6138306b0e04884073328770ae19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scripts/Scriptable Objects using Guid(9a6c6138306b0e04884073328770ae19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b479843446ac9af4e6d917dcfcc9c40') in 0.011157 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001796 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.762 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3264 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 123.5 MB.
+System memory in use after: 123.6 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 3791.
+Total: 2.348800 ms (FindLiveObjects: 0.291800 ms CreateObjectMapping: 0.084900 ms MarkObjects: 1.898600 ms  DeleteObjects: 0.072600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 3889.743921 seconds.
+  path: Assets/Prefabs/Sprite.prefab
+  artifactKey: Guid(977b0b72c353de443931b2d155588e37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Sprite.prefab using Guid(977b0b72c353de443931b2d155588e37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af3795deff31988f777fbc4876f301ea') in 0.033416 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 44.984316 seconds.
+  path: Assets/Test/Lol.asset
+  artifactKey: Guid(930800259fc346c4faa0ff96670cbe91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Test/Lol.asset using Guid(930800259fc346c4faa0ff96670cbe91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c218ce6a15276c05af5ffa7dc1a9500e') in 0.009890 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

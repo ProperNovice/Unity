@@ -22,8 +22,6 @@ public class Test : MonoBehaviour
 
         }
 
-        ManagerList.INSTANCE.deck.test();
-
         // ShutDown.execute("program ended");
 
     }

@@ -26,9 +26,6 @@ public class ListCredentials
     public Vector2 getCoordinates(int index)
     {
 
-        Debug.Log(this.objectsPerRow);
-        Debug.Log(this.rearrangeType);
-
         this.objectIndex = index;
 
         switch (this.rearrangeType)

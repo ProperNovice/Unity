@@ -10,11 +10,6 @@ public class SpriteList : ScriptableObject, IEnumerable
     [SerializeField] private ListCredentials listCredentials;
     [SerializeField] private ArrayList<GameObject> arrayList;
 
-    public void test()
-    {
-        this.listCredentials.getCoordinates(4);
-    }
-
     public void animateAsynchronous()
     {
 
