@@ -167,6 +167,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6b0c6f3de57e34a80ef22eb63786f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deck:
+    listCredentials:
+      coordinatesList: {x: 0, y: 0}
+      gapBetweenObjects: {x: 5, y: 5}
+      objectsPerRow: -1
+      firstObjectX: 0
+      firstObjectY: 0
+      rearrangeTypeEnum: 0
+      directionHorizontalEnum: 1
+      directionVerticalEnum: 1
+      relocateTypeEnum: 0
 --- !u!114 &227136148
 MonoBehaviour:
   m_ObjectHideFlags: 0

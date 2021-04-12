@@ -15,4 +15,19 @@ public class ListCredentials
     [SerializeField] private Enums.DirectionVerticalEnum directionVerticalEnum = Enums.DirectionVerticalEnum.DOWN;
     [SerializeField] private Enums.RelocateTypeEnum relocateTypeEnum = Enums.RelocateTypeEnum.TOP_LEFT;
 
+    private int objectInRow, objectInColumn;
+
+    public Vector2 getCoordinates(int index)
+    {
+
+        calculateObjectRowColumn();
+
+        return new Vector2();
+    }
+
+    private void calculateObjectRowColumn()
+    {
+
+    }
+
 }
