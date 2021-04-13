@@ -265,3 +265,4 @@ Received Import Request.
   path: Assets/Prefabs/Sprite.prefab
   artifactKey: Guid(977b0b72c353de443931b2d155588e37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Prefabs/Sprite.prefab using Guid(977b0b72c353de443931b2d155588e37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ddd88ac5425161845f325abe9fac2cab') in 0.028636 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
