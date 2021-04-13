@@ -6,14 +6,20 @@ public class SpriteList : MonoBehaviour
 {
 
     public Vector2 coordinatesList, gapBetweenObjects = new Vector2(5, 5);
-    public int objectsPerRow = -1;
+    public int objectsPerRow = -1, listCapacity = -1;
     public Enums.RearrangeTypeEnum rearrangeType = Enums.RearrangeTypeEnum.LINEAR;
     public Enums.DirectionHorizontalEnum horizontaDirection = Enums.DirectionHorizontalEnum.RIGHT;
     public Enums.DirectionVerticalEnum verticalDirection = Enums.DirectionVerticalEnum.DOWN;
     public Enums.RelocatePositionEnum relocatePosition = Enums.RelocatePositionEnum.TOP_LEFT;
-
+    
     private int objectIndex, listSize;
     private Vector2 objectPositionInList, coordinatesFirstObject, coordinatesObjectFinal, spriteDimensions;
+    private ArrayList<GameObject> arrayList;
+
+    private void Awake()
+    {
+       this.arrayList = new ArrayList<GameObject>(this.listCapacity);
+    }
 
     public void animateAsynchronous()
     {

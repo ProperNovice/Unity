@@ -12,7 +12,7 @@ public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
 
     public ArrayList()
     {
-        Debug.Log("a");
+       
     }
 
     public ArrayList(int capacity)
