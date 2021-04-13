@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpriteList : MonoBehaviour
 {
 
+    public EList list;
     public Vector2 coordinatesList, gapBetweenObjects = new Vector2(5, 5);
     public int objectsPerRow = -1, listCapacity = -1;
     public Enums.RearrangeTypeEnum rearrangeType = Enums.RearrangeTypeEnum.LINEAR;
