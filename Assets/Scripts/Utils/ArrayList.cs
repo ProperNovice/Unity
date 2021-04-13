@@ -12,12 +12,13 @@ public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
 
     public ArrayList()
     {
-       
+
     }
 
     public ArrayList(int capacity)
     {
         this.capacity = capacity;
+        Debug.Log("a , " + this.capacity);
     }
 
     public ArrayList(T[] list)
@@ -165,7 +166,7 @@ public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
 
         Logger.log("printing list - start");
 
-            foreach (T t in this.list)
+        foreach (T t in this.list)
             Logger.log(t);
 
         Logger.log("printing list - end");

@@ -37,6 +37,10 @@ public class Hashmap<K, V> : IEnumerable
 
     public V getValue(K key)
     {
+
+        if (!this.keys.contains(key))
+            ShutDown.execute("key doesn't exist");
+
         int index = this.keys.indexOf(key);
         return this.values.get(index);
     }

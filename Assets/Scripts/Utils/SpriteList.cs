@@ -2,24 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteList : MonoBehaviour
+[CreateAssetMenu]
+public class SpriteList : ScriptableObject
 {
 
-    public EList list;
     public Vector2 coordinatesList, gapBetweenObjects = new Vector2(5, 5);
-    public int objectsPerRow = -1, listCapacity = -1;
+    public int objectsPerRow = -1, listCapacity;
     public Enums.RearrangeTypeEnum rearrangeType = Enums.RearrangeTypeEnum.LINEAR;
-    public Enums.DirectionHorizontalEnum horizontaDirection = Enums.DirectionHorizontalEnum.RIGHT;
+    public Enums.DirectionHorizontalEnum horizontalDirection = Enums.DirectionHorizontalEnum.RIGHT;
     public Enums.DirectionVerticalEnum verticalDirection = Enums.DirectionVerticalEnum.DOWN;
     public Enums.RelocatePositionEnum relocatePosition = Enums.RelocatePositionEnum.TOP_LEFT;
-    
+    public ArrayList<GameObject> arrayList;
     private int objectIndex, listSize;
     private Vector2 objectPositionInList, coordinatesFirstObject, coordinatesObjectFinal, spriteDimensions;
-    private ArrayList<GameObject> arrayList;
 
-    private void Awake()
+    public SpriteList()
     {
-       this.arrayList = new ArrayList<GameObject>(this.listCapacity);
+        this.arrayList = new ArrayList<GameObject>(this.listCapacity);
     }
 
     public void animateAsynchronous()
@@ -56,12 +55,6 @@ public class SpriteList : MonoBehaviour
     {
         this.spriteDimensions = spriteDimensions;
         this.listSize = listSize;
-        return getCoordinates(index);
-    }
-
-    public Vector2 getCoordinates(int index)
-    {
-
         this.objectIndex = index;
 
         switch (this.rearrangeType)
@@ -151,7 +144,7 @@ public class SpriteList : MonoBehaviour
 
         Debug.Log(this.spriteDimensions.x);
 
-        switch (this.horizontaDirection)
+        switch (this.horizontalDirection)
         {
 
             case Enums.DirectionHorizontalEnum.RIGHT:

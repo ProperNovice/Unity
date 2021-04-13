@@ -6,9 +6,11 @@ public class ManagerList : MonoBehaviour
 {
 
     public static ManagerList INSTANCE;
+    public SpriteList deck;
 
-    private void Awake()
+    public void Awake()
     {
+
         if (INSTANCE != null)
             return;
 
@@ -18,7 +20,7 @@ public class ManagerList : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
 }
