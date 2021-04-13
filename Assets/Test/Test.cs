@@ -22,6 +22,8 @@ public class Test : MonoBehaviour
 
         }
 
+        ManagerList.INSTANCE.deck.coordinatesList = new Vector2(400, 400);
+
         // ShutDown.execute("program ended");
 
     }

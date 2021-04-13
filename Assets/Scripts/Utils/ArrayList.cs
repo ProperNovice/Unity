@@ -18,7 +18,6 @@ public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
     public ArrayList(int capacity)
     {
         this.capacity = capacity;
-        Debug.Log("a , " + this.capacity);
     }
 
     public ArrayList(T[] list)
