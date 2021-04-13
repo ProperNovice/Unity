@@ -27,7 +27,12 @@ public class Enums
 
     public enum AnimateSynchEnum
     {
-        SYNCHRONOUS, ASYNCHRONOUS
+        ASYNCHRONOUS, SYNCHRONOUS
+    }
+
+    public enum SpriteViewActionEnum
+    {
+        RELOCATE, ANIMATE
     }
 
 }

@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
 {
 
     private List<T> list = new List<T>();
     private List<T> listState = new List<T>();
     private List<T> listStart = new List<T>();
-    [SerializeField] private int capacity = -1;
+    private int capacity = -1;
 
     public ArrayList()
     {
-
+        Debug.Log("a");
     }
 
     public ArrayList(int capacity)
@@ -123,6 +122,11 @@ public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
 
     }
 
+    public void reverse()
+    {
+        this.list.Reverse();
+    }
+
     public int size()
     {
         return this.list.Count;
@@ -153,6 +157,18 @@ public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
 
         foreach (T t in list)
             addLast(t);
+
+    }
+
+    public void print()
+    {
+
+        Logger.log("printing list - start");
+
+            foreach (T t in this.list)
+            Logger.log(t);
+
+        Logger.log("printing list - end");
 
     }
 

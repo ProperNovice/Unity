@@ -6,7 +6,6 @@ public class ManagerList : MonoBehaviour
 {
 
     public static ManagerList INSTANCE;
-    public SpriteList deck;
 
     private void Awake()
     {
@@ -14,6 +13,12 @@ public class ManagerList : MonoBehaviour
             return;
 
         INSTANCE = this;
+
+    }
+
+    private void Start()
+    {
+        
     }
 
 }
