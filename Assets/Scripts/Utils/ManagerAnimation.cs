@@ -92,8 +92,6 @@ public class ManagerAnimation : MonoBehaviour
 
             float pixelsToMove = speed * Time.deltaTime;
 
-            Logger.log(this.speed + " " + pixelsToMove);
-
             Vector2 positionCurrent = this.spriteView.getCoordinates();
             Vector2 positionNext = Vector2.MoveTowards(positionCurrent, this.coordinatesTarget, pixelsToMove);
 
