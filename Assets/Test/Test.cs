@@ -20,9 +20,11 @@ public class Test : MonoBehaviour
 
             sv.setFrontBack("f", "b");
 
+            ManagerList.INSTANCE.lists.getValue(EList.DECK).arrayList.addLast(go);
+
         }
 
-        ManagerList.INSTANCE.deck.coordinatesList = new Vector2(400, 400);
+        ManagerList.INSTANCE.lists.getValue(EList.DECK).relocateSprites();
 
         // ShutDown.execute("program ended");
 

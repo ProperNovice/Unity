@@ -2,23 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class SpriteList : ScriptableObject
+[System.Serializable]
+public class SpriteList : MonoBehaviour
 {
 
-    public Vector2 coordinatesList, gapBetweenObjects = new Vector2(5, 5);
-    public int objectsPerRow = -1, listCapacity;
-    public Enums.RearrangeTypeEnum rearrangeType = Enums.RearrangeTypeEnum.LINEAR;
-    public Enums.DirectionHorizontalEnum horizontalDirection = Enums.DirectionHorizontalEnum.RIGHT;
-    public Enums.DirectionVerticalEnum verticalDirection = Enums.DirectionVerticalEnum.DOWN;
-    public Enums.RelocatePositionEnum relocatePosition = Enums.RelocatePositionEnum.TOP_LEFT;
+    [SerializeField] private EList list;
+    [SerializeField] private Vector2 listCoordinates, gapBetweenObjects = new Vector2(5, 5);
+    [SerializeField] private int objectsPerRow = -1, listCapacity = -1;
+    [SerializeField] private Enums.RearrangeTypeEnum rearrangeType = Enums.RearrangeTypeEnum.LINEAR;
+    [SerializeField] private Enums.DirectionHorizontalEnum horizontalDirection = Enums.DirectionHorizontalEnum.RIGHT;
+    [SerializeField] private Enums.DirectionVerticalEnum verticalDirection = Enums.DirectionVerticalEnum.DOWN;
+    [SerializeField] private Enums.RelocatePositionEnum relocatePosition = Enums.RelocatePositionEnum.TOP_LEFT;
+
     public ArrayList<GameObject> arrayList;
-    private int objectIndex, listSize;
     private Vector2 objectPositionInList, coordinatesFirstObject, coordinatesObjectFinal, spriteDimensions;
 
-    public SpriteList()
+    private void Start()
     {
         this.arrayList = new ArrayList<GameObject>(this.listCapacity);
+        ManagerList.INSTANCE.lists.put(this.list, this);
+    }
+
+    private void Update()
+    {
+        relocateSprites();
     }
 
     public void animateAsynchronous()
@@ -43,19 +50,50 @@ public class SpriteList : ScriptableObject
 
     public void relocateList(Vector2 vector2)
     {
-        // this.listCredentials.coordinatesList = vector2;
+        this.listCoordinates = vector2;
     }
 
     private void executeAction(Enums.SpriteViewActionEnum spriteViewActionEnum, Enums.AnimateSynchEnum animateSynchEnum)
     {
 
+        foreach (GameObject gameObject in this.arrayList)
+        {
+
+            SpriteView spriteView = gameObject.GetComponent<SpriteView>();
+
+            this.spriteDimensions = spriteView.getDimensions();
+
+            Vector2 vector2 = getCoordinates(this.arrayList.indexOf(gameObject));
+
+            switch (spriteViewActionEnum)
+            {
+
+                case Enums.SpriteViewActionEnum.RELOCATE:
+
+                    switch (this.relocatePosition)
+                    {
+                        case Enums.RelocatePositionEnum.CENTER:
+                            spriteView.relocateCenter(vector2);
+                            break;
+
+                        case Enums.RelocatePositionEnum.TOP_LEFT:
+                            spriteView.relocateTopLeft(vector2);
+                            break;
+                    }
+
+                    break;
+
+                case Enums.SpriteViewActionEnum.ANIMATE:
+                    break;
+
+            }
+
+        }
+
     }
 
-    public Vector2 getCoordinates(int index, Vector2 spriteDimensions, int listSize)
+    private Vector2 getCoordinates(int objectIndex)
     {
-        this.spriteDimensions = spriteDimensions;
-        this.listSize = listSize;
-        this.objectIndex = index;
 
         switch (this.rearrangeType)
         {
@@ -65,11 +103,11 @@ public class SpriteList : ScriptableObject
                 break;
 
             case Enums.RearrangeTypeEnum.LINEAR:
-                handleRearrangeTypeEnumLinear();
+                handleRearrangeTypeEnumLinear(objectIndex);
                 break;
 
             case Enums.RearrangeTypeEnum.PIVOT:
-                handleRearrangeTypeEnumPivot();
+                handleRearrangeTypeEnumPivot(objectIndex);
                 break;
 
         }
@@ -79,22 +117,22 @@ public class SpriteList : ScriptableObject
 
     private void handleRearrangeTypeEnumStatic()
     {
-        this.coordinatesObjectFinal = this.coordinatesList;
+        this.coordinatesObjectFinal = this.listCoordinates;
     }
 
-    private void handleRearrangeTypeEnumLinear()
+    private void handleRearrangeTypeEnumLinear(int objectIndex)
     {
-        calculateObjectPositionInList();
-        this.coordinatesFirstObject = this.coordinatesList;
+        calculateObjectPositionInList(objectIndex);
+        this.coordinatesFirstObject = this.listCoordinates;
         calculateCoordinatesObjectFinal();
     }
 
-    private void handleRearrangeTypeEnumPivot()
+    private void handleRearrangeTypeEnumPivot(int objectIndex)
     {
 
-        calculateObjectPositionInList();
+        calculateObjectPositionInList(objectIndex);
 
-        int rows = 1, columns = this.listSize;
+        int rows = 1, columns = this.arrayList.size();
 
         if (this.objectsPerRow != -1)
         {
@@ -113,16 +151,16 @@ public class SpriteList : ScriptableObject
         float width = columns * this.spriteDimensions.x + (columns - 1) * this.gapBetweenObjects.x;
         float height = rows * this.spriteDimensions.y + (rows - 1) * this.gapBetweenObjects.y;
 
-        this.coordinatesFirstObject = new Vector2(this.coordinatesList.x - width / 2, this.coordinatesList.y - height / 2);
+        this.coordinatesFirstObject = new Vector2(this.listCoordinates.x - width / 2, this.listCoordinates.y + height / 2);
 
         calculateCoordinatesObjectFinal();
 
     }
 
-    private void calculateObjectPositionInList()
+    private void calculateObjectPositionInList(int objectIndex)
     {
 
-        this.objectPositionInList = new Vector2(0, this.objectIndex);
+        this.objectPositionInList = new Vector2(0, objectIndex);
 
         if (this.objectsPerRow == -1)
             return;
@@ -141,8 +179,6 @@ public class SpriteList : ScriptableObject
         // horizontal
 
         this.coordinatesObjectFinal.x = this.coordinatesFirstObject.x;
-
-        Debug.Log(this.spriteDimensions.x);
 
         switch (this.horizontalDirection)
         {
@@ -167,13 +203,13 @@ public class SpriteList : ScriptableObject
         {
 
             case Enums.DirectionVerticalEnum.DOWN:
-                this.coordinatesObjectFinal.y += this.objectPositionInList.x * this.spriteDimensions.y;
-                this.coordinatesObjectFinal.y += (this.objectPositionInList.x - 1) * this.gapBetweenObjects.y;
+                this.coordinatesObjectFinal.y -= this.objectPositionInList.x * this.spriteDimensions.y;
+                this.coordinatesObjectFinal.y -= (this.objectPositionInList.x - 1) * this.gapBetweenObjects.y;
                 break;
 
             case Enums.DirectionVerticalEnum.UP:
-                this.coordinatesObjectFinal.y -= this.objectPositionInList.x * this.spriteDimensions.y;
-                this.coordinatesObjectFinal.y -= (this.objectPositionInList.x - 1) * this.gapBetweenObjects.y;
+                this.coordinatesObjectFinal.y += this.objectPositionInList.x * this.spriteDimensions.y;
+                this.coordinatesObjectFinal.y += (this.objectPositionInList.x - 1) * this.gapBetweenObjects.y;
                 break;
 
         }
