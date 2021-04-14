@@ -8,7 +8,7 @@ public class ManagerAnimation : MonoBehaviour
 
     public static ManagerAnimation INSTANCE;
     [SerializeField] private int speed = 1200;
-    private ArrayList<AnimateAction> listSynchronous, listAsynchronous;
+    [SerializeField] private ArrayList<AnimateAction> listSynchronous, listAsynchronous;
 
     private void Awake()
     {
