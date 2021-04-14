@@ -24,7 +24,7 @@ public class Test : MonoBehaviour
 
         }
 
-        ManagerList.INSTANCE.lists.getValue(EList.DECK).relocateSprites();
+        ManagerList.INSTANCE.lists.getValue(EList.DECK).animateAsynchronous();
 
         // ShutDown.execute("program ended");
 

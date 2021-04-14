@@ -135,6 +135,11 @@ public class SpriteView : MonoBehaviour
         return this.boxCollider2D.size;
     }
 
+    public Vector2 getCoordinates()
+    {
+        return this.transform.position;
+    }
+
     public void setVisible(bool value)
     {
         this.gameObject.SetActive(value);

@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   list: 0
-  listCoordinates: {x: 1280, y: 720}
+  listCoordinates: {x: 1880, y: 720}
   gapBetweenObjects: {x: 5, y: 5}
   objectsPerRow: 4
   listCapacity: -1
@@ -239,7 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235b60962dd4cef40b03974adc494aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites: {fileID: 1598551870810815466, guid: fc4974cf45746a4459a336ecc5c0899b, type: 3}
   sprite: {fileID: 764608779315627465, guid: 977b0b72c353de443931b2d155588e37, type: 3}
 --- !u!4 &471642952
 Transform:
@@ -430,6 +429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 996297435}
+  - component: {fileID: 996297436}
   m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
@@ -451,3 +451,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &996297436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996297434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36703d26446e0d6479e783f7d68f1902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1200

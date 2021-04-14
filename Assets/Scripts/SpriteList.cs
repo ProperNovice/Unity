@@ -25,17 +25,17 @@ public class SpriteList : MonoBehaviour
 
     private void Update()
     {
-        relocateSprites();
+
     }
 
     public void animateAsynchronous()
     {
-
+        executeAction(Enums.SpriteViewActionEnum.ANIMATE, Enums.AnimateSynchEnum.ASYNCHRONOUS);
     }
 
     public void animateSynchronous()
     {
-
+        executeAction(Enums.SpriteViewActionEnum.ANIMATE, Enums.AnimateSynchEnum.SYNCHRONOUS);
     }
 
     public void animateSynchronousLock()
@@ -63,9 +63,7 @@ public class SpriteList : MonoBehaviour
         {
 
             SpriteView spriteView = gameObject.GetComponent<SpriteView>();
-
             this.spriteDimensions = spriteView.getDimensions();
-
             Vector2 vector2 = getCoordinates(this.arrayList.indexOf(gameObject));
 
             switch (spriteViewActionEnum)
@@ -87,6 +85,7 @@ public class SpriteList : MonoBehaviour
                     break;
 
                 case Enums.SpriteViewActionEnum.ANIMATE:
+                    ManagerAnimation.INSTANCE.animate(spriteView, vector2, animateSynchEnum);
                     break;
 
             }
