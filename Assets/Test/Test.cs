@@ -6,7 +6,7 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
 
-    public GameObject prefab;
+    public GameObject sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,7 @@ public class Test : MonoBehaviour
         for (int counter = 1; counter <= 10; counter++)
         {
 
-            GameObject go = Instantiate(this.prefab) as GameObject;
+            GameObject go = Instantiate(this.sprite);
             SpriteView sv = go.GetComponent<SpriteView>();
 
             sv.setFrontBack("f", "b");

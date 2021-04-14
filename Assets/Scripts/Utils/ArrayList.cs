@@ -149,7 +149,10 @@ public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
 
     public bool isOverSized()
     {
-        return this.list.Count > this.capacity;
+        if (this.capacity == -1)
+            return false;
+        else
+            return this.list.Count > this.capacity;
     }
 
     public void addRange(ArrayList<T> list)

@@ -56,6 +56,9 @@ public class SpriteList : MonoBehaviour
     private void executeAction(Enums.SpriteViewActionEnum spriteViewActionEnum, Enums.AnimateSynchEnum animateSynchEnum)
     {
 
+        if (this.objectsPerRow == 0)
+            return;
+
         foreach (GameObject gameObject in this.arrayList)
         {
 

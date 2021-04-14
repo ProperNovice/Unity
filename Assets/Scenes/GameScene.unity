@@ -181,9 +181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   list: 0
-  listCoordinates: {x: 0, y: 0}
+  listCoordinates: {x: 1280, y: 720}
   gapBetweenObjects: {x: 5, y: 5}
-  objectsPerRow: -1
+  objectsPerRow: 4
   listCapacity: -1
   rearrangeType: 0
   horizontalDirection: 0
@@ -239,7 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235b60962dd4cef40b03974adc494aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 764608779315627465, guid: 977b0b72c353de443931b2d155588e37, type: 3}
+  sprites: {fileID: 1598551870810815466, guid: fc4974cf45746a4459a336ecc5c0899b, type: 3}
+  sprite: {fileID: 764608779315627465, guid: 977b0b72c353de443931b2d155588e37, type: 3}
 --- !u!4 &471642952
 Transform:
   m_ObjectHideFlags: 0
