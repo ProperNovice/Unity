@@ -57,17 +57,17 @@ public class ManagerAnimation : MonoBehaviour
         }
 
     }
-    public void animate(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynchEnum animateSynchEnum)
+    public void animate(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynchEnum animateSynchEnum, Enums.RelocatePositionEnum relocatePositionEnum)
     {
 
         switch (animateSynchEnum)
         {
             case Enums.AnimateSynchEnum.SYNCHRONOUS:
-                this.listSynchronous.addLast(new AnimateAction(spriteView, coordinates, this.speed));
+                this.listSynchronous.addLast(new AnimateAction(spriteView, coordinates, this.speed, relocatePositionEnum));
                 break;
 
             case Enums.AnimateSynchEnum.ASYNCHRONOUS:
-                this.listAsynchronous.addLast(new AnimateAction(spriteView, coordinates, this.speed));
+                this.listAsynchronous.addLast(new AnimateAction(spriteView, coordinates, this.speed, relocatePositionEnum));
                 break;
         }
 
@@ -79,12 +79,14 @@ public class ManagerAnimation : MonoBehaviour
         private SpriteView spriteView;
         private Vector2 coordinatesTarget;
         private int speed;
+        private Enums.RelocatePositionEnum relocatePositionEnum;
 
-        public AnimateAction(SpriteView spriteView, Vector2 coordinatesTarget, int speed)
+        public AnimateAction(SpriteView spriteView, Vector2 coordinatesTarget, int speed, Enums.RelocatePositionEnum relocatePositionEnum)
         {
             this.spriteView = spriteView;
             this.coordinatesTarget = coordinatesTarget;
             this.speed = speed;
+            this.relocatePositionEnum = relocatePositionEnum;
         }
 
         public void animate()
@@ -95,7 +97,19 @@ public class ManagerAnimation : MonoBehaviour
             Vector2 positionCurrent = this.spriteView.getCoordinates();
             Vector2 positionNext = Vector2.MoveTowards(positionCurrent, this.coordinatesTarget, pixelsToMove);
 
-            this.spriteView.relocateCenter(positionNext);
+            switch (this.relocatePositionEnum)
+            {
+
+                case Enums.RelocatePositionEnum.CENTER:
+                    this.spriteView.relocateCenter(positionNext);
+                    break;
+
+                case Enums.RelocatePositionEnum.TOP_LEFT:
+                    this.spriteView.relocateTopLeft(positionNext);
+                    break;
+
+            }
+
 
         }
 

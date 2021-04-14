@@ -24,17 +24,16 @@ public class Test : MonoBehaviour
 
         }
 
-        ManagerList.INSTANCE.lists.getValue(EList.DECK).animateAsynchronous();
+        // ManagerList.INSTANCE.lists.getValue(EList.DECK).animateAsynchronous();
 
         // ShutDown.execute("program ended");
 
     }
 
-
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
+        if (Input.GetMouseButtonDown(0))
+            ManagerList.INSTANCE.lists.getValue(EList.DECK).animateAsynchronous();
     }
+
 }

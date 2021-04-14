@@ -85,7 +85,7 @@ public class SpriteList : MonoBehaviour
                     break;
 
                 case Enums.SpriteViewActionEnum.ANIMATE:
-                    ManagerAnimation.INSTANCE.animate(spriteView, vector2, animateSynchEnum);
+                    ManagerAnimation.INSTANCE.animate(spriteView, vector2, animateSynchEnum, this.relocatePosition);
                     break;
 
             }

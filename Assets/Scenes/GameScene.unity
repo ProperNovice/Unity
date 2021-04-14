@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   list: 0
-  listCoordinates: {x: 1880, y: 720}
+  listCoordinates: {x: 0, y: 1440}
   gapBetweenObjects: {x: 5, y: 5}
   objectsPerRow: 4
   listCapacity: -1
