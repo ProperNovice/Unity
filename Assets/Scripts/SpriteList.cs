@@ -72,6 +72,8 @@ public class SpriteList : MonoBehaviour
                 this.coordinatesObjectFinal.y -= spriteView.getHeight() / 2;
             }
 
+            Logger.log(this.listCoordinates + " " + this.coordinatesObjectFinal);
+
             switch (spriteViewActionEnum)
             {
 
@@ -181,12 +183,12 @@ public class SpriteList : MonoBehaviour
 
             case Enums.DirectionHorizontalEnum.RIGHT:
                 this.coordinatesObjectFinal.x += this.objectPositionInList.y * this.spriteDimensions.x;
-                this.coordinatesObjectFinal.x += (this.objectPositionInList.y - 1) * this.gapBetweenObjects.x;
+                this.coordinatesObjectFinal.x += (this.objectPositionInList.y) * this.gapBetweenObjects.x;
                 break;
 
             case Enums.DirectionHorizontalEnum.LEFT:
                 this.coordinatesObjectFinal.x -= this.objectPositionInList.y * this.spriteDimensions.x;
-                this.coordinatesObjectFinal.x -= (this.objectPositionInList.y - 1) * this.gapBetweenObjects.x;
+                this.coordinatesObjectFinal.x -= (this.objectPositionInList.y) * this.gapBetweenObjects.x;
                 break;
 
         }
@@ -200,12 +202,12 @@ public class SpriteList : MonoBehaviour
 
             case Enums.DirectionVerticalEnum.DOWN:
                 this.coordinatesObjectFinal.y -= this.objectPositionInList.x * this.spriteDimensions.y;
-                this.coordinatesObjectFinal.y -= (this.objectPositionInList.x - 1) * this.gapBetweenObjects.y;
+                this.coordinatesObjectFinal.y -= (this.objectPositionInList.x) * this.gapBetweenObjects.y;
                 break;
 
             case Enums.DirectionVerticalEnum.UP:
                 this.coordinatesObjectFinal.y += this.objectPositionInList.x * this.spriteDimensions.y;
-                this.coordinatesObjectFinal.y += (this.objectPositionInList.x - 1) * this.gapBetweenObjects.y;
+                this.coordinatesObjectFinal.y += (this.objectPositionInList.x) * this.gapBetweenObjects.y;
                 break;
 
         }

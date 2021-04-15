@@ -183,7 +183,7 @@ MonoBehaviour:
   list: 0
   listCoordinates: {x: 1280, y: 720}
   gapBetweenObjects: {x: 5, y: 5}
-  objectsPerRow: 4
+  objectsPerRow: 2
   listCapacity: -1
   rearrangeTypeEnum: 0
   horizontalDirectionEnum: 0

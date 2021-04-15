@@ -12,13 +12,13 @@ public class Test : MonoBehaviour
     void Start()
     {
 
-        for (int counter = 1; counter <= 10; counter++)
+        for (int counter = 1; counter <= 4; counter++)
         {
 
             GameObject go = Instantiate(this.sprite);
             SpriteView sv = go.GetComponent<SpriteView>();
 
-            sv.setFrontBack("f", "b");
+            sv.setFrontBack("87", "b");
 
             ManagerList.INSTANCE.lists.getValue(EList.DECK).arrayList.addLast(go);
 

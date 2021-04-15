@@ -135,9 +135,17 @@ public class SpriteView : MonoBehaviour
         return this.boxCollider2D.size;
     }
 
-    public Vector2 getCoordinates()
+    public Vector2 getCoordinatesCenter()
     {
         return this.transform.position;
+    }
+
+    public Vector2 getCoordinatesTopLeft()
+    {
+        Vector2 coordinates = getCoordinatesCenter();
+        coordinates.x -= getWidth() / 2;
+        coordinates.y += getHeight() / 2;
+        return coordinates;
     }
 
     public void setVisible(bool value)

@@ -96,7 +96,7 @@ public class ManagerAnimation : MonoBehaviour
 
             float pixelsToMove = speed * Time.deltaTime;
 
-            Vector2 positionCurrent = this.spriteView.getCoordinates();
+            Vector2 positionCurrent = this.spriteView.getCoordinatesCenter();
             Vector2 positionNext = Vector2.MoveTowards(positionCurrent, this.coordinatesTarget, pixelsToMove);
             this.spriteView.relocateCenter(positionNext);
 
@@ -105,7 +105,7 @@ public class ManagerAnimation : MonoBehaviour
 
         public bool isAnimating()
         {
-            return this.spriteView.getCoordinates() != this.coordinatesTarget;
+            return this.spriteView.getCoordinatesCenter() != this.coordinatesTarget;
         }
 
     }
