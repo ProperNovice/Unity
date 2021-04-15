@@ -12,6 +12,8 @@ public class Test : MonoBehaviour
     void Start()
     {
 
+        check(this.sprite);
+
         for (int counter = 1; counter <= 4; counter++)
         {
 
@@ -20,13 +22,21 @@ public class Test : MonoBehaviour
 
             sv.setFrontBack("87", "b");
 
+            check(go);
+
             ManagerList.INSTANCE.lists.getValue(EList.DECK).arrayList.addLast(go);
 
         }
 
         // ManagerList.INSTANCE.lists.getValue(EList.DECK).animateAsynchronous();
+        ManagerList.INSTANCE.lists.getValue(EList.DECK).relocateSprites();
 
         // ShutDown.execute("program ended");
+
+    }
+
+    private void check(GameObject gameObject)
+    {
 
     }
 
@@ -36,6 +46,7 @@ public class Test : MonoBehaviour
             return;
 
         ManagerList.INSTANCE.lists.getValue(EList.DECK).animateAsynchronous();
+
     }
 
 }

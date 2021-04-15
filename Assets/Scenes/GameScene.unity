@@ -185,7 +185,7 @@ MonoBehaviour:
   gapBetweenObjects: {x: 5, y: 5}
   objectsPerRow: 2
   listCapacity: -1
-  rearrangeTypeEnum: 0
+  rearrangeTypeEnum: 2
   horizontalDirectionEnum: 0
   verticalDirectionEnum: 0
   relocatePositionEnum: 0

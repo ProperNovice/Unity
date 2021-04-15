@@ -40,7 +40,7 @@ public class SpriteList : MonoBehaviour
 
     public void animateSynchronousLock()
     {
-
+        executeAction(Enums.SpriteViewActionEnum.ANIMATE, Enums.AnimateSynchEnum.SYNCHRONOUS);
     }
 
     public void relocateSprites()
@@ -71,8 +71,6 @@ public class SpriteList : MonoBehaviour
                 this.coordinatesObjectFinal.x += spriteView.getWidth() / 2;
                 this.coordinatesObjectFinal.y -= spriteView.getHeight() / 2;
             }
-
-            Logger.log(this.listCoordinates + " " + this.coordinatesObjectFinal);
 
             switch (spriteViewActionEnum)
             {
@@ -149,7 +147,39 @@ public class SpriteList : MonoBehaviour
         float width = columns * this.spriteDimensions.x + (columns - 1) * this.gapBetweenObjects.x;
         float height = rows * this.spriteDimensions.y + (rows - 1) * this.gapBetweenObjects.y;
 
-        this.coordinatesFirstObject = new Vector2(this.listCoordinates.x - width / 2, this.listCoordinates.y + height / 2);
+        Logger.log("width/2 = " + width / 2 + " , height/2 " + height / 2);
+
+        this.coordinatesFirstObject = new Vector2(this.listCoordinates.x, this.listCoordinates.y);
+
+        Logger.log(this.coordinatesFirstObject);
+
+        switch (this.horizontalDirectionEnum)
+        {
+
+            case Enums.DirectionHorizontalEnum.RIGHT:
+                this.coordinatesFirstObject.x -= width / 2;
+                break;
+
+            case Enums.DirectionHorizontalEnum.LEFT:
+                this.coordinatesFirstObject.x += width / 2;
+                break;
+
+        }
+
+        switch (this.verticalDirectionEnum)
+        {
+
+            case Enums.DirectionVerticalEnum.DOWN:
+                this.coordinatesFirstObject.y += height / 2;
+                break;
+
+            case Enums.DirectionVerticalEnum.UP:
+                this.coordinatesFirstObject.y -= height / 2;
+                break;
+
+        }
+
+        Logger.log(this.coordinatesFirstObject);
 
         calculateCoordinatesObjectFinal();
 
@@ -183,12 +213,12 @@ public class SpriteList : MonoBehaviour
 
             case Enums.DirectionHorizontalEnum.RIGHT:
                 this.coordinatesObjectFinal.x += this.objectPositionInList.y * this.spriteDimensions.x;
-                this.coordinatesObjectFinal.x += (this.objectPositionInList.y) * this.gapBetweenObjects.x;
+                this.coordinatesObjectFinal.x += this.objectPositionInList.y * this.gapBetweenObjects.x;
                 break;
 
             case Enums.DirectionHorizontalEnum.LEFT:
                 this.coordinatesObjectFinal.x -= this.objectPositionInList.y * this.spriteDimensions.x;
-                this.coordinatesObjectFinal.x -= (this.objectPositionInList.y) * this.gapBetweenObjects.x;
+                this.coordinatesObjectFinal.x -= this.objectPositionInList.y * this.gapBetweenObjects.x;
                 break;
 
         }
@@ -202,12 +232,12 @@ public class SpriteList : MonoBehaviour
 
             case Enums.DirectionVerticalEnum.DOWN:
                 this.coordinatesObjectFinal.y -= this.objectPositionInList.x * this.spriteDimensions.y;
-                this.coordinatesObjectFinal.y -= (this.objectPositionInList.x) * this.gapBetweenObjects.y;
+                this.coordinatesObjectFinal.y -= this.objectPositionInList.x * this.gapBetweenObjects.y;
                 break;
 
             case Enums.DirectionVerticalEnum.UP:
                 this.coordinatesObjectFinal.y += this.objectPositionInList.x * this.spriteDimensions.y;
-                this.coordinatesObjectFinal.y += (this.objectPositionInList.x) * this.gapBetweenObjects.y;
+                this.coordinatesObjectFinal.y += this.objectPositionInList.x * this.gapBetweenObjects.y;
                 break;
 
         }
