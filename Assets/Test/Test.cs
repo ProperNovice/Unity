@@ -42,10 +42,16 @@ public class Test : MonoBehaviour
 
     private void Update()
     {
-        if (!Input.GetMouseButtonDown(0))
-            return;
+        if (Input.GetMouseButtonDown(0))
+            ManagerList.INSTANCE.lists.getValue(EList.DECK).animateAsynchronous();
 
-        ManagerList.INSTANCE.lists.getValue(EList.DECK).animateAsynchronous();
+        else if (Input.GetMouseButtonDown(1))
+        {
+
+            foreach (GameObject gameObject in ManagerList.INSTANCE.lists.getValue(EList.DECK).arrayList)
+                Logger.log(gameObject.GetComponent<SpriteView>().getCoordinatesTopLeft());
+
+        }
 
     }
 

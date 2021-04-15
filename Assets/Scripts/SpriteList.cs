@@ -147,11 +147,7 @@ public class SpriteList : MonoBehaviour
         float width = columns * this.spriteDimensions.x + (columns - 1) * this.gapBetweenObjects.x;
         float height = rows * this.spriteDimensions.y + (rows - 1) * this.gapBetweenObjects.y;
 
-        Logger.log("width/2 = " + width / 2 + " , height/2 " + height / 2);
-
         this.coordinatesFirstObject = new Vector2(this.listCoordinates.x, this.listCoordinates.y);
-
-        Logger.log(this.coordinatesFirstObject);
 
         switch (this.horizontalDirectionEnum)
         {
@@ -161,7 +157,7 @@ public class SpriteList : MonoBehaviour
                 break;
 
             case Enums.DirectionHorizontalEnum.LEFT:
-                this.coordinatesFirstObject.x += width / 2;
+                this.coordinatesFirstObject.x += width / 2 - this.spriteDimensions.x;
                 break;
 
         }
@@ -174,12 +170,10 @@ public class SpriteList : MonoBehaviour
                 break;
 
             case Enums.DirectionVerticalEnum.UP:
-                this.coordinatesFirstObject.y -= height / 2;
+                this.coordinatesFirstObject.y -= height / 2 - this.spriteDimensions.y;
                 break;
 
         }
-
-        Logger.log(this.coordinatesFirstObject);
 
         calculateCoordinatesObjectFinal();
 
