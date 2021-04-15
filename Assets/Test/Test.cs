@@ -32,8 +32,10 @@ public class Test : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-            ManagerList.INSTANCE.lists.getValue(EList.DECK).animateAsynchronous();
+        if (!Input.GetMouseButtonDown(0))
+            return;
+
+        ManagerList.INSTANCE.lists.getValue(EList.DECK).animateAsynchronous();
     }
 
 }

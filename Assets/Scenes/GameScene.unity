@@ -181,14 +181,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   list: 0
-  listCoordinates: {x: 0, y: 1440}
+  listCoordinates: {x: 1280, y: 720}
   gapBetweenObjects: {x: 5, y: 5}
   objectsPerRow: 4
   listCapacity: -1
-  rearrangeType: 0
-  horizontalDirection: 0
-  verticalDirection: 0
-  relocatePosition: 0
+  rearrangeTypeEnum: 0
+  horizontalDirectionEnum: 0
+  verticalDirectionEnum: 0
+  relocatePositionEnum: 0
 --- !u!114 &317429910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,10 +206,10 @@ MonoBehaviour:
   gapBetweenObjects: {x: 5, y: 5}
   objectsPerRow: -1
   listCapacity: -1
-  rearrangeType: 0
-  horizontalDirection: 0
-  verticalDirection: 0
-  relocatePosition: 0
+  rearrangeTypeEnum: 0
+  horizontalDirectionEnum: 0
+  verticalDirectionEnum: 0
+  relocatePositionEnum: 0
 --- !u!1 &471642950
 GameObject:
   m_ObjectHideFlags: 0

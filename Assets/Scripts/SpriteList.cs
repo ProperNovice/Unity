@@ -9,10 +9,10 @@ public class SpriteList : MonoBehaviour
     [SerializeField] private EList list;
     [SerializeField] private Vector2 listCoordinates, gapBetweenObjects = new Vector2(5, 5);
     [SerializeField] private int objectsPerRow = -1, listCapacity = -1;
-    [SerializeField] private Enums.RearrangeTypeEnum rearrangeType = Enums.RearrangeTypeEnum.LINEAR;
-    [SerializeField] private Enums.DirectionHorizontalEnum horizontalDirection = Enums.DirectionHorizontalEnum.RIGHT;
-    [SerializeField] private Enums.DirectionVerticalEnum verticalDirection = Enums.DirectionVerticalEnum.DOWN;
-    [SerializeField] private Enums.RelocatePositionEnum relocatePosition = Enums.RelocatePositionEnum.TOP_LEFT;
+    [SerializeField] private Enums.RearrangeTypeEnum rearrangeTypeEnum = Enums.RearrangeTypeEnum.LINEAR;
+    [SerializeField] private Enums.DirectionHorizontalEnum horizontalDirectionEnum = Enums.DirectionHorizontalEnum.RIGHT;
+    [SerializeField] private Enums.DirectionVerticalEnum verticalDirectionEnum = Enums.DirectionVerticalEnum.DOWN;
+    [SerializeField] private Enums.RelocatePositionEnum relocatePositionEnum = Enums.RelocatePositionEnum.TOP_LEFT;
 
     public ArrayList<GameObject> arrayList;
     private Vector2 objectPositionInList, coordinatesFirstObject, coordinatesObjectFinal, spriteDimensions;
@@ -64,28 +64,23 @@ public class SpriteList : MonoBehaviour
 
             SpriteView spriteView = gameObject.GetComponent<SpriteView>();
             this.spriteDimensions = spriteView.getDimensions();
-            Vector2 vector2 = getCoordinates(this.arrayList.indexOf(gameObject));
+            calculateCoordinatesObjectFinal(this.arrayList.indexOf(gameObject));
+
+            if (this.relocatePositionEnum.Equals(Enums.RelocatePositionEnum.TOP_LEFT))
+            {
+                this.coordinatesObjectFinal.x += spriteView.getWidth() / 2;
+                this.coordinatesObjectFinal.y -= spriteView.getHeight() / 2;
+            }
 
             switch (spriteViewActionEnum)
             {
 
                 case Enums.SpriteViewActionEnum.RELOCATE:
-
-                    switch (this.relocatePosition)
-                    {
-                        case Enums.RelocatePositionEnum.CENTER:
-                            spriteView.relocateCenter(vector2);
-                            break;
-
-                        case Enums.RelocatePositionEnum.TOP_LEFT:
-                            spriteView.relocateTopLeft(vector2);
-                            break;
-                    }
-
+                    spriteView.relocateCenter(this.coordinatesObjectFinal);
                     break;
 
                 case Enums.SpriteViewActionEnum.ANIMATE:
-                    ManagerAnimation.INSTANCE.animate(spriteView, vector2, animateSynchEnum, this.relocatePosition);
+                    ManagerAnimation.INSTANCE.animate(spriteView, this.coordinatesObjectFinal, animateSynchEnum);
                     break;
 
             }
@@ -94,10 +89,10 @@ public class SpriteList : MonoBehaviour
 
     }
 
-    private Vector2 getCoordinates(int objectIndex)
+    private void calculateCoordinatesObjectFinal(int objectIndex)
     {
 
-        switch (this.rearrangeType)
+        switch (this.rearrangeTypeEnum)
         {
 
             case Enums.RearrangeTypeEnum.STATIC:
@@ -114,7 +109,6 @@ public class SpriteList : MonoBehaviour
 
         }
 
-        return this.coordinatesObjectFinal;
     }
 
     private void handleRearrangeTypeEnumStatic()
@@ -182,7 +176,7 @@ public class SpriteList : MonoBehaviour
 
         this.coordinatesObjectFinal.x = this.coordinatesFirstObject.x;
 
-        switch (this.horizontalDirection)
+        switch (this.horizontalDirectionEnum)
         {
 
             case Enums.DirectionHorizontalEnum.RIGHT:
@@ -201,7 +195,7 @@ public class SpriteList : MonoBehaviour
 
         this.coordinatesObjectFinal.y = this.coordinatesFirstObject.y;
 
-        switch (this.verticalDirection)
+        switch (this.verticalDirectionEnum)
         {
 
             case Enums.DirectionVerticalEnum.DOWN:
