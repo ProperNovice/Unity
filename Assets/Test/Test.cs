@@ -20,7 +20,7 @@ public class Test : MonoBehaviour
             GameObject go = Instantiate(this.sprite);
             SpriteView sv = go.GetComponent<SpriteView>();
 
-            sv.setFrontBack("87", "b");
+            sv.setFrontBack("76", "b");
 
             check(go);
 
@@ -42,6 +42,8 @@ public class Test : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+            ManagerList.INSTANCE.lists.getValue(EList.DECK).animateAsynchronous();
 
     }
 
