@@ -174,6 +174,11 @@ public class SpriteView : MonoBehaviour
         this.gameObject.SetActive(value);
     }
 
+    public void setOrderInLayer(int order)
+    {
+
+    }
+
     private void OnMouseDown()
     {
 
