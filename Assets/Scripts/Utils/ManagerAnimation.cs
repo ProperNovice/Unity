@@ -7,7 +7,7 @@ public class ManagerAnimation : MonoBehaviour
 {
 
     public static ManagerAnimation INSTANCE;
-    [SerializeField] private int speed = 1200;
+    [SerializeField] private float speed = 1200;
     [SerializeField] private ArrayList<AnimateAction> listSynchronous, listAsynchronous;
 
     private void Awake()
@@ -79,7 +79,7 @@ public class ManagerAnimation : MonoBehaviour
                 break;
         }
 
-        AnimateAction animateAction = new AnimateAction(spriteView, coordinates, this.speed);
+        AnimateAction animateAction = new AnimateAction(spriteView, coordinates);
         list.addLast(animateAction);
 
     }
@@ -105,18 +105,17 @@ public class ManagerAnimation : MonoBehaviour
 
         private SpriteView spriteView;
         private Vector2 coordinatesTarget;
-        private int speed;
 
-        public AnimateAction(SpriteView spriteView, Vector2 coordinatesTarget, int speed)
+        public AnimateAction(SpriteView spriteView, Vector2 coordinatesTarget)
         {
             this.spriteView = spriteView;
             this.coordinatesTarget = coordinatesTarget;
-            this.speed = speed;
         }
 
         public void animate()
         {
 
+            float speed = ManagerAnimation.INSTANCE.speed;
             float pixelsToMove = speed * Time.deltaTime;
 
             Vector2 positionCurrent = this.spriteView.getCoordinatesTopLeft();
