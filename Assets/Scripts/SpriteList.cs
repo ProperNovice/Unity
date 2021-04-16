@@ -8,8 +8,9 @@ public class SpriteList : MonoBehaviour
 {
 
     [SerializeField] private EList list;
-    [SerializeField] private Vector2 listCoordinates, gapBetweenObjects = new Vector2(5, 5);
+    public Vector2 listCoordinates, gapBetweenObjects = new Vector2(5, 5);
     [SerializeField] private int objectsPerRow = -1, listCapacity = -1;
+    [SerializeField] private Enums.LayerZListEnum layerZ;
     [SerializeField] private Enums.RearrangeTypeEnum rearrangeTypeEnum = Enums.RearrangeTypeEnum.LINEAR;
     [SerializeField] private Enums.DirectionHorizontalEnum horizontalDirectionEnum = Enums.DirectionHorizontalEnum.RIGHT;
     [SerializeField] private Enums.DirectionVerticalEnum verticalDirectionEnum = Enums.DirectionVerticalEnum.DOWN;
@@ -26,7 +27,7 @@ public class SpriteList : MonoBehaviour
 
     private void Update()
     {
-
+        relocateSprites();
     }
 
     public void animateAsynchronous()
@@ -48,11 +49,6 @@ public class SpriteList : MonoBehaviour
     public void relocateSprites()
     {
         executeAction(Enums.SpriteViewActionEnum.RELOCATE, Enums.AnimateSynchEnum.ASYNCHRONOUS);
-    }
-
-    public void relocateList(Vector2 vector2)
-    {
-        this.listCoordinates = vector2;
     }
 
     private void executeAction(Enums.SpriteViewActionEnum spriteViewActionEnum, Enums.AnimateSynchEnum animateSynchEnum)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -95,9 +96,10 @@ public class ManagerAnimation : MonoBehaviour
         this.listAsynchronous.clear();
     }
 
-    public void moveAsynchronousToSynchronousLock()
+    public void moveAsynchronousToSynchronousLock(Action action)
     {
         moveAsynchronousToSynchronous();
+        ManagerLock.INSTANCE.acquire(action);
     }
 
     private class AnimateAction

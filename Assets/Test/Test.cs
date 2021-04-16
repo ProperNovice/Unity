@@ -29,7 +29,7 @@ public class Test : MonoBehaviour
         }
 
         // ManagerList.INSTANCE.lists.getValue(EList.DECK).animateAsynchronous();
-        // ManagerList.INSTANCE.lists.getValue(EList.DECK).relocateSprites();
+        ManagerList.INSTANCE.lists.getValue(EList.DECK).relocateSprites();
 
         // ShutDown.execute("program ended");
 
@@ -42,16 +42,7 @@ public class Test : MonoBehaviour
 
     private void Update()
     {
-        if (!Input.GetMouseButtonDown(0))
-            return;
 
-        ManagerList.INSTANCE.lists.getValue(EList.DECK).animateSynchronousLock(() => syso());
-
-    }
-
-    private void syso()
-    {
-        Logger.log("yay");
     }
 
 }

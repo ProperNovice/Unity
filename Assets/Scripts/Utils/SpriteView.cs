@@ -6,6 +6,7 @@ public class SpriteView : MonoBehaviour
 {
 
     public Sprite front, back;
+    public ELayerZ layerZ = ELayerZ.DEFAULT;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider2D;
 
@@ -160,8 +161,17 @@ public class SpriteView : MonoBehaviour
 
         float width = this.front.rect.width * this.gameObject.transform.localScale.x;
         float height = this.front.rect.height * this.gameObject.transform.localScale.y;
-
         this.boxCollider2D.size = new Vector2(width, height);
+
+        float offsetX = width / 2;
+        float offsetY = -height / 2;
+        this.boxCollider2D.offset = new Vector2(offsetX, offsetY);
+
+    }
+
+    public void setActive(bool value)
+    {
+        this.gameObject.SetActive(value);
     }
 
     private void OnMouseDown()
