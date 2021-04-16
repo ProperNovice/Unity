@@ -37,6 +37,8 @@ public class SpriteView : MonoBehaviour
 
         }
 
+        ManagerLayerZ.INSTANCE.list.getValue(this.layerZ).addLast(this.gameObject);
+
     }
 
     public void flip()
@@ -174,9 +176,9 @@ public class SpriteView : MonoBehaviour
         this.gameObject.SetActive(value);
     }
 
-    public void setOrderInLayer(int order)
+    public void setSortingOrder(int sortingOrder)
     {
-
+        this.spriteRenderer.sortingOrder = sortingOrder;
     }
 
     private void OnMouseDown()

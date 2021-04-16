@@ -6,7 +6,7 @@ public class ManagerLayerZ : MonoBehaviour
 {
 
     public static ManagerLayerZ INSTANCE;
-    private Hashmap<ELayerZ, ArrayList<GameObject>> list;
+    public Hashmap<ELayerZ, ArrayList<GameObject>> list;
 
     private void Awake()
     {
