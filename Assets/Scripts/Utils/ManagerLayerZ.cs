@@ -20,4 +20,27 @@ public class ManagerLayerZ : MonoBehaviour
 
     }
 
+    public void toFront(GameObject gameObject)
+    {
+
+    }
+
+    public void toBack(GameObject gameObject)
+    {
+
+    }
+
+    private ArrayList<GameObject> getListContainingGameObject(GameObject gameObject)
+    {
+
+        foreach (ELayerZ eLayerZ in this.list)
+            if (this.list.getValue(eLayerZ).contains(gameObject))
+                return this.list.getValue(eLayerZ);
+
+        ShutDown.execute(this);
+
+        return new ArrayList<GameObject>();
+
+    }
+
 }

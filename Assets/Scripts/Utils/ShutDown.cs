@@ -24,4 +24,17 @@ public class ShutDown
         execute();
     }
 
+    public static void execute(MonoBehaviour monoBehaviour)
+    {
+        Logger.log(monoBehaviour);
+        execute();
+    }
+
+    public static void execute(MonoBehaviour monoBehaviour, string log)
+    {
+        Logger.log(monoBehaviour);
+        Logger.log(log);
+        execute();
+    }
+
 }
