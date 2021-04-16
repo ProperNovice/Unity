@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,9 +39,10 @@ public class SpriteList : MonoBehaviour
         executeAction(Enums.SpriteViewActionEnum.ANIMATE, Enums.AnimateSynchEnum.SYNCHRONOUS);
     }
 
-    public void animateSynchronousLock()
+    public void animateSynchronousLock(Action action)
     {
         executeAction(Enums.SpriteViewActionEnum.ANIMATE, Enums.AnimateSynchEnum.SYNCHRONOUS);
+        ManagerLock.INSTANCE.acquire(action);
     }
 
     public void relocateSprites()
@@ -66,17 +68,17 @@ public class SpriteList : MonoBehaviour
             this.spriteDimensions = spriteView.getDimensions();
             calculateCoordinatesObjectFinal(this.arrayList.indexOf(gameObject));
 
-            if (this.relocatePositionEnum.Equals(Enums.RelocatePositionEnum.TOP_LEFT))
+            if (this.relocatePositionEnum.Equals(Enums.RelocatePositionEnum.CENTER))
             {
-                this.coordinatesObjectFinal.x += spriteView.getWidth() / 2;
-                this.coordinatesObjectFinal.y -= spriteView.getHeight() / 2;
+                this.coordinatesObjectFinal.x -= spriteView.getWidth() / 2;
+                this.coordinatesObjectFinal.y += spriteView.getHeight() / 2;
             }
 
             switch (spriteViewActionEnum)
             {
 
                 case Enums.SpriteViewActionEnum.RELOCATE:
-                    spriteView.relocateCenter(this.coordinatesObjectFinal);
+                    spriteView.relocateTopLeft(this.coordinatesObjectFinal);
                     break;
 
                 case Enums.SpriteViewActionEnum.ANIMATE:

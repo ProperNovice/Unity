@@ -78,9 +78,7 @@ public class SpriteView : MonoBehaviour
 
     public void relocateTopLeft(float x, float y)
     {
-        x += this.front.rect.width * this.gameObject.transform.localScale.x / 2;
-        y -= this.front.rect.height * this.gameObject.transform.localScale.y / 2;
-        relocateCenter(x, y);
+        this.transform.localPosition = new Vector2(x, y);
     }
 
     public void relocateTopLeft(Vector2 vector2)
@@ -90,7 +88,9 @@ public class SpriteView : MonoBehaviour
 
     public void relocateCenter(float x, float y)
     {
-        this.transform.localPosition = new Vector2(x, y);
+        x -= this.front.rect.width * this.gameObject.transform.localScale.x / 2;
+        y += this.front.rect.height * this.gameObject.transform.localScale.y / 2;
+        relocateTopLeft(x, y);
     }
 
     public void relocateCenter(Vector2 vector2)
@@ -137,15 +137,17 @@ public class SpriteView : MonoBehaviour
 
     public Vector2 getCoordinatesCenter()
     {
-        return this.transform.position;
+
+        Vector2 coordinates = getCoordinatesTopLeft();
+        coordinates.x += getWidth() / 2;
+        coordinates.y -= getHeight() / 2;
+        return coordinates;
+
     }
 
     public Vector2 getCoordinatesTopLeft()
     {
-        Vector2 coordinates = getCoordinatesCenter();
-        coordinates.x -= getWidth() / 2;
-        coordinates.y += getHeight() / 2;
-        return coordinates;
+        return this.transform.position;
     }
 
     public void setVisible(bool value)

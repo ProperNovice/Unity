@@ -34,6 +34,12 @@ public class ManagerAnimation : MonoBehaviour
     private void animateListSynchronous()
     {
         animateExecute(this.listSynchronous);
+
+        if (!this.listSynchronous.isEmpty())
+            return;
+
+        ManagerLock.INSTANCE.release();
+
     }
 
     private void animateListAsynchronous()
@@ -73,8 +79,25 @@ public class ManagerAnimation : MonoBehaviour
                 break;
         }
 
-        list.addLast(new AnimateAction(spriteView, coordinates, this.speed));
+        AnimateAction animateAction = new AnimateAction(spriteView, coordinates, this.speed);
+        list.addLast(animateAction);
 
+    }
+
+    public bool isAnimating()
+    {
+        return this.listSynchronous.isEmpty() && this.listAsynchronous.isEmpty();
+    }
+
+    public void moveAsynchronousToSynchronous()
+    {
+        this.listSynchronous.addRange(this.listAsynchronous);
+        this.listAsynchronous.clear();
+    }
+
+    public void moveAsynchronousToSynchronousLock()
+    {
+        moveAsynchronousToSynchronous();
     }
 
     private class AnimateAction
@@ -96,16 +119,16 @@ public class ManagerAnimation : MonoBehaviour
 
             float pixelsToMove = speed * Time.deltaTime;
 
-            Vector2 positionCurrent = this.spriteView.getCoordinatesCenter();
+            Vector2 positionCurrent = this.spriteView.getCoordinatesTopLeft();
             Vector2 positionNext = Vector2.MoveTowards(positionCurrent, this.coordinatesTarget, pixelsToMove);
-            this.spriteView.relocateCenter(positionNext);
+            this.spriteView.relocateTopLeft(positionNext);
 
         }
 
 
         public bool isAnimating()
         {
-            return this.spriteView.getCoordinatesCenter() != this.coordinatesTarget;
+            return this.spriteView.getCoordinatesTopLeft() != this.coordinatesTarget;
         }
 
     }
