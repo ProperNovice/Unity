@@ -5,6 +5,6 @@ using UnityEngine;
 public enum EList
 {
 
-    DECK, ASA, DISCARD_PILE
+    DECK, DISCARD_PILE
 
 }
