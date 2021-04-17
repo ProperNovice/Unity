@@ -6,18 +6,13 @@ public class ManagerList : MonoBehaviour
 {
 
     public static ManagerList INSTANCE;
-    public Hashmap<EList, SpriteList> lists;
+    public Dictionary<EList, SpriteList> lists;
 
     public void Awake()
     {
 
         INSTANCE = this;
-        this.lists = new Hashmap<EList, SpriteList>();
-
-    }
-
-    private void Start()
-    {
+        this.lists = new Dictionary<EList, SpriteList>();
 
     }
 

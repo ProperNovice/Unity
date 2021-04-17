@@ -22,6 +22,9 @@ public class SpriteView : MonoBehaviour
     void Start()
     {
 
+        ManagerSpriteView.INSTANCE.list.Add(this.gameObject, this);
+        ManagerLayerZ.INSTANCE.list[this.layerZ].addLast(this.gameObject);
+
         if (this.spriteRenderer.sprite != null)
         {
 
@@ -36,8 +39,6 @@ public class SpriteView : MonoBehaviour
             setBoxColliderSize();
 
         }
-
-        ManagerLayerZ.INSTANCE.list.getValue(this.layerZ).addLast(this.gameObject);
 
     }
 

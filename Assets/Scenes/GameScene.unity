@@ -132,8 +132,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 317429907}
-  - component: {fileID: 317429909}
+  - component: {fileID: 317429908}
   - component: {fileID: 317429910}
+  - component: {fileID: 317429909}
   m_Layer: 0
   m_Name: Lists
   m_TagString: Untagged
@@ -155,6 +156,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &317429908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317429906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aec8558a7abd8a44a9a5aa38b8a41bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  list: 2
+  listCoordinates: {x: 0, y: 0}
+  gapBetweenObjects: {x: 5, y: 5}
+  objectsPerRow: -1
+  listCapacity: -1
+  layerZOrder: 0
+  rearrangeTypeEnum: 0
+  horizontalDirectionEnum: 0
+  verticalDirectionEnum: 0
+  relocatePositionEnum: 0
 --- !u!114 &317429909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +195,7 @@ MonoBehaviour:
   gapBetweenObjects: {x: 5, y: 5}
   objectsPerRow: 2
   listCapacity: -1
-  layerZ: 0
+  layerZOrder: 0
   rearrangeTypeEnum: 0
   horizontalDirectionEnum: 0
   verticalDirectionEnum: 0
@@ -194,7 +217,7 @@ MonoBehaviour:
   gapBetweenObjects: {x: 5, y: 5}
   objectsPerRow: -1
   listCapacity: -1
-  layerZ: 0
+  layerZOrder: 0
   rearrangeTypeEnum: 0
   horizontalDirectionEnum: 0
   verticalDirectionEnum: 0
@@ -339,6 +362,7 @@ GameObject:
   - component: {fileID: 1285260540}
   - component: {fileID: 1285260543}
   - component: {fileID: 1285260544}
+  - component: {fileID: 1285260545}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -407,6 +431,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9e4814e272233347b3663ddba583615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1285260545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285260539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e724971340622bb48a01b347ecb18132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1793799135

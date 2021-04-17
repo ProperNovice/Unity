@@ -7,14 +7,15 @@ public class Test : MonoBehaviour
 {
 
     public GameObject sprite;
+    private ArrayList<GameObject> list;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        check(this.sprite);
+        this.list = new ArrayList<GameObject>();
 
-        for (int counter = 1; counter <= 4; counter++)
+        for (int counter = 1; counter <= 10; counter++)
         {
 
             GameObject go = Instantiate(this.sprite);
@@ -22,26 +23,23 @@ public class Test : MonoBehaviour
 
             sv.setFrontBack("76", "b");
 
-            check(go);
-
-            ManagerList.INSTANCE.lists.getValue(EList.DECK).arrayList.addLast(go);
+            ManagerList.INSTANCE.lists[EList.DECK].arrayList.addLast(go);
+            this.list.addLast(go);
 
         }
-
-        ManagerList.INSTANCE.lists.getValue(EList.DECK).relocateSprites();
-
-    }
-
-    public virtual void check(GameObject gameObject)
-    {
 
     }
 
     private void Update()
     {
 
-        if (!Input.GetMouseButton(0))
-            return;
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            Debug.Log("yay");
+            ManagerList.INSTANCE.lists[EList.DECK].animateAsynchronous();
+
+        }
 
     }
 

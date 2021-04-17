@@ -10,7 +10,7 @@ public class SpriteList : MonoBehaviour
     [SerializeField] private EList list;
     public Vector2 listCoordinates, gapBetweenObjects = new Vector2(5, 5);
     [SerializeField] private int objectsPerRow = -1, listCapacity = -1;
-    [SerializeField] private Enums.LayerZListEnum layerZ;
+    [SerializeField] private Enums.LayerZListEnum layerZOrder;
     [SerializeField] private Enums.RearrangeTypeEnum rearrangeTypeEnum = Enums.RearrangeTypeEnum.LINEAR;
     [SerializeField] private Enums.DirectionHorizontalEnum horizontalDirectionEnum = Enums.DirectionHorizontalEnum.RIGHT;
     [SerializeField] private Enums.DirectionVerticalEnum verticalDirectionEnum = Enums.DirectionVerticalEnum.DOWN;
@@ -22,12 +22,12 @@ public class SpriteList : MonoBehaviour
     private void Start()
     {
         this.arrayList = new ArrayList<GameObject>(this.listCapacity);
-        ManagerList.INSTANCE.lists.put(this.list, this);
+        ManagerList.INSTANCE.lists.Add(this.list, this);
     }
 
     private void Update()
     {
-        relocateSprites();
+        // relocateSprites();
     }
 
     public void animateAsynchronous()
@@ -60,7 +60,7 @@ public class SpriteList : MonoBehaviour
         foreach (GameObject gameObject in this.arrayList)
         {
 
-            SpriteView spriteView = gameObject.GetComponent<SpriteView>();
+            SpriteView spriteView = ManagerSpriteView.INSTANCE.list[gameObject];
             this.spriteDimensions = spriteView.getDimensions();
             calculateCoordinatesObjectFinal(this.arrayList.indexOf(gameObject));
 
@@ -84,6 +84,21 @@ public class SpriteList : MonoBehaviour
             }
 
         }
+
+        handleLayerZ();
+
+    }
+
+    private void handleLayerZ()
+    {
+
+        ArrayList<GameObject> listLayerZ = this.arrayList.clone();
+
+        if (this.layerZOrder.Equals(Enums.LayerZListEnum.TO_FRONT_FIRST_SPRITEVIEW))
+            listLayerZ.reverse();
+
+        foreach (GameObject gameObject in listLayerZ)
+            ManagerLayerZ.INSTANCE.toFront(gameObject);
 
     }
 
