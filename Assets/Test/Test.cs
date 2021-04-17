@@ -36,7 +36,9 @@ public class Test : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
 
-            Debug.Log("yay");
+            if (ManagerAnimation.INSTANCE.isAnimating())
+                return;
+
             ManagerList.INSTANCE.lists[EList.DECK].animateAsynchronous();
 
         }
