@@ -3,17 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Test : MonoBehaviour
 {
 
     public GameObject sprite;
-    private ArrayList<GameObject> list;
+    public Dictionary<int, string> dictionary;
+    public List<EListO> list;
+    public List<int> i;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        this.list = new ArrayList<GameObject>();
 
         for (int counter = 1; counter <= 10; counter++)
         {
@@ -24,10 +25,17 @@ public class Test : MonoBehaviour
             sv.setFrontBack("76", "b");
 
             ManagerList.INSTANCE.lists[EList.DECK].arrayList.addLast(go);
-            this.list.addLast(go);
 
         }
 
+    }
+
+    [System.Serializable]
+    public class EListO
+    {
+        public EList eList;
+        public int number;
+        public string text;
     }
 
     private void Update()
