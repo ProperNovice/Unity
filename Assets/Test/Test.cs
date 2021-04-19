@@ -8,9 +8,6 @@ public class Test : MonoBehaviour
 {
 
     public GameObject sprite;
-    public Dictionary<int, string> dictionary;
-    public List<EListO> list;
-    public List<int> i;
 
     // Start is called before the first frame update
     void Start()
@@ -30,14 +27,6 @@ public class Test : MonoBehaviour
 
     }
 
-    [System.Serializable]
-    public class EListO
-    {
-        public EList eList;
-        public int number;
-        public string text;
-    }
-
     private void Update()
     {
 
@@ -47,7 +36,7 @@ public class Test : MonoBehaviour
             if (ManagerAnimation.INSTANCE.isAnimating())
                 return;
 
-            ManagerList.INSTANCE.lists[EList.DECK].animateAsynchronous();
+            // ManagerList.INSTANCE.lists[EList.DECK].animateAsynchronous();
 
         }
 

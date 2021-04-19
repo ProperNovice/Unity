@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class SpriteView : MonoBehaviour
 {
 
-    public Sprite front, back;
+    [SerializeField] private Sprite front, back;
     public ELayerZ layerZ = ELayerZ.DEFAULT;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider2D;
@@ -92,8 +93,8 @@ public class SpriteView : MonoBehaviour
 
     public void relocateCenter(float x, float y)
     {
-        x -= this.front.rect.width * this.gameObject.transform.localScale.x / 2;
-        y += this.front.rect.height * this.gameObject.transform.localScale.y / 2;
+        x -= this.front.rect.width * this.transform.localScale.x / 2;
+        y += this.front.rect.height * this.transform.localScale.y / 2;
         relocateTopLeft(x, y);
     }
 
@@ -108,7 +109,7 @@ public class SpriteView : MonoBehaviour
         float spriteWidth = this.front.rect.width;
         float scale = width / spriteWidth;
 
-        this.gameObject.transform.localScale = new Vector2(scale, scale);
+        this.transform.localScale = new Vector2(scale, scale);
         setBoxColliderSize();
 
     }
@@ -119,7 +120,7 @@ public class SpriteView : MonoBehaviour
         float spriteHeight = this.front.rect.height;
         float scale = height / spriteHeight;
 
-        this.gameObject.transform.localScale = new Vector2(scale, scale);
+        this.transform.localScale = new Vector2(scale, scale);
         setBoxColliderSize();
 
     }
@@ -162,8 +163,8 @@ public class SpriteView : MonoBehaviour
     private void setBoxColliderSize()
     {
 
-        float width = this.front.rect.width * this.gameObject.transform.localScale.x;
-        float height = this.front.rect.height * this.gameObject.transform.localScale.y;
+        float width = this.front.rect.width * this.transform.localScale.x;
+        float height = this.front.rect.height * this.transform.localScale.y;
         this.boxCollider2D.size = new Vector2(width, height);
 
         float offsetX = width / 2;
