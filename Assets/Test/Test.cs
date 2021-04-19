@@ -32,27 +32,12 @@ public class Test : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
-        {
+        if (!Input.GetMouseButtonDown(0))
+            return;
 
-            if (ManagerAnimation.INSTANCE.isAnimating())
-                return;
+        if (ManagerAnimation.INSTANCE.isAnimating())
+            return;
 
-            if (a == 1)
-            {
-                a--;
-                ManagerText.INSTANCE.concealText();
-                return;
-            }
-                
-
-            a++;
-
-            EText.start.show();
-            EText.helloya.show();
-            EText.cont.show();
-
-        }
 
     }
 

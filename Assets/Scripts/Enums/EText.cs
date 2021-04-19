@@ -9,7 +9,6 @@ public class EText
 
     public static EText start = new EText("Start", true);
     public static EText cont = new EText("Continue", true);
-    public static EText helloya = new EText("Helloya", false);
 
     public readonly string text;
     public readonly bool isTextOption;
@@ -22,7 +21,7 @@ public class EText
 
     public static IEnumerable<EText> list()
     {
-        return new[] { start, cont, helloya };
+        return new[] { start, cont };
     }
 
     public void show()
