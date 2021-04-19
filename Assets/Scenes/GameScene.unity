@@ -436,8 +436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae80c401995466b4db03fe0ce2f27d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 500
-  y: 500
+  x: 0
+  y: 0
   parent: {fileID: 1796716825}
   text: {fileID: 5559654764558446934, guid: 4f76b8556a5c6d94dbc5d80332a392e9, type: 3}
 --- !u!1001 &1621268059
