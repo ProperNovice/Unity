@@ -5,7 +5,7 @@ using UnityEngine;
 public class ManagerText : MonoBehaviour
 {
 
-    public GameObject text;
+    public GameObject textsParent, text;
     public static ManagerText INSTANCE;
     private ArrayList<TextView> list;
 
@@ -18,6 +18,7 @@ public class ManagerText : MonoBehaviour
 
     private void Start()
     {
+
         foreach (EText eText in EText.list())
         {
 
@@ -26,7 +27,18 @@ public class ManagerText : MonoBehaviour
             textView.setText(eText);
 
             this.list.addLast(textView);
+            textView.setActive(false);
 
+            gameObject.transform.parent = this.textsParent.transform;
+
+        }
+
+        float x = 0, y = 1440;
+
+        foreach (TextView textView in this.list)
+        {
+            textView.relocate(x, y);
+            y -= 50;
         }
 
     }

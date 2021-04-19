@@ -8,7 +8,7 @@ public class EText
 {
 
     public static EText start = new EText("Start", true);
-    public static EText cont = new EText("Continue", false);
+    public static EText cont = new EText("Continue", true);
     public static EText helloya = new EText("Helloya", false);
 
     public readonly string text;
@@ -22,7 +22,7 @@ public class EText
 
     public static IEnumerable<EText> list()
     {
-        return new[] { start };
+        return new[] { start, cont, helloya };
     }
 
 }

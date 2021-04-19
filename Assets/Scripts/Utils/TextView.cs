@@ -31,7 +31,7 @@ public class TextView : MonoBehaviour
         this.gameObjectChildSpriteRenderer.transform.localPosition = boxCollider.offset;
         this.gameObjectChildSpriteRenderer.transform.localScale = boxCollider.size;
 
-        //OnMouseExit();
+        OnMouseExit();
 
     }
 
@@ -43,6 +43,7 @@ public class TextView : MonoBehaviour
     public void setActive(bool value)
     {
         this.gameObject.SetActive(value);
+        // this.gameObjectChild.SetActive(value);
     }
 
     public void OnMouseEnter()
@@ -63,7 +64,7 @@ public class TextView : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Logger.log("a");
+        setActive(false);
     }
 
 }
