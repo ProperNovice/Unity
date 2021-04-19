@@ -5,15 +5,19 @@ using UnityEngine;
 public class ManagerText : MonoBehaviour
 {
 
-    public GameObject textsParent, text;
+    public float x, y;
+    public GameObject parent, text;
     public static ManagerText INSTANCE;
-    private ArrayList<TextView> list;
+    private ArrayList<TextView> list, listShowing;
+    private Dictionary<EText, TextView> dictionary;
 
     private void Awake()
     {
         INSTANCE = this;
-        this.list = new ArrayList<TextView>();
 
+        this.list = new ArrayList<TextView>();
+        this.listShowing = new ArrayList<TextView>();
+        this.dictionary = new Dictionary<EText, TextView>();
     }
 
     private void Start()
@@ -25,20 +29,44 @@ public class ManagerText : MonoBehaviour
             GameObject gameObject = Instantiate(this.text);
             TextView textView = gameObject.GetComponent<TextView>();
             textView.setText(eText);
-
-            this.list.addLast(textView);
             textView.setActive(false);
 
-            gameObject.transform.parent = this.textsParent.transform;
+            gameObject.transform.parent = this.parent.transform;
+
+            this.list.addLast(textView);
+            this.dictionary.Add(eText, textView);
 
         }
 
-        float x = 0, y = 1440;
+    }
 
-        foreach (TextView textView in this.list)
+    public void showText(EText eText)
+    {
+
+        TextView textView = this.dictionary[eText];
+
+        if (this.listShowing.contains(textView))
+            ShutDown.execute("EText is already active");
+
+        this.listShowing.addLast(this.dictionary[eText]);
+
+        float y = this.y - 50 * this.listShowing.size();
+
+        
+        textView.relocate(this.x, y);
+        textView.setActive(true);
+
+    }
+
+    public void concealText()
+    {
+
+        while (!this.listShowing.isEmpty())
         {
-            textView.relocate(x, y);
-            y -= 50;
+
+            TextView textView = this.listShowing.removeFirst();
+            textView.setActive(false);
+
         }
 
     }

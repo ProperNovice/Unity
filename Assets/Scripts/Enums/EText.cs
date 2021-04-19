@@ -25,4 +25,9 @@ public class EText
         return new[] { start, cont, helloya };
     }
 
+    public void show()
+    {
+        ManagerText.INSTANCE.showText(this);
+    }
+
 }

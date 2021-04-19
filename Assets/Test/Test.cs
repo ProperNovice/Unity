@@ -27,6 +27,8 @@ public class Test : MonoBehaviour
 
     }
 
+    public int a = 0;
+
     private void Update()
     {
 
@@ -36,7 +38,19 @@ public class Test : MonoBehaviour
             if (ManagerAnimation.INSTANCE.isAnimating())
                 return;
 
-            // ManagerList.INSTANCE.lists[EList.DECK].animateAsynchronous();
+            if (a == 1)
+            {
+                a--;
+                ManagerText.INSTANCE.concealText();
+                return;
+            }
+                
+
+            a++;
+
+            EText.start.show();
+            EText.helloya.show();
+            EText.cont.show();
 
         }
 

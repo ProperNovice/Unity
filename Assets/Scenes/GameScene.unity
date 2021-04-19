@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 764608779315627465, guid: 977b0b72c353de443931b2d155588e37, type: 3}
+  a: 0
 --- !u!4 &471642952
 Transform:
   m_ObjectHideFlags: 0
@@ -435,7 +436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae80c401995466b4db03fe0ce2f27d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textsParent: {fileID: 1796716825}
+  x: 500
+  y: 500
+  parent: {fileID: 1796716825}
   text: {fileID: 5559654764558446934, guid: 4f76b8556a5c6d94dbc5d80332a392e9, type: 3}
 --- !u!1001 &1621268059
 PrefabInstance:
