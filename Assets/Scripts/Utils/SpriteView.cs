@@ -25,6 +25,7 @@ public class SpriteView : MonoBehaviour
 
         ManagerSpriteView.INSTANCE.list.Add(this.gameObject, this);
         ManagerLayerZ.INSTANCE.list[this.layerZ].addLast(this.gameObject);
+        this.gameObject.transform.parent = ManagerSpriteView.INSTANCE.parent.transform;
 
         if (this.spriteRenderer.sprite != null)
         {

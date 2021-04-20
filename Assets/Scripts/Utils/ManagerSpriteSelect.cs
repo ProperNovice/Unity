@@ -19,9 +19,4 @@ public class ManagerSpriteSelect : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

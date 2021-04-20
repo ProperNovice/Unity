@@ -36,6 +36,7 @@ public class Test : MonoBehaviour
         if (ManagerAnimation.INSTANCE.isAnimating())
             return;
 
+        ManagerList.INSTANCE.lists[EList.DECK].animateAsynchronous();
 
     }
 
