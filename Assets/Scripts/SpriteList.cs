@@ -9,7 +9,7 @@ public class SpriteList : MonoBehaviour
 
     [SerializeField] private EList list;
     public Vector2 listCoordinates, gapBetweenObjects = new Vector2(5, 5);
-    [SerializeField] private int objectsPerRow = -1, listCapacity = -1;
+    [SerializeField] private int objectsPerRow = -1, capacity = -1;
     [SerializeField] private Enums.LayerZListEnum layerZOrder = Enums.LayerZListEnum.TO_BACK_FIRST_SPRITEVIEW;
     [SerializeField] private Enums.RearrangeTypeEnum rearrangeTypeEnum = Enums.RearrangeTypeEnum.LINEAR;
     [SerializeField] private Enums.DirectionHorizontalEnum horizontalDirectionEnum = Enums.DirectionHorizontalEnum.RIGHT;
@@ -21,7 +21,7 @@ public class SpriteList : MonoBehaviour
 
     private void Start()
     {
-        this.arrayList = new ArrayList<GameObject>(this.listCapacity);
+        this.arrayList = new ArrayList<GameObject>(this.capacity);
         ManagerList.INSTANCE.lists.Add(this.list, this);
     }
 

@@ -13,17 +13,14 @@ public class Test : MonoBehaviour
     void Start()
     {
 
-        for (int counter = 1; counter <= 1; counter++)
+        for (int counter = 1; counter <= 11; counter++)
         {
 
             GameObject go = Instantiate(this.sprite);
             SpriteView sv = go.GetComponent<SpriteView>();
 
             sv.setFrontBack("76", "b");
-
-            Logger.log(sv.getDimensions());
-            sv.setWidth(450);
-            Logger.log(sv.getDimensions());
+            sv.setWidth(350);
 
             ManagerList.INSTANCE.lists[EList.DECK].arrayList.addLast(go);
 

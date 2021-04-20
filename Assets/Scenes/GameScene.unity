@@ -484,8 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ff8da47e2af1e44b510f1cd29905a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  percentageX: 50
-  percentageY: 50
+  spritePercentage: {x: 50, y: 50}
   spriteSelect: {fileID: 6489675262470344039, guid: 8d7451887ca1eab40a1f3f4c2c6c08f5, type: 3}
 --- !u!1001 &1621268059
 PrefabInstance:
