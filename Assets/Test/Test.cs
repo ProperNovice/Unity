@@ -20,7 +20,7 @@ public class Test : MonoBehaviour
             SpriteView sv = go.GetComponent<SpriteView>();
 
             sv.setFrontBack("76", "b");
-            sv.setWidth(350);
+            //sv.setWidth(350);
 
             ManagerList.INSTANCE.lists[EList.DECK].arrayList.addLast(go);
 

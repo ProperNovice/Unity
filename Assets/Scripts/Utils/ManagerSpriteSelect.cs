@@ -31,7 +31,7 @@ public class ManagerSpriteSelect : MonoBehaviour
     private void selectSprite(SpriteView spriteViewGameObject)
     {
 
-        GameObject selectSpriteGameObject = ManagerObjectPool.INSTANCE.getObject(this.spriteSelectPrefab);
+        GameObject selectSpriteGameObject = ManagerObjectPool.INSTANCE.getGameObject(this.spriteSelectPrefab);
         SpriteView spriteViewSelect = ManagerSpriteView.INSTANCE.list[selectSpriteGameObject];
 
         float widthGameObject = spriteViewGameObject.getWidth();
