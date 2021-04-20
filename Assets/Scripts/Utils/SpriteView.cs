@@ -194,6 +194,11 @@ public class SpriteView : MonoBehaviour
         ManagerLayerZ.INSTANCE.toBack(this.gameObject);
     }
 
+    public void reverseSelected()
+    {
+        ManagerSpriteSelect.INSTANCE.reverseSelect(this.gameObject);
+    }
+
     private void OnMouseDown()
     {
 

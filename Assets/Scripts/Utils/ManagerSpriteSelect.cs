@@ -6,6 +6,7 @@ public class ManagerSpriteSelect : MonoBehaviour
 {
 
     public static ManagerSpriteSelect INSTANCE;
+    public float percentageX = 50, percentageY = 50;
     public GameObject select;
     private Dictionary<SpriteView, SpriteView> list;
 
@@ -19,6 +20,11 @@ public class ManagerSpriteSelect : MonoBehaviour
     {
 
         SpriteView spriteView = ManagerSpriteView.INSTANCE.list[gameObject];
+
+        if (this.list.ContainsKey(spriteView))
+            deselectSprite(spriteView);
+        else
+            selectSprite(spriteView);
 
     }
 
