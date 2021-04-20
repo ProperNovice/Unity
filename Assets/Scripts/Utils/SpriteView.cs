@@ -17,28 +17,28 @@ public class SpriteView : MonoBehaviour
         this.spriteRenderer = GetComponent<SpriteRenderer>();
         this.boxCollider2D = GetComponent<BoxCollider2D>();
 
+        ManagerSpriteView.INSTANCE.list.Add(this.gameObject, this);
+        ManagerLayerZ.INSTANCE.list[this.layerZ].addLast(this.gameObject);
+        this.gameObject.transform.parent = ManagerSpriteView.INSTANCE.parent;
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
 
-        ManagerSpriteView.INSTANCE.list.Add(this.gameObject, this);
-        ManagerLayerZ.INSTANCE.list[this.layerZ].addLast(this.gameObject);
-        this.gameObject.transform.parent = ManagerSpriteView.INSTANCE.parent;
-
         if (this.spriteRenderer.sprite != null)
         {
 
             this.front = this.spriteRenderer.sprite;
-            setBoxColliderSize();
+            handleBoxCollider();
 
         }
         else if (this.front != null)
 
         {
             this.spriteRenderer.sprite = this.front;
-            setBoxColliderSize();
+            handleBoxCollider();
 
         }
 
@@ -68,7 +68,7 @@ public class SpriteView : MonoBehaviour
     {
         this.front = Resources.Load<Sprite>(filePath);
         this.spriteRenderer.sprite = this.front;
-        setBoxColliderSize();
+        handleBoxCollider();
     }
 
     public void setBack(string filePath)
@@ -111,7 +111,6 @@ public class SpriteView : MonoBehaviour
         float scale = width / spriteWidth;
 
         this.transform.localScale = new Vector2(scale, scale);
-        setBoxColliderSize();
 
     }
 
@@ -122,23 +121,22 @@ public class SpriteView : MonoBehaviour
         float scale = height / spriteHeight;
 
         this.transform.localScale = new Vector2(scale, scale);
-        setBoxColliderSize();
 
     }
 
     public float getWidth()
     {
-        return this.boxCollider2D.size.x;
+        return getDimensions().x;
     }
 
     public float getHeight()
     {
-        return this.boxCollider2D.size.y;
+        return getDimensions().y;
     }
 
     public Vector2 getDimensions()
     {
-        return this.boxCollider2D.size;
+        return this.boxCollider2D.size * this.transform.localScale;
     }
 
     public Vector2 getCoordinatesCenter()
@@ -161,11 +159,17 @@ public class SpriteView : MonoBehaviour
         this.gameObject.SetActive(value);
     }
 
-    private void setBoxColliderSize()
+    public bool isVisible()
+    {
+        return this.gameObject.activeInHierarchy;
+    }
+
+    private void handleBoxCollider()
     {
 
-        float width = this.front.rect.width * this.transform.localScale.x;
-        float height = this.front.rect.height * this.transform.localScale.y;
+        float width = this.front.rect.width;
+        float height = this.front.rect.height;
+
         this.boxCollider2D.size = new Vector2(width, height);
 
         float offsetX = width / 2;
@@ -201,7 +205,7 @@ public class SpriteView : MonoBehaviour
 
     private void OnMouseDown()
     {
-
+        reverseSelected();
     }
 
     private void OnMouseEnter()

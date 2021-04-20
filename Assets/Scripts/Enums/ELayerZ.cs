@@ -5,6 +5,6 @@ using UnityEngine;
 public enum ELayerZ
 {
 
-    BACKGROUND, DEFAULT
+    BACKGROUND, DEFAULT, SPRITE_SELECT
 
 }

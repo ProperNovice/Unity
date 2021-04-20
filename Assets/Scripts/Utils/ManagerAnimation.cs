@@ -90,6 +90,16 @@ public class ManagerAnimation : MonoBehaviour
         return !(this.listSynchronous.isEmpty() && this.listAsynchronous.isEmpty());
     }
 
+    public bool isAnimatingSynchronous()
+    {
+        return !this.listSynchronous.isEmpty();
+    }
+
+    public bool isAnimatingAsynchronous()
+    {
+        return !this.listAsynchronous.isEmpty();
+    }
+
     public void moveAsynchronousToSynchronous()
     {
         this.listSynchronous.addRange(this.listAsynchronous);

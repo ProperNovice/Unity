@@ -13,13 +13,17 @@ public class Test : MonoBehaviour
     void Start()
     {
 
-        for (int counter = 1; counter <= 11; counter++)
+        for (int counter = 1; counter <= 1; counter++)
         {
 
             GameObject go = Instantiate(this.sprite);
             SpriteView sv = go.GetComponent<SpriteView>();
 
             sv.setFrontBack("76", "b");
+
+            Logger.log(sv.getDimensions());
+            sv.setWidth(450);
+            Logger.log(sv.getDimensions());
 
             ManagerList.INSTANCE.lists[EList.DECK].arrayList.addLast(go);
 
@@ -36,7 +40,7 @@ public class Test : MonoBehaviour
             if (ManagerAnimation.INSTANCE.isAnimating())
                 return;
 
-            // ManagerList.INSTANCE.lists[EList.DECK].animateAsynchronous();
+            ManagerList.INSTANCE.lists[EList.DECK].animateAsynchronous();
 
         }
         else if (Input.GetMouseButtonDown(1))
