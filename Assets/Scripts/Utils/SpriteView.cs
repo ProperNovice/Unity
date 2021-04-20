@@ -205,7 +205,7 @@ public class SpriteView : MonoBehaviour
 
     private void OnMouseDown()
     {
-        reverseSelected();
+
     }
 
     private void OnMouseEnter()
