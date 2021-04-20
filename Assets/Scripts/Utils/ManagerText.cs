@@ -8,14 +8,14 @@ public class ManagerText : MonoBehaviour
     public float x, y;
     public GameObject parent, text;
     public static ManagerText INSTANCE;
-    private ArrayList<TextView> list, listShowing;
+    private ArrayList<TextView> listComplete, listShowing;
     private Dictionary<EText, TextView> dictionary;
 
     private void Awake()
     {
         INSTANCE = this;
 
-        this.list = new ArrayList<TextView>();
+        this.listComplete = new ArrayList<TextView>();
         this.listShowing = new ArrayList<TextView>();
         this.dictionary = new Dictionary<EText, TextView>();
     }
@@ -23,7 +23,7 @@ public class ManagerText : MonoBehaviour
     private void Start()
     {
 
-        foreach (EText eText in EText.list())
+        foreach (EText eText in EText.arrayList)
         {
 
             GameObject gameObject = Instantiate(this.text);
@@ -33,7 +33,7 @@ public class ManagerText : MonoBehaviour
 
             gameObject.transform.parent = this.parent.transform;
 
-            this.list.addLast(textView);
+            this.listComplete.addLast(textView);
             this.dictionary.Add(eText, textView);
 
         }
@@ -52,7 +52,7 @@ public class ManagerText : MonoBehaviour
 
         float y = this.y - 50 * this.listShowing.size();
 
-        
+
         textView.relocate(this.x, y);
         textView.setActive(true);
 

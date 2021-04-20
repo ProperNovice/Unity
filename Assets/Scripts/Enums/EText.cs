@@ -7,6 +7,8 @@ using UnityEngine;
 public class EText
 {
 
+
+    public static ArrayList<EText> arrayList = new ArrayList<EText>();
     public static EText start = new EText("Start", true);
     public static EText cont = new EText("Continue", true);
 
@@ -17,11 +19,7 @@ public class EText
     {
         this.text = text;
         this.isTextOption = isTextOption;
-    }
-
-    public static IEnumerable<EText> list()
-    {
-        return new[] { start, cont };
+        arrayList.addLast(this);
     }
 
     public void show()
