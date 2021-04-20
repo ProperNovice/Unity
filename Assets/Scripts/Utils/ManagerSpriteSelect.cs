@@ -7,7 +7,7 @@ public class ManagerSpriteSelect : MonoBehaviour
 
     public static ManagerSpriteSelect INSTANCE;
     public Vector2 spritePercentage;
-    public GameObject spriteSelect;
+    public GameObject spriteSelectPrefab;
     private Dictionary<SpriteView, GameObject> list;
 
     private void Awake()
@@ -31,7 +31,7 @@ public class ManagerSpriteSelect : MonoBehaviour
     private void selectSprite(SpriteView spriteViewGameObject)
     {
 
-        GameObject selectSpriteGameObject = Instantiate(this.spriteSelect);
+        GameObject selectSpriteGameObject = ManagerObjectPool.INSTANCE.getObject(this.spriteSelectPrefab);
         SpriteView spriteViewSelect = ManagerSpriteView.INSTANCE.list[selectSpriteGameObject];
 
         float widthGameObject = spriteViewGameObject.getWidth();
