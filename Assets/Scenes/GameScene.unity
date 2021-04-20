@@ -171,7 +171,7 @@ MonoBehaviour:
   listCoordinates: {x: 0, y: 0}
   gapBetweenObjects: {x: 5, y: 5}
   objectsPerRow: -1
-  listCapacity: -1
+  capacity: -1
   layerZOrder: 0
   rearrangeTypeEnum: 0
   horizontalDirectionEnum: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   listCoordinates: {x: 1280, y: 720}
   gapBetweenObjects: {x: 5, y: 5}
   objectsPerRow: 6
-  listCapacity: -1
+  capacity: -1
   layerZOrder: 0
   rearrangeTypeEnum: 2
   horizontalDirectionEnum: 0
@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 1285260545}
   - component: {fileID: 1285260546}
   - component: {fileID: 1285260547}
+  - component: {fileID: 1285260548}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -485,7 +486,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spritePercentage: {x: 50, y: 50}
-  spriteSelect: {fileID: 6489675262470344039, guid: 8d7451887ca1eab40a1f3f4c2c6c08f5, type: 3}
+  spriteSelectPrefab: {fileID: 6489675262470344039, guid: 8d7451887ca1eab40a1f3f4c2c6c08f5, type: 3}
+--- !u!114 &1285260548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285260539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f11d442f2121f94384939b5f5a55535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1621268059
 PrefabInstance:
   m_ObjectHideFlags: 0
