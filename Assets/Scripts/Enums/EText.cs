@@ -7,7 +7,6 @@ using UnityEngine;
 public class EText
 {
 
-
     public static ArrayList<EText> arrayList = new ArrayList<EText>();
     public static EText start = new EText("Start", true);
     public static EText cont = new EText("Continue", true);

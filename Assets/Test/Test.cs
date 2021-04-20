@@ -27,8 +27,6 @@ public class Test : MonoBehaviour
 
     }
 
-    public int a = 0;
-
     private void Update()
     {
 
