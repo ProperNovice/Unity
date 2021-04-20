@@ -25,7 +25,7 @@ public class SpriteView : MonoBehaviour
 
         ManagerSpriteView.INSTANCE.list.Add(this.gameObject, this);
         ManagerLayerZ.INSTANCE.list[this.layerZ].addLast(this.gameObject);
-        this.gameObject.transform.parent = ManagerSpriteView.INSTANCE.parent.transform;
+        this.gameObject.transform.parent = ManagerSpriteView.INSTANCE.parent;
 
         if (this.spriteRenderer.sprite != null)
         {
@@ -184,7 +184,27 @@ public class SpriteView : MonoBehaviour
         this.spriteRenderer.sortingOrder = sortingOrder;
     }
 
+    public void toFront()
+    {
+        ManagerLayerZ.INSTANCE.toFront(this.gameObject);
+    }
+
+    public void toBack()
+    {
+        ManagerLayerZ.INSTANCE.toBack(this.gameObject);
+    }
+
     private void OnMouseDown()
+    {
+
+    }
+
+    private void OnMouseEnter()
+    {
+
+    }
+
+    private void OnMouseExit()
     {
 
     }

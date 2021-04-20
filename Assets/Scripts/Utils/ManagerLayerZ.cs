@@ -31,6 +31,17 @@ public class ManagerLayerZ : MonoBehaviour
 
     }
 
+    public void toBack(GameObject gameObject)
+    {
+
+        ArrayList<GameObject> arrayListGameObject = getListContainingGameObject(gameObject);
+        arrayListGameObject.remove(gameObject);
+        arrayListGameObject.addFirst(gameObject);
+
+        executeToFront();
+
+    }
+
     private void executeToFront()
     {
 

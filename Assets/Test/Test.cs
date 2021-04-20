@@ -13,7 +13,7 @@ public class Test : MonoBehaviour
     void Start()
     {
 
-        for (int counter = 1; counter <= 10; counter++)
+        for (int counter = 1; counter <= 11; counter++)
         {
 
             GameObject go = Instantiate(this.sprite);
@@ -30,13 +30,19 @@ public class Test : MonoBehaviour
     private void Update()
     {
 
-        if (!Input.GetMouseButtonDown(0))
-            return;
+        if (Input.GetMouseButtonDown(0))
+        {
 
-        if (ManagerAnimation.INSTANCE.isAnimating())
-            return;
+            if (ManagerAnimation.INSTANCE.isAnimating())
+                return;
 
-        ManagerList.INSTANCE.lists[EList.DECK].animateAsynchronous();
+            // ManagerList.INSTANCE.lists[EList.DECK].animateAsynchronous();
+
+        }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            ManagerList.INSTANCE.lists[EList.DECK].relocateSprites();
+        }
 
     }
 

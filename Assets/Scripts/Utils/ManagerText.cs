@@ -6,7 +6,8 @@ public class ManagerText : MonoBehaviour
 {
 
     public float x, y;
-    public GameObject parent, text;
+    public GameObject text;
+    public Transform parent;
     public static ManagerText INSTANCE;
     private ArrayList<TextView> listComplete, listShowing;
     private Dictionary<EText, TextView> dictionary;
@@ -31,7 +32,7 @@ public class ManagerText : MonoBehaviour
             textView.setText(eText);
             textView.setActive(false);
 
-            gameObject.transform.parent = this.parent.transform;
+            gameObject.transform.parent = this.parent;
 
             this.listComplete.addLast(textView);
             this.dictionary.Add(eText, textView);

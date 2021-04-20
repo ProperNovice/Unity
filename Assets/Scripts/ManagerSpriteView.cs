@@ -7,7 +7,7 @@ public class ManagerSpriteView : MonoBehaviour
 
     public static ManagerSpriteView INSTANCE;
     public Dictionary<GameObject, SpriteView> list;
-    public GameObject parent;
+    public Transform parent;
 
     private void Awake()
     {
