@@ -9,14 +9,4 @@ public class StartGame : AGameState
 
     }
 
-    public override void executeTextOption(EText eText)
-    {
-
-        Logger.log("I am here");
-
-        if (eText.Equals(EText.start))
-            Logger.log("start re");
-
-    }
-
 }
