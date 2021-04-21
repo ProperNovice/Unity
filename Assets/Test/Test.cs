@@ -36,6 +36,11 @@ public class Test : MonoBehaviour
 
         ManagerFlow.INSTANCE.executeGameState(new StartGame());
 
+        Boolean b = new Boolean(true);
+
+        b.print();
+        Logger.log(b);
+
     }
 
     private void Update()
