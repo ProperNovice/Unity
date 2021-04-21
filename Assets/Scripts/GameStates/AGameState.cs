@@ -17,4 +17,14 @@ public abstract class AGameState
 
     }
 
+    protected void executeTextOption(EText eText)
+    {
+
+    }
+
+    public void handleGameObjectPressed(GameObject gameObject)
+    {
+
+    }
+
 }

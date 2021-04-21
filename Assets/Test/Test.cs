@@ -48,6 +48,11 @@ public class Test : MonoBehaviour
             ManagerList.INSTANCE.lists[EList.DECK].relocateSprites();
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Logger.log("Space");
+        }
+
     }
 
 }
