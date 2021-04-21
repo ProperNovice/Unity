@@ -26,6 +26,10 @@ public class Test : MonoBehaviour
 
         }
 
+        ManagerList.INSTANCE.lists[EList.DECK].listCoordinates = new Vector2(1280, 720);
+        ManagerList.INSTANCE.lists[EList.DECK].rearrangeType = Enums.RearrangeTypeEnum.PIVOT;
+        ManagerList.INSTANCE.lists[EList.DECK].objectsPerRow = 6;
+
     }
 
     private void Update()
