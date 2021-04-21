@@ -166,12 +166,12 @@ public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
     public void print()
     {
 
-        Logger.log("printing list - start");
+        Logger.log("/* printing list - start");
 
         foreach (T t in this.list)
             Logger.log(t);
 
-        Logger.log("printing list - end");
+        Logger.log("*/ printing list - end");
 
     }
 

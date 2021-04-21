@@ -7,17 +7,13 @@ public abstract class AGameState
 
     public abstract void start();
 
-    public void handleTextOptionPressed(EText eText)
+    public void notifyTextOptionPressed(EText eText)
     {
-
+        ManagerText.INSTANCE.concealText();
+        executeTextOption(eText);
     }
 
-    public void executeKeyPressed()
-    {
-
-    }
-
-    protected void executeTextOption(EText eText)
+    public virtual void executeTextOption(EText eText)
     {
 
     }

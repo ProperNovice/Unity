@@ -29,6 +29,13 @@ public class Test : MonoBehaviour
         ManagerList.INSTANCE.lists[EList.DECK].rearrangeType = Enums.RearrangeTypeEnum.PIVOT;
         ManagerList.INSTANCE.lists[EList.DECK].objectsPerRow = 6;
 
+        ManagerText.INSTANCE.coordinates = new Vector2(500, 1000);
+
+        foreach (EText eText in EText.arrayList)
+            ManagerText.INSTANCE.showText(eText);
+
+        ManagerFlow.INSTANCE.executeGameState(new StartGame());
+
     }
 
     private void Update()
@@ -40,17 +47,12 @@ public class Test : MonoBehaviour
             if (ManagerAnimation.INSTANCE.isAnimating())
                 return;
 
-            ManagerList.INSTANCE.lists[EList.DECK].animateAsynchronous();
+            // ManagerList.INSTANCE.lists[EList.DECK].animateAsynchronous();
 
         }
         else if (Input.GetMouseButtonDown(1))
         {
             ManagerList.INSTANCE.lists[EList.DECK].relocateSprites();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Logger.log("Space");
         }
 
     }

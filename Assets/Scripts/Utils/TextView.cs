@@ -43,7 +43,6 @@ public class TextView : MonoBehaviour
     public void setActive(bool value)
     {
         this.gameObject.SetActive(value);
-        // this.gameObjectChild.SetActive(value);
     }
 
     public void OnMouseEnter()
@@ -64,7 +63,7 @@ public class TextView : MonoBehaviour
 
     private void OnMouseDown()
     {
-        setActive(false);
+        ManagerFlow.INSTANCE.gameStateCurrent.notifyTextOptionPressed(this.eText);
     }
 
 }

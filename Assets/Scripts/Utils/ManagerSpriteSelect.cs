@@ -6,8 +6,8 @@ public class ManagerSpriteSelect : MonoBehaviour
 {
 
     public static ManagerSpriteSelect INSTANCE;
-    public Vector2 spritePercentage;
     public GameObject spriteSelectPrefab;
+    public Vector2 spritePercentage;
     private Dictionary<SpriteView, GameObject> list;
 
     private void Awake()

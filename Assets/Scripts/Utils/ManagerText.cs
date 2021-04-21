@@ -5,9 +5,9 @@ using UnityEngine;
 public class ManagerText : MonoBehaviour
 {
 
-    public float x, y;
     public GameObject text;
     public Transform parent;
+    public Vector2 coordinates;
     public static ManagerText INSTANCE;
     private ArrayList<TextView> listComplete, listShowing;
     private Dictionary<EText, TextView> dictionary;
@@ -51,10 +51,10 @@ public class ManagerText : MonoBehaviour
 
         this.listShowing.addLast(this.dictionary[eText]);
 
-        float y = this.y - 50 * this.listShowing.size();
+        float y = this.coordinates.y - 50 * this.listShowing.size();
 
 
-        textView.relocate(this.x, y);
+        textView.relocate(this.coordinates.x, y);
         textView.setActive(true);
 
     }
@@ -67,6 +67,31 @@ public class ManagerText : MonoBehaviour
 
             TextView textView = this.listShowing.removeFirst();
             textView.setActive(false);
+
+        }
+
+    }
+
+    public void handleKeyCodeID(int keyCodeID)
+    {
+
+        int textOption = 0;
+
+        foreach (TextView textView in this.listShowing)
+        {
+
+            EText eText = textView.eText;
+
+            if (!eText.isTextOption)
+                continue;
+
+            textOption++;
+
+            if (textOption != keyCodeID)
+                continue;
+
+            ManagerFlow.INSTANCE.gameStateCurrent.notifyTextOptionPressed(eText);
+            return;
 
         }
 

@@ -7,30 +7,27 @@ public class ManagerFlow : MonoBehaviour
 
 
     public static ManagerFlow INSTANCE;
-    public ArrayList<AGameState> flow;
+    public ArrayList<AGameState> list;
     public AGameState gameStateCurrent;
 
     private void Awake()
     {
         INSTANCE = this;
-        this.flow = new ArrayList<AGameState>();
+        this.list = new ArrayList<AGameState>();
     }
 
     public void proceed()
     {
 
-        this.gameStateCurrent = this.flow.removeFirst();
-
-        Logger.log("executing gamestate");
-        Logger.log(this.gameStateCurrent);
-
+        this.gameStateCurrent = this.list.removeFirst();
+        Logger.log("executing gamestate -> " + this.gameStateCurrent);
         this.gameStateCurrent.start();
 
     }
 
     public void executeGameState(AGameState aGameState)
     {
-        this.flow.addFirst(aGameState);
+        this.list.addFirst(aGameState);
         proceed();
     }
 
