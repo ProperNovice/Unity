@@ -78,3 +78,36 @@ Received Import Request.
   path: Assets/Resources/Misc/SelectBlackWhite.png
   artifactKey: Guid(1680e4247cdb3de47856938776b798a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Resources/Misc/SelectBlackWhite.png using Guid(1680e4247cdb3de47856938776b798a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78b1e4d5ee38e621f7aa67a2fa9fc4a6') in 0.012955 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001744 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.779 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.57 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3284 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 130.2 MB.
+System memory in use after: 130.3 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 3781.
+Total: 2.032200 ms (FindLiveObjects: 0.230100 ms CreateObjectMapping: 0.080500 ms MarkObjects: 1.652500 ms  DeleteObjects: 0.068400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 57.262267 seconds.
+  path: Assets/Scripts/Utils/ManagerSpriteSelect.cs
+  artifactKey: Guid(a6ff8da47e2af1e44b510f1cd29905a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Utils/ManagerSpriteSelect.cs using Guid(a6ff8da47e2af1e44b510f1cd29905a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c76de2999d4ca68824668d34bf96cad') in 0.010688 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 73.676869 seconds.
+  path: Assets/Scripts/Utils/ManagerFlow.cs
+  artifactKey: Guid(e27959d8f2b6f5540bf75c5c06e8a973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Utils/ManagerFlow.cs using Guid(e27959d8f2b6f5540bf75c5c06e8a973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3406e70e170894860f3a5cdd96bbff5') in 0.008746 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
