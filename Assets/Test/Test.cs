@@ -44,7 +44,6 @@ public class Test : MonoBehaviour
                 return;
 
             ManagerSpriteList.INSTANCE.lists[EList.DISCARD_PILE].arrayList.addLast(go);
-            Logger.log("done");
 
         }
         else if (Input.GetMouseButtonDown(1))

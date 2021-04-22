@@ -52,13 +52,23 @@ public class ManagerDuplicateProtection : MonoBehaviour
     private void handleDuplicateFound(GameObject gameObject)
     {
 
-        Logger.log("duplicate list entry found");
+        bool isFirstList = true;
+
+        string msg = "duplicate list entry found -> ";
 
         foreach (EList eList in this.lists.Keys)
             if (this.lists[eList].contains(gameObject))
-                Logger.log(eList);
+            {
 
-        ShutDown.execute();
+                if (!isFirstList)
+                    msg += " , ";
+
+                isFirstList = false;
+                msg += eList;
+
+            }
+
+        ShutDown.execute(msg);
 
     }
 
