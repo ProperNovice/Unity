@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManagerList : MonoBehaviour
+public class ManagerSpriteList : MonoBehaviour
 {
 
-    public static ManagerList INSTANCE;
+    public static ManagerSpriteList INSTANCE;
     public GameObject parent;
     public Dictionary<EList, SpriteList> lists;
 

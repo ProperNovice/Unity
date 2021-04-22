@@ -8,6 +8,7 @@ public class Test : MonoBehaviour
 {
 
     public GameObject sprite;
+    public GameObject go;
 
     void Start()
     {
@@ -21,25 +22,15 @@ public class Test : MonoBehaviour
             sv.setFrontBack("76", "b");
             //sv.setWidth(350);
 
-            ManagerList.INSTANCE.lists[EList.DECK].arrayList.addLast(go);
+            ManagerSpriteList.INSTANCE.lists[EList.DECK].arrayList.addLast(go);
+
+            this.go = go;
 
         }
 
-        ManagerList.INSTANCE.lists[EList.DECK].listCoordinates = new Vector2(1280, 720);
-        ManagerList.INSTANCE.lists[EList.DECK].rearrangeType = Enums.RearrangeTypeEnum.PIVOT;
-        ManagerList.INSTANCE.lists[EList.DECK].objectsPerRow = 6;
-
-        ManagerText.INSTANCE.coordinates = new Vector2(500, 1000);
-
-        foreach (EText eText in EText.arrayList)
-            ManagerText.INSTANCE.showText(eText);
-
-        ManagerFlow.INSTANCE.executeGameState(new StartGame());
-
-        Boolean b = new Boolean(true);
-
-        b.print();
-        Logger.log(b);
+        ManagerSpriteList.INSTANCE.lists[EList.DECK].listCoordinates = new Vector2(1280, 720);
+        ManagerSpriteList.INSTANCE.lists[EList.DECK].rearrangeType = Enums.RearrangeTypeEnum.PIVOT;
+        ManagerSpriteList.INSTANCE.lists[EList.DECK].objectsPerRow = 6;
 
     }
 
@@ -52,12 +43,13 @@ public class Test : MonoBehaviour
             if (ManagerAnimation.INSTANCE.isAnimating())
                 return;
 
-            // ManagerList.INSTANCE.lists[EList.DECK].animateAsynchronous();
+            ManagerSpriteList.INSTANCE.lists[EList.DISCARD_PILE].arrayList.addLast(go);
+            Logger.log("done");
 
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            ManagerList.INSTANCE.lists[EList.DECK].relocateSprites();
+            ManagerSpriteList.INSTANCE.lists[EList.DECK].relocateSprites();
         }
 
     }

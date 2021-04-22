@@ -16,6 +16,11 @@ public class ManagerFlow : MonoBehaviour
         this.list = new ArrayList<AGameState>();
     }
 
+    private void Start()
+    {
+        executeGameState(new StartGame());
+    }
+
     public void proceed()
     {
 

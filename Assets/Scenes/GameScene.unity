@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 1285260548}
   - component: {fileID: 1285260549}
   - component: {fileID: 1285260550}
+  - component: {fileID: 1285260551}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -426,10 +427,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae80c401995466b4db03fe0ce2f27d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
   text: {fileID: 5559654764558446934, guid: 4f76b8556a5c6d94dbc5d80332a392e9, type: 3}
   parent: {fileID: 1796716826}
+  coordinates: {x: 0, y: 0}
 --- !u!114 &1285260547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,8 +442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ff8da47e2af1e44b510f1cd29905a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spritePercentage: {x: 50, y: 50}
   spriteSelectPrefab: {fileID: 6489675262470344039, guid: 8d7451887ca1eab40a1f3f4c2c6c08f5, type: 3}
+  spritePercentage: {x: 50, y: 50}
 --- !u!114 &1285260548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,6 +478,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f71e1d96a73ba54892bfbe6a875ce48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1285260551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285260539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9915bef0194714f409e4492118e89089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1621268059

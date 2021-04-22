@@ -16,6 +16,8 @@ public class ShutDown
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
 
+        Logger.log("shut down");
+
     }
 
     public static void execute(string log)
