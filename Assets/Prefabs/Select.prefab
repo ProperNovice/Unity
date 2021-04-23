@@ -58,7 +58,7 @@ PrefabInstance:
     - target: {fileID: 764608779315627471, guid: 977b0b72c353de443931b2d155588e37, type: 3}
       propertyPath: front
       value: 
-      objectReference: {fileID: 21300000, guid: 3956e11e2c1a9514b8c43eccee28f02c, type: 3}
+      objectReference: {fileID: 21300000, guid: 1680e4247cdb3de47856938776b798a6, type: 3}
     - target: {fileID: 764608779315627471, guid: 977b0b72c353de443931b2d155588e37, type: 3}
       propertyPath: layerZ
       value: 2
