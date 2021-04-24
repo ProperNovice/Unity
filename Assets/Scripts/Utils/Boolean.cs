@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boolean : Interfaces.ISaveLoadAble
+public class Boolean : Interfaces.SaveLoadAble
 {
 
     private bool current, start, state;

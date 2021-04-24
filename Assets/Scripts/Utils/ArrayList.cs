@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrayList<T> : IEnumerable, Interfaces.ISaveLoadAble
+public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
 {
 
     private List<T> list = new List<T>();

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Integer : Interfaces.ISaveLoadAble
+public class Integer : Interfaces.SaveLoadAble
 {
 
     private int current, start, state;
