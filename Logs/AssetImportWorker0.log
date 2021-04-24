@@ -156,3 +156,96 @@ Received Import Request.
   path: Assets/Scripts/Utils/ManagerTimer.cs
   artifactKey: Guid(7f16875690572cc4f8b400a4344b9db5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scripts/Utils/ManagerTimer.cs using Guid(7f16875690572cc4f8b400a4344b9db5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85d95057ed96fda52aec0abf4bfcf05f') in 0.004732 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001737 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.772 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.68 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3283 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 123.9 MB.
+System memory in use after: 124.0 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 3758.
+Total: 2.315400 ms (FindLiveObjects: 0.246300 ms CreateObjectMapping: 0.080600 ms MarkObjects: 1.917300 ms  DeleteObjects: 0.069800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001904 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.66 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.795 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.68 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3283 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 123.9 MB.
+System memory in use after: 124.0 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 3762.
+Total: 2.049200 ms (FindLiveObjects: 0.251500 ms CreateObjectMapping: 0.081200 ms MarkObjects: 1.644300 ms  DeleteObjects: 0.070600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 3783.222982 seconds.
+  path: Assets/Scripts/Utils/ManagerSpriteSelect.cs
+  artifactKey: Guid(a6ff8da47e2af1e44b510f1cd29905a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Utils/ManagerSpriteSelect.cs using Guid(a6ff8da47e2af1e44b510f1cd29905a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acbf491dd21a76a6e3e95bb8f3e40682') in 0.008108 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001877 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.820 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3283 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 123.9 MB.
+System memory in use after: 124.0 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 3766.
+Total: 2.082200 ms (FindLiveObjects: 0.246000 ms CreateObjectMapping: 0.082100 ms MarkObjects: 1.683100 ms  DeleteObjects: 0.070000 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 4690.544762 seconds.
+  path: Assets/Scripts/Utils/ManagerSpriteSelect.cs
+  artifactKey: Guid(a6ff8da47e2af1e44b510f1cd29905a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Utils/ManagerSpriteSelect.cs using Guid(a6ff8da47e2af1e44b510f1cd29905a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca52154a393a6e5eb5948979d9d48b2d') in 0.004659 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002043 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.786 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.53 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3283 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 123.9 MB.
+System memory in use after: 124.0 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 3770.
+Total: 2.037600 ms (FindLiveObjects: 0.222500 ms CreateObjectMapping: 0.081400 ms MarkObjects: 1.666700 ms  DeleteObjects: 0.066100 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
