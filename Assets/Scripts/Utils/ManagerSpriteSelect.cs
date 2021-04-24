@@ -62,4 +62,9 @@ public class ManagerSpriteSelect : MonoBehaviour
 
     }
 
+    public int sizeSelected()
+    {
+        return this.list.Count;
+    }
+
 }
