@@ -67,4 +67,22 @@ public class ManagerSpriteSelect : MonoBehaviour
         return this.list.Count;
     }
 
+    public ArrayList<GameObject> getSelectedGameObjectsClear()
+    {
+
+        ArrayList<GameObject> selectedGameObjects = new ArrayList<GameObject>();
+        ArrayList<SpriteView> selectedSpriteViews = new ArrayList<SpriteView>();
+
+        foreach (SpriteView spriteView in this.list.Keys)
+            selectedSpriteViews.addLast(spriteView);
+
+        foreach (GameObject gameObject in ManagerSpriteView.INSTANCE.list.Keys)
+            if (selectedSpriteViews.contains(ManagerSpriteView.INSTANCE.list[gameObject]))
+                selectedGameObjects.addLast(gameObject);
+
+        this.list.Clear();
+        return selectedGameObjects;
+
+    }
+
 }
