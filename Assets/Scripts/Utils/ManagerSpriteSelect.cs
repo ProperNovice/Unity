@@ -8,12 +8,12 @@ public class ManagerSpriteSelect : MonoBehaviour
     public static ManagerSpriteSelect INSTANCE;
     public GameObject spriteSelectPrefab;
     public Vector2 spritePercentage;
-    private Dictionary<SpriteView, GameObject> list;
+    private Dictionary<GameObject, GameObject> list;
 
     private void Awake()
     {
         INSTANCE = this;
-        this.list = new Dictionary<SpriteView, GameObject>();
+        this.list = new Dictionary<GameObject, GameObject>();
     }
 
     public void reverseSelect(GameObject gameObject)
@@ -21,14 +21,14 @@ public class ManagerSpriteSelect : MonoBehaviour
 
         SpriteView spriteView = ManagerSpriteView.INSTANCE.list[gameObject];
 
-        if (this.list.ContainsKey(spriteView))
-            deselectSprite(spriteView);
+        if (this.list.ContainsKey(gameObject))
+            deselectSprite(spriteView, gameObject);
         else
-            selectSprite(spriteView);
+            selectSprite(spriteView, gameObject);
 
     }
 
-    private void selectSprite(SpriteView spriteViewGameObject)
+    private void selectSprite(SpriteView spriteViewGameObject, GameObject gameObject)
     {
 
         GameObject selectSpriteGameObject = ManagerObjectPool.INSTANCE.getGameObject(this.spriteSelectPrefab);
@@ -47,18 +47,18 @@ public class ManagerSpriteSelect : MonoBehaviour
 
         spriteViewSelect.relocateCenter(centerX, centerY);
 
-        this.list.Add(spriteViewGameObject, selectSpriteGameObject);
+        this.list.Add(gameObject, selectSpriteGameObject);
 
     }
 
-    private void deselectSprite(SpriteView spriteViewGameObject)
+    private void deselectSprite(SpriteView spriteViewGameObject, GameObject gameObject)
     {
 
-        GameObject selectSpriteGameObject = this.list[spriteViewGameObject];
+        GameObject selectSpriteGameObject = this.list[gameObject];
         SpriteView selectSpriteView = ManagerSpriteView.INSTANCE.list[selectSpriteGameObject];
         selectSpriteView.setActive(false);
 
-        this.list.Remove(spriteViewGameObject);
+        this.list.Remove(gameObject);
 
     }
 
@@ -70,19 +70,24 @@ public class ManagerSpriteSelect : MonoBehaviour
     public ArrayList<GameObject> getSelectedGameObjectsClear()
     {
 
-        ArrayList<GameObject> selectedGameObjects = new ArrayList<GameObject>();
-        ArrayList<SpriteView> selectedSpriteViews = new ArrayList<SpriteView>();
+        ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 
-        foreach (SpriteView spriteView in this.list.Keys)
-            selectedSpriteViews.addLast(spriteView);
-
-        foreach (GameObject gameObject in ManagerSpriteView.INSTANCE.list.Keys)
-            if (selectedSpriteViews.contains(ManagerSpriteView.INSTANCE.list[gameObject]))
-                selectedGameObjects.addLast(gameObject);
+        foreach (GameObject gameObject in this.list.Keys)
+            gameObjects.addLast(gameObject);
 
         this.list.Clear();
-        return selectedGameObjects;
+        return gameObjects;
 
+    }
+
+    public GameObject getGameObjectKey(GameObject gameObjectValue)
+    {
+        foreach (GameObject gameObject in this.list.Keys)
+            if (this.list[gameObject].Equals(gameObjectValue))
+                return gameObject;
+
+        ShutDown.execute("gameObject not found");
+        return null;
     }
 
 }

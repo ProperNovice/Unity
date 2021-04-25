@@ -42,7 +42,7 @@ public class ManagerLayerZ : MonoBehaviour
 
     }
 
-    private void executeToFront()
+    public void executeToFront()
     {
 
         int x = 0;

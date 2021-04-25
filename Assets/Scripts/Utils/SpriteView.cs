@@ -19,6 +19,7 @@ public class SpriteView : MonoBehaviour
 
         ManagerSpriteView.INSTANCE.list.Add(this.gameObject, this);
         ManagerLayerZ.INSTANCE.list[this.layerZ].addLast(this.gameObject);
+        ManagerLayerZ.INSTANCE.executeToFront();
         this.gameObject.transform.parent = ManagerSpriteView.INSTANCE.parent;
 
     }
@@ -201,21 +202,6 @@ public class SpriteView : MonoBehaviour
     public void reverseSelected()
     {
         ManagerSpriteSelect.INSTANCE.reverseSelect(this.gameObject);
-    }
-
-    private void OnMouseDown()
-    {
-
-    }
-
-    private void OnMouseEnter()
-    {
-
-    }
-
-    private void OnMouseExit()
-    {
-
     }
 
 }
