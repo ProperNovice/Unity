@@ -24,7 +24,7 @@ public class ManagerText : MonoBehaviour
     private void Start()
     {
 
-        foreach (EText eText in EText.arrayList)
+        foreach (EText eText in EText.list)
         {
 
             GameObject gameObject = Instantiate(this.text);

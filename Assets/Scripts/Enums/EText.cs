@@ -7,9 +7,9 @@ using UnityEngine;
 public class EText
 {
 
-    public static ArrayList<EText> arrayList = new ArrayList<EText>();
-    public static EText start = new EText("Start", true);
-    public static EText cont = new EText("Continue", true);
+    public static ArrayList<EText> list = new ArrayList<EText>();
+    public static EText START = new EText("Start", true);
+    public static EText CONTINUE = new EText("Continue", true);
 
     public readonly string text;
     public readonly bool isTextOption;
@@ -18,7 +18,7 @@ public class EText
     {
         this.text = text;
         this.isTextOption = isTextOption;
-        arrayList.addLast(this);
+        list.addLast(this);
     }
 
     public void show()
