@@ -64,7 +64,7 @@ public class ManagerAnimation : MonoBehaviour
         }
 
     }
-    public void animate(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynchEnum animateSynchEnum)
+    public void animateTopLeft(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynchEnum animateSynchEnum)
     {
 
         ArrayList<AnimateAction> list = new ArrayList<AnimateAction>();
@@ -83,6 +83,12 @@ public class ManagerAnimation : MonoBehaviour
         AnimateAction animateAction = new AnimateAction(spriteView, coordinates);
         list.addLast(animateAction);
 
+    }
+
+    public void animateCenter(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynchEnum animateSynchEnum)
+    {
+        Vector2 coordinatesFinal = new Vector2(coordinates.x - spriteView.getWidth() / 2, coordinates.y + spriteView.getHeight() / 2);
+        animateTopLeft(spriteView, coordinatesFinal, animateSynchEnum);
     }
 
     public bool isAnimating()
