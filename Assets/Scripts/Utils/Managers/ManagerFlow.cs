@@ -25,7 +25,7 @@ public class ManagerFlow : MonoBehaviour
     {
 
         this.gameStateCurrent = this.list.removeFirst();
-        Logger.log("gamestate -> " + this.gameStateCurrent);
+        Logger.log("Gamestate -> " + this.gameStateCurrent);
         this.gameStateCurrent.start();
 
     }
