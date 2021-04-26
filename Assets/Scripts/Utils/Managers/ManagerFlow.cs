@@ -7,13 +7,13 @@ public class ManagerFlow : MonoBehaviour
 
 
     public static ManagerFlow INSTANCE;
-    public ArrayList<AGameState> list;
-    public AGameState gameStateCurrent;
+    public ArrayList<GameState> list;
+    public GameState gameStateCurrent;
 
     private void Awake()
     {
         INSTANCE = this;
-        this.list = new ArrayList<AGameState>();
+        this.list = new ArrayList<GameState>();
     }
 
     private void Start()
@@ -30,7 +30,7 @@ public class ManagerFlow : MonoBehaviour
 
     }
 
-    public void executeGameState(AGameState aGameState)
+    public void executeGameState(GameState aGameState)
     {
         this.list.addFirst(aGameState);
         proceed();
