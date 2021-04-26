@@ -72,3 +72,4 @@ Received Import Request.
   path: Assets/Prefabs/Misc
   artifactKey: Guid(3ec1e0c8ef621ed43b7f27d7c87b6b40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Prefabs/Misc using Guid(3ec1e0c8ef621ed43b7f27d7c87b6b40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e83e86162f4c842226083d7f9d78687') in 0.008223 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
