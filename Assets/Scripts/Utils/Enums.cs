@@ -5,37 +5,37 @@ using UnityEngine;
 public class Enums
 {
 
-    public enum DirectionHorizontalEnum
+    public enum DirectionHorizontal
     {
         RIGHT, LEFT
     }
 
-    public enum DirectionVerticalEnum
+    public enum DirectionVertical
     {
         DOWN, UP
     }
 
-    public enum RearrangeTypeEnum
+    public enum RearrangeType
     {
         LINEAR, STATIC, PIVOT
     }
 
-    public enum RelocatePositionEnum
+    public enum PivotPosition
     {
         TOP_LEFT, CENTER
     }
 
-    public enum AnimateSynchEnum
+    public enum AnimateSynch
     {
         ASYNCHRONOUS, SYNCHRONOUS
     }
 
-    public enum SpriteViewActionEnum
+    public enum SpriteViewAction
     {
         RELOCATE, ANIMATE
     }
 
-    public enum LayerZListEnum
+    public enum LayerZList
     {
         TO_BACK_FIRST_SPRITEVIEW, TO_FRONT_FIRST_SPRITEVIEW
     }

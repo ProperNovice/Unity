@@ -64,18 +64,18 @@ public class ManagerAnimation : MonoBehaviour
         }
 
     }
-    public void animateTopLeft(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynchEnum animateSynchEnum)
+    public void animateTopLeft(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynchEnum)
     {
 
         ArrayList<AnimateAction> list = new ArrayList<AnimateAction>();
 
         switch (animateSynchEnum)
         {
-            case Enums.AnimateSynchEnum.SYNCHRONOUS:
+            case Enums.AnimateSynch.SYNCHRONOUS:
                 list = this.listSynchronous;
                 break;
 
-            case Enums.AnimateSynchEnum.ASYNCHRONOUS:
+            case Enums.AnimateSynch.ASYNCHRONOUS:
                 list = this.listAsynchronous;
                 break;
         }
@@ -85,7 +85,7 @@ public class ManagerAnimation : MonoBehaviour
 
     }
 
-    public void animateCenter(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynchEnum animateSynchEnum)
+    public void animateCenter(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynchEnum)
     {
         Vector2 coordinatesFinal = new Vector2(coordinates.x - spriteView.getWidth() / 2, coordinates.y + spriteView.getHeight() / 2);
         animateTopLeft(spriteView, coordinatesFinal, animateSynchEnum);
