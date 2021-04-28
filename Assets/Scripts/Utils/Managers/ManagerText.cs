@@ -51,7 +51,7 @@ public class ManagerText : MonoBehaviour
 
         this.listShowing.addLast(this.dictionary[eText]);
 
-        float y = this.coordinates.y - 50 * this.listShowing.size();
+        float y = this.coordinates.y - 50 * (this.listShowing.size() - 1);
 
 
         textView.relocate(this.coordinates.x, y);
