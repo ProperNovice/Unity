@@ -142,12 +142,17 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
         this.capacity = capacity;
     }
 
-    public bool isMaximumSize()
+    public int getCapacity()
+    {
+        return this.capacity;
+    }
+
+    public bool isMaximumCapacity()
     {
         return this.list.Count == this.capacity;
     }
 
-    public bool isOverSized()
+    public bool isOverCapacity()
     {
         if (this.capacity == -1)
             return false;
