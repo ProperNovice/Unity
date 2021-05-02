@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteList : MonoBehaviour
+public class SpriteList : MonoBehaviour, IEnumerable
 {
 
     public EList list;
@@ -242,6 +242,11 @@ public class SpriteList : MonoBehaviour
 
         }
 
+    }
+
+    public IEnumerator GetEnumerator()
+    {
+        return this.arrayList.GetEnumerator();
     }
 
 }
