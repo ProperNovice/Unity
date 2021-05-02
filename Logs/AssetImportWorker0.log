@@ -72,3 +72,44 @@ Received Import Request.
   path: Assets/Scripts/Utils/SpriteList.cs
   artifactKey: Guid(4aec8558a7abd8a44a9a5aa38b8a41bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scripts/Utils/SpriteList.cs using Guid(4aec8558a7abd8a44a9a5aa38b8a41bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1dd195aedbf7a66b8542d9cad07cf144') in 0.019492 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001922 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.775 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.59 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3288 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 123.9 MB.
+System memory in use after: 124.0 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 3751.
+Total: 2.065800 ms (FindLiveObjects: 0.235800 ms CreateObjectMapping: 0.090000 ms MarkObjects: 1.669800 ms  DeleteObjects: 0.069400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002352 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.755 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.60 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3288 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 123.9 MB.
+System memory in use after: 124.0 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 3755.
+Total: 2.041500 ms (FindLiveObjects: 0.232300 ms CreateObjectMapping: 0.091900 ms MarkObjects: 1.645500 ms  DeleteObjects: 0.071100 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
