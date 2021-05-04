@@ -186,6 +186,10 @@ public class SpriteView : MonoBehaviour
     public void setSortingOrder(int sortingOrder)
     {
         this.spriteRenderer.sortingOrder = sortingOrder;
+
+        Vector3 position = this.transform.position;
+        float z = -(float)sortingOrder / 100;
+        this.transform.position = new Vector3(position.x, position.y, z);
     }
 
     public void toFront()
