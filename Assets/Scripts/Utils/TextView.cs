@@ -43,6 +43,7 @@ public class TextView : MonoBehaviour
     public void setActive(bool value)
     {
         this.gameObject.SetActive(value);
+        OnMouseExit();
     }
 
     public void OnMouseEnter()
