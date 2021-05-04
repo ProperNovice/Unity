@@ -67,7 +67,7 @@ public class ManagerSpriteSelect : MonoBehaviour
         return this.list.Count;
     }
 
-    public ArrayList<GameObject> getSelectedGameObjectsClear()
+    public ArrayList<GameObject> getSelectedGameObjectsDeselectClear()
     {
 
         ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
@@ -75,7 +75,9 @@ public class ManagerSpriteSelect : MonoBehaviour
         foreach (GameObject gameObject in this.list.Keys)
             gameObjects.addLast(gameObject);
 
-        this.list.Clear();
+        foreach (GameObject gameObject in gameObjects)
+            reverseSelect(gameObject);
+
         return gameObjects;
 
     }
