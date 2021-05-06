@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpriteList : MonoBehaviour, IEnumerable
 {
 
-    public EList list;
+    public EList eList;
     public Vector2 listCoordinates, gapBetweenObjects = new Vector2(5, 5);
     public int objectsPerRow = -1;
     public Enums.LayerZList layerZOrder = Enums.LayerZList.TO_BACK_FIRST_SPRITEVIEW;

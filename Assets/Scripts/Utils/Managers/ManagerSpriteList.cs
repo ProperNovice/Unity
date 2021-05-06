@@ -19,7 +19,7 @@ public class ManagerSpriteList : MonoBehaviour
         {
 
             SpriteList spriteList = this.parent.AddComponent<SpriteList>();
-            spriteList.list = eList;
+            spriteList.eList = eList;
             this.lists.Add(eList, spriteList);
 
         }
