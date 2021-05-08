@@ -19,11 +19,6 @@ public abstract class GameState
 
     }
 
-    public void handleGameObjectPressed(GameObject gameObject)
-    {
-
-    }
-
     protected SpriteList getList(EList eList)
     {
         return ManagerSpriteList.INSTANCE.lists[eList];
