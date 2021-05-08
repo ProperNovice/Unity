@@ -31,9 +31,43 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
         this.list.Insert(0, t);
     }
 
+    public void addFirst(ArrayList<T> list)
+    {
+
+        list.reverse();
+
+        foreach (T t in list)
+            addFirst(t);
+
+    }
+
+    public void addFirst(params T[] list)
+    {
+
+        ArrayList<T> arrayList = new ArrayList<T>(list);
+        addFirst(arrayList);
+
+    }
+
     public void addLast(T t)
     {
         this.list.Add(t);
+    }
+
+    public void addLast(ArrayList<T> list)
+    {
+
+        foreach (T t in list)
+            addLast(t);
+
+    }
+
+    public void addLast(params T[] list)
+    {
+
+        ArrayList<T> arrayList = new ArrayList<T>(list);
+        addLast(arrayList);
+
     }
 
     public bool contains(T t)
@@ -152,20 +186,12 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
         return this.list.Count == this.capacity;
     }
 
-    public bool isOverCapacity()
+    public bool isOverSized()
     {
         if (this.capacity == -1)
             return false;
         else
             return this.list.Count > this.capacity;
-    }
-
-    public void addRange(ArrayList<T> list)
-    {
-
-        foreach (T t in list)
-            addLast(t);
-
     }
 
     public void print()

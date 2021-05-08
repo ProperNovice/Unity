@@ -108,7 +108,7 @@ public class ManagerAnimation : MonoBehaviour
 
     public void moveAsynchronousToSynchronous()
     {
-        this.listSynchronous.addRange(this.listAsynchronous);
+        this.listSynchronous.addLast(this.listAsynchronous);
         this.listAsynchronous.clear();
     }
 
