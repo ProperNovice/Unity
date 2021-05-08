@@ -134,6 +134,15 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
 
     }
 
+    public ArrayList<T> removeAll()
+    {
+
+        ArrayList<T> arrayList = this.clone();
+        this.clear();
+        return arrayList;
+
+    }
+
     public int indexOf(T t)
     {
         return this.list.IndexOf(t);

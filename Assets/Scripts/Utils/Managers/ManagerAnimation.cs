@@ -64,12 +64,15 @@ public class ManagerAnimation : MonoBehaviour
         }
 
     }
-    public void animateTopLeft(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynchEnum)
+
+    public void animateTopLeft(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynch)
     {
+
+        removeSpriteViewIfAnimating(spriteView);
 
         ArrayList<AnimateAction> list = new ArrayList<AnimateAction>();
 
-        switch (animateSynchEnum)
+        switch (animateSynch)
         {
             case Enums.AnimateSynch.SYNCHRONOUS:
                 list = this.listSynchronous;
@@ -85,10 +88,25 @@ public class ManagerAnimation : MonoBehaviour
 
     }
 
-    public void animateCenter(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynchEnum)
+    public void animateCenter(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynch)
     {
         Vector2 coordinatesFinal = new Vector2(coordinates.x - spriteView.getWidth() / 2, coordinates.y + spriteView.getHeight() / 2);
-        animateTopLeft(spriteView, coordinatesFinal, animateSynchEnum);
+        animateTopLeft(spriteView, coordinatesFinal, animateSynch);
+    }
+
+    private void removeSpriteViewIfAnimating(SpriteView spriteView)
+    {
+        checkListForDuplicateSpriteView(this.listAsynchronous, spriteView);
+        checkListForDuplicateSpriteView(this.listSynchronous, spriteView);
+    }
+
+    private void checkListForDuplicateSpriteView(ArrayList<AnimateAction> list, SpriteView spriteView)
+    {
+        foreach (AnimateAction animateAction in list.clone())
+        {
+            if (animateAction.spriteView.Equals(spriteView))
+                list.remove(animateAction);
+        }
     }
 
     public bool isAnimating()
@@ -108,8 +126,7 @@ public class ManagerAnimation : MonoBehaviour
 
     public void moveAsynchronousToSynchronous()
     {
-        this.listSynchronous.addLast(this.listAsynchronous);
-        this.listAsynchronous.clear();
+        this.listSynchronous.addLast(this.listAsynchronous.removeAll());
     }
 
     public void moveAsynchronousToSynchronousLock(Action action)
@@ -121,7 +138,7 @@ public class ManagerAnimation : MonoBehaviour
     private class AnimateAction
     {
 
-        private SpriteView spriteView;
+        public readonly SpriteView spriteView;
         private Vector2 coordinatesTarget;
 
         public AnimateAction(SpriteView spriteView, Vector2 coordinatesTarget)
