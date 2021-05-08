@@ -14,7 +14,7 @@ public abstract class GameState
         executeTextOption(eText);
     }
 
-    public virtual void executeTextOption(EText eText)
+    protected virtual void executeTextOption(EText eText)
     {
 
     }
