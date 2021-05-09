@@ -14,6 +14,11 @@ public class ManagerSpriteList : MonoBehaviour, Interfaces.SaveLoadAble
         this.lists = new ArrayList<SpriteList>();
     }
 
+    private void Start()
+    {
+
+    }
+
     public void loadStart()
     {
         foreach (SpriteList spriteList in this.lists)
