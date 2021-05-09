@@ -11,14 +11,11 @@ public interface Interfaces
         public void loadState();
         public void saveStart();
         public void loadStart();
-
     }
 
     public interface TimerAble
     {
-
         public void notify();
-
     }
 
 }
