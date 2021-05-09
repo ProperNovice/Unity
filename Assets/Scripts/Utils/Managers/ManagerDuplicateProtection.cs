@@ -5,70 +5,35 @@ using UnityEngine;
 public class ManagerDuplicateProtection : MonoBehaviour
 {
 
-    public Dictionary<EList, ArrayList<GameObject>> lists;
-    private ArrayList<GameObject> gameObjectsChecking;
+    public static ManagerDuplicateProtection INSTANCE;
+    public ArrayList<ArrayList<GameObject>> lists = new ArrayList<ArrayList<GameObject>>();
+    private ArrayList<GameObject> gameObjects;
 
     private void Awake()
     {
-        this.lists = new Dictionary<EList, ArrayList<GameObject>>();
-        this.gameObjectsChecking = new ArrayList<GameObject>();
+        INSTANCE = this;
+        this.gameObjects = new ArrayList<GameObject>();
     }
-
-    void Start()
-    {
-
-        foreach (EList eList in ManagerSpriteList.INSTANCE.lists.Keys)
-            this.lists.Add(eList, ManagerSpriteList.INSTANCE.lists[eList].arrayList);
-
-    }
-
 
     void Update()
     {
 
-        this.gameObjectsChecking.clear();
+        this.gameObjects.clear();
 
-        foreach (EList eList in this.lists.Keys)
+        foreach (ArrayList<GameObject> arraylist in this.lists)
         {
 
-            ArrayList<GameObject> gameObjectsToCheck = this.lists[eList].clone();
-
-            while (!gameObjectsToCheck.isEmpty())
+            foreach (GameObject gameObject in arraylist)
             {
 
-                GameObject go = gameObjectsToCheck.removeFirst();
-
-                if (this.gameObjectsChecking.contains(go))
-                    handleDuplicateFound(go);
+                if (this.gameObjects.contains(gameObject))
+                    ShutDown.execute(this);
                 else
-                    this.gameObjectsChecking.addLast(go);
+                    this.gameObjects.addLast(gameObject);
 
             }
 
         }
-
-    }
-
-    private void handleDuplicateFound(GameObject gameObject)
-    {
-
-        bool isFirstList = true;
-
-        string msg = "duplicate list entry found -> ";
-
-        foreach (EList eList in this.lists.Keys)
-            if (this.lists[eList].contains(gameObject))
-            {
-
-                if (!isFirstList)
-                    msg += " , ";
-
-                isFirstList = false;
-                msg += eList;
-
-            }
-
-        ShutDown.execute(msg);
 
     }
 

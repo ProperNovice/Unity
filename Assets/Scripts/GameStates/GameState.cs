@@ -19,9 +19,4 @@ public abstract class GameState
 
     }
 
-    protected SpriteList getList(EList eList)
-    {
-        return ManagerSpriteList.INSTANCE.lists[eList];
-    }
-
 }

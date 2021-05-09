@@ -6,8 +6,7 @@ using UnityEngine;
 public class SpriteList : MonoBehaviour, IEnumerable
 {
 
-    public EList eList;
-    public Vector2 listCoordinates, gapBetweenObjects = new Vector2(5, 5);
+    public Vector2 coordinates = new Vector2(0, 0), gapBetweenObjects = new Vector2(5, 5);
     public int objectsPerRow = -1;
     public Enums.LayerZList layerZOrder = Enums.LayerZList.TO_BACK_FIRST_SPRITEVIEW;
     public Enums.RearrangeType rearrangeType = Enums.RearrangeType.LINEAR;
@@ -21,6 +20,7 @@ public class SpriteList : MonoBehaviour, IEnumerable
     private void Start()
     {
         this.arrayList = new ArrayList<GameObject>();
+        ManagerDuplicateProtection.INSTANCE.lists.addLast(this.arrayList);
     }
 
     public void animateAsynchronous()
@@ -119,13 +119,13 @@ public class SpriteList : MonoBehaviour, IEnumerable
 
     private void handleRearrangeTypeEnumStatic()
     {
-        this.coordinatesObjectFinal = this.listCoordinates;
+        this.coordinatesObjectFinal = this.coordinates;
     }
 
     private void handleRearrangeTypeEnumLinear(int objectIndex)
     {
         calculateObjectPositionInList(objectIndex);
-        this.coordinatesFirstObject = this.listCoordinates;
+        this.coordinatesFirstObject = this.coordinates;
         calculateCoordinatesObjectFinal();
     }
 
@@ -153,7 +153,7 @@ public class SpriteList : MonoBehaviour, IEnumerable
         float width = columns * this.spriteDimensions.x + (columns - 1) * this.gapBetweenObjects.x;
         float height = rows * this.spriteDimensions.y + (rows - 1) * this.gapBetweenObjects.y;
 
-        this.coordinatesFirstObject = new Vector2(this.listCoordinates.x, this.listCoordinates.y);
+        this.coordinatesFirstObject = new Vector2(this.coordinates.x, this.coordinates.y);
 
         switch (this.horizontalDirection)
         {
