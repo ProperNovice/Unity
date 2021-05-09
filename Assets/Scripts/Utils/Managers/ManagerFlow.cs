@@ -5,7 +5,6 @@ using UnityEngine;
 public class ManagerFlow : MonoBehaviour
 {
 
-
     public static ManagerFlow INSTANCE;
     public ArrayList<GameState> list;
     public GameState gameStateCurrent;
