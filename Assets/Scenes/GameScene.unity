@@ -247,17 +247,17 @@ GameObject:
   m_Component:
   - component: {fileID: 1285260542}
   - component: {fileID: 1285260541}
-  - component: {fileID: 1285260540}
-  - component: {fileID: 1285260543}
-  - component: {fileID: 1285260544}
-  - component: {fileID: 1285260546}
-  - component: {fileID: 1285260547}
-  - component: {fileID: 1285260548}
+  - component: {fileID: 1285260551}
+  - component: {fileID: 1285260553}
   - component: {fileID: 1285260549}
   - component: {fileID: 1285260550}
-  - component: {fileID: 1285260551}
+  - component: {fileID: 1285260544}
+  - component: {fileID: 1285260543}
+  - component: {fileID: 1285260548}
+  - component: {fileID: 1285260540}
+  - component: {fileID: 1285260547}
   - component: {fileID: 1285260552}
-  - component: {fileID: 1285260553}
+  - component: {fileID: 1285260546}
   - component: {fileID: 1285260554}
   - component: {fileID: 1285260555}
   m_Layer: 0
