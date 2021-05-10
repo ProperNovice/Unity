@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 1285260554}
   - component: {fileID: 1285260555}
   m_Layer: 0
-  m_Name: Managers
+  m_Name: Scripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
