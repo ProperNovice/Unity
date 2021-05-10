@@ -5,11 +5,6 @@ using UnityEngine;
 public abstract class EventHandler : MonoBehaviour
 {
 
-    private void Awake()
-    {
-        ManagerEventHandler.INSTANCE.list.Add(this.gameObject, this);
-    }
-
     public virtual void OnMouseDown()
     {
 

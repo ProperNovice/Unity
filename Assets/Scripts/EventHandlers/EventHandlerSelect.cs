@@ -28,7 +28,7 @@ public class EventHandlerSelect : EventHandler
     private EventHandler getEventHandler()
     {
         GameObject gameObject = ManagerSpriteSelect.INSTANCE.getGameObjectKey(this.gameObject);
-        EventHandler eventHandler = ManagerEventHandler.INSTANCE.list[gameObject];
+        EventHandler eventHandler = gameObject.GetComponent<EventHandler>();
         return eventHandler;
     }
 
