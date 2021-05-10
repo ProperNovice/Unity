@@ -6,12 +6,14 @@ public class ManagerDuplicateProtection : MonoBehaviour
 {
 
     public static ManagerDuplicateProtection INSTANCE;
-    public ArrayList<ArrayList<GameObject>> lists = new ArrayList<ArrayList<GameObject>>();
+    public ArrayList<ArrayList<GameObject>> lists;
     private ArrayList<GameObject> gameObjects;
 
     private void Awake()
     {
         INSTANCE = this;
+
+        this.lists = new ArrayList<ArrayList<GameObject>>();
         this.gameObjects = new ArrayList<GameObject>();
     }
 

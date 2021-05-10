@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteList : MonoBehaviour, IEnumerable
+public class SpriteList : IEnumerable
 {
 
     public Vector2 coordinates = new Vector2(0, 0), gapBetweenObjects = new Vector2(5, 5);
@@ -17,7 +17,7 @@ public class SpriteList : MonoBehaviour, IEnumerable
     public ArrayList<GameObject> arrayList;
     private Vector2 objectPositionInList, coordinatesFirstObject, coordinatesObjectFinal, spriteDimensions;
 
-    private void Start()
+    public SpriteList()
     {
         this.arrayList = new ArrayList<GameObject>();
         ManagerDuplicateProtection.INSTANCE.lists.addLast(this.arrayList);
@@ -53,7 +53,7 @@ public class SpriteList : MonoBehaviour, IEnumerable
         foreach (GameObject gameObject in this.arrayList)
         {
 
-            SpriteView spriteView = ManagerSpriteView.INSTANCE.list[gameObject];
+            SpriteView spriteView = gameObject.GetComponent<SpriteView>();
             this.spriteDimensions = spriteView.getDimensions();
             calculateCoordinatesObjectFinal(this.arrayList.indexOf(gameObject));
 

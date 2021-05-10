@@ -6,6 +6,7 @@ public class ManagerSpriteList : MonoBehaviour, Interfaces.SaveLoadAble
 {
 
     public static ManagerSpriteList INSTANCE;
+    public GameObject spriteParent;
     public ArrayList<SpriteList> lists;
 
     public void Awake()

@@ -19,20 +19,19 @@ public class ManagerSpriteSelect : MonoBehaviour
     public void reverseSelect(GameObject gameObject)
     {
 
-        SpriteView spriteView = ManagerSpriteView.INSTANCE.list[gameObject];
-
         if (this.list.ContainsKey(gameObject))
-            deselectSprite(spriteView, gameObject);
+            deselectSprite(gameObject);
         else
-            selectSprite(spriteView, gameObject);
+            selectSprite(gameObject);
 
     }
 
-    private void selectSprite(SpriteView spriteViewGameObject, GameObject gameObject)
+    private void selectSprite(GameObject gameObject)
     {
 
         GameObject selectSpriteGameObject = ManagerObjectPool.INSTANCE.getGameObject(this.spriteSelectPrefab);
-        SpriteView spriteViewSelect = ManagerSpriteView.INSTANCE.list[selectSpriteGameObject];
+        SpriteView spriteViewSelect = selectSpriteGameObject.GetComponent<SpriteView>();
+        SpriteView spriteViewGameObject = gameObject.GetComponent<SpriteView>();
 
         float widthGameObject = spriteViewGameObject.getWidth();
         float heightGameObject = spriteViewGameObject.getHeight();
@@ -51,12 +50,11 @@ public class ManagerSpriteSelect : MonoBehaviour
 
     }
 
-    private void deselectSprite(SpriteView spriteViewGameObject, GameObject gameObject)
+    private void deselectSprite(GameObject gameObject)
     {
 
         GameObject selectSpriteGameObject = this.list[gameObject];
-        SpriteView selectSpriteView = ManagerSpriteView.INSTANCE.list[selectSpriteGameObject];
-        selectSpriteView.setActive(false);
+        selectSpriteGameObject.SetActive(false);
 
         this.list.Remove(gameObject);
 

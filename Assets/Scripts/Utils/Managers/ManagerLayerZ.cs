@@ -52,7 +52,7 @@ public class ManagerLayerZ : MonoBehaviour
 
             foreach (GameObject gameObject in this.list[eLayerZ])
             {
-                SpriteView spriteView = ManagerSpriteView.INSTANCE.list[gameObject];
+                SpriteView spriteView = gameObject.GetComponent<SpriteView>();
                 spriteView.setSortingOrder(sortingOrder++);
             }
 
