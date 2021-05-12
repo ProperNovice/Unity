@@ -344,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 5559654764558446934, guid: 4f76b8556a5c6d94dbc5d80332a392e9, type: 3}
   parent: {fileID: 1796716826}
-  coordinates: {x: 0, y: 0}
+  coordinates: {x: 0, y: 1440}
 --- !u!114 &1285260547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteSelectPrefab: {fileID: 6489675262470344039, guid: 8d7451887ca1eab40a1f3f4c2c6c08f5, type: 3}
   spritePercentage: {x: 50, y: 50}
+  positionDimension: 100
 --- !u!114 &1285260548
 MonoBehaviour:
   m_ObjectHideFlags: 0

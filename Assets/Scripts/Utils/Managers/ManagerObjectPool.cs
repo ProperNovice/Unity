@@ -14,7 +14,7 @@ public class ManagerObjectPool : MonoBehaviour
         this.list = new Dictionary<GameObject, ArrayList<GameObject>>();
     }
 
-    public GameObject getGameObject(GameObject prefab)
+    public GameObject getGameObjectActivate(GameObject prefab)
     {
 
         handleListEntry(prefab);

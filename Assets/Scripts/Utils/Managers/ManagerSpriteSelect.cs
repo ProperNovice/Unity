@@ -8,18 +8,21 @@ public class ManagerSpriteSelect : MonoBehaviour
     public static ManagerSpriteSelect INSTANCE;
     public GameObject spriteSelectPrefab;
     public Vector2 spritePercentage;
-    private Dictionary<GameObject, GameObject> list;
+    public float positionDimension;
+    private Dictionary<GameObject, GameObject> listSprites;
+    private Dictionary<GameObject, GameObject> listPositions;
 
     private void Awake()
     {
         INSTANCE = this;
-        this.list = new Dictionary<GameObject, GameObject>();
+        this.listSprites = new Dictionary<GameObject, GameObject>();
+        this.listPositions = new Dictionary<GameObject, GameObject>();
     }
 
-    public void reverseSelect(GameObject gameObject)
+    public void reverseSelectSprites(GameObject gameObject)
     {
 
-        if (this.list.ContainsKey(gameObject))
+        if (this.listSprites.ContainsKey(gameObject))
             deselectSprite(gameObject);
         else
             selectSprite(gameObject);
@@ -29,7 +32,7 @@ public class ManagerSpriteSelect : MonoBehaviour
     private void selectSprite(GameObject gameObject)
     {
 
-        GameObject selectSpriteGameObject = ManagerObjectPool.INSTANCE.getGameObject(this.spriteSelectPrefab);
+        GameObject selectSpriteGameObject = ManagerObjectPool.INSTANCE.getGameObjectActivate(this.spriteSelectPrefab);
         SpriteView spriteViewSelect = selectSpriteGameObject.GetComponent<SpriteView>();
         SpriteView spriteViewGameObject = gameObject.GetComponent<SpriteView>();
 
@@ -46,44 +49,90 @@ public class ManagerSpriteSelect : MonoBehaviour
 
         spriteViewSelect.relocateCenter(centerX, centerY);
 
-        this.list.Add(gameObject, selectSpriteGameObject);
+        this.listSprites.Add(gameObject, selectSpriteGameObject);
 
     }
 
     private void deselectSprite(GameObject gameObject)
     {
 
-        GameObject selectSpriteGameObject = this.list[gameObject];
+        GameObject selectSpriteGameObject = this.listSprites[gameObject];
         selectSpriteGameObject.SetActive(false);
 
-        this.list.Remove(gameObject);
+        this.listSprites.Remove(gameObject);
 
+    }
+
+    public void reverseSelectPosition(GameObject gameObject)
+    {
+
+        if (this.listPositions.ContainsKey(gameObject))
+            deselectPosition(gameObject);
+        else
+            selectPosition(gameObject);
+
+    }
+
+    private void selectPosition(GameObject gameObject)
+    {
+        GameObject selectSpriteGameObject = ManagerObjectPool.INSTANCE.getGameObjectActivate(this.spriteSelectPrefab);
+
+        SpriteView selectSpriteView = selectSpriteGameObject.GetComponent<SpriteView>();
+        selectSpriteView.setWidth(this.positionDimension);
+        selectSpriteView.relocateCenter(gameObject.transform.position);
+
+        Logger.log(selectSpriteGameObject.transform.position);
+
+        this.listPositions.Add(gameObject, selectSpriteGameObject);
+    }
+
+    private void deselectPosition(GameObject gameObject)
+    {
+        GameObject selectSpriteGameObject = this.listPositions[gameObject];
+        selectSpriteGameObject.SetActive(false);
+
+        this.listPositions.Remove(gameObject);
     }
 
     public int sizeSelected()
     {
-        return this.list.Count;
+        return this.listSprites.Count + this.listPositions.Count;
     }
 
     public ArrayList<GameObject> getSelectedGameObjectsDeselectClear()
     {
 
-        ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+        ArrayList<GameObject> gameObjectsSprites = new ArrayList<GameObject>();
+        ArrayList<GameObject> gameObjectsPositions = new ArrayList<GameObject>();
 
-        foreach (GameObject gameObject in this.list.Keys)
-            gameObjects.addLast(gameObject);
+        foreach (GameObject gameObject in this.listSprites.Keys)
+            gameObjectsSprites.addLast(gameObject);
 
-        foreach (GameObject gameObject in gameObjects)
-            reverseSelect(gameObject);
+        foreach (GameObject gameObject in this.listPositions.Keys)
+            gameObjectsPositions.addLast(gameObject);
 
-        return gameObjects;
+        foreach (GameObject gameObject in gameObjectsSprites)
+            reverseSelectSprites(gameObject);
+
+        foreach (GameObject gameObject in gameObjectsPositions)
+            reverseSelectPosition(gameObject);
+
+        ArrayList<GameObject> list = new ArrayList<GameObject>();
+        list.addLast(gameObjectsSprites);
+        list.addLast(gameObjectsPositions);
+
+        return list;
 
     }
 
     public GameObject getGameObjectKey(GameObject gameObjectValue)
     {
-        foreach (GameObject gameObject in this.list.Keys)
-            if (this.list[gameObject].Equals(gameObjectValue))
+        foreach (GameObject gameObject in this.listSprites.Keys)
+            if (this.listSprites[gameObject].Equals(gameObjectValue))
+                return gameObject;
+
+        foreach (GameObject gameObject in this.listPositions.Keys)
+            if (this.listPositions[gameObject].Equals(gameObjectValue))
                 return gameObject;
 
         ShutDown.execute("gameObject not found");

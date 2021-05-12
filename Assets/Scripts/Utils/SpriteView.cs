@@ -203,7 +203,7 @@ public class SpriteView : MonoBehaviour
 
     public void reverseSelected()
     {
-        ManagerSpriteSelect.INSTANCE.reverseSelect(this.gameObject);
+        ManagerSpriteSelect.INSTANCE.reverseSelectSprites(this.gameObject);
     }
 
 }
