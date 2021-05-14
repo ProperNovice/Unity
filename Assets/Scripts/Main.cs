@@ -9,7 +9,7 @@ public class Main : MonoBehaviour
 
     void Start()
     {
-        this.screenResolution = new Vector2(Screen.width, Screen.height);
+        this.screenResolution = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
     }
 
 }
