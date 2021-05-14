@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpriteList : IEnumerable
 {
 
-    public Vector2 coordinates = new Vector2(0, 0), gapBetweenObjects = new Vector2(5, 5);
+    public Vector2 coordinates = new Vector2(0, 0);
     public int objectsPerRow = -1;
     public Enums.LayerZList layerZOrder = Enums.LayerZList.TO_BACK_FIRST_SPRITEVIEW;
     public Enums.RearrangeType rearrangeType = Enums.RearrangeType.LINEAR;
@@ -150,8 +150,8 @@ public class SpriteList : IEnumerable
         if (rows > 1)
             columns = this.objectsPerRow;
 
-        float width = columns * this.spriteDimensions.x + (columns - 1) * this.gapBetweenObjects.x;
-        float height = rows * this.spriteDimensions.y + (rows - 1) * this.gapBetweenObjects.y;
+        float width = columns * this.spriteDimensions.x + (columns - 1) * Modifiers.INSTANCE.gapBetweenObjects.x;
+        float height = rows * this.spriteDimensions.y + (rows - 1) * Modifiers.INSTANCE.gapBetweenObjects.y;
 
         this.coordinatesFirstObject = new Vector2(this.coordinates.x, this.coordinates.y);
 
@@ -213,12 +213,12 @@ public class SpriteList : IEnumerable
 
             case Enums.DirectionHorizontal.RIGHT:
                 this.coordinatesObjectFinal.x += this.objectPositionInList.y * this.spriteDimensions.x;
-                this.coordinatesObjectFinal.x += this.objectPositionInList.y * this.gapBetweenObjects.x;
+                this.coordinatesObjectFinal.x += this.objectPositionInList.y * Modifiers.INSTANCE.gapBetweenObjects.x;
                 break;
 
             case Enums.DirectionHorizontal.LEFT:
                 this.coordinatesObjectFinal.x -= this.objectPositionInList.y * this.spriteDimensions.x;
-                this.coordinatesObjectFinal.x -= this.objectPositionInList.y * this.gapBetweenObjects.x;
+                this.coordinatesObjectFinal.x -= this.objectPositionInList.y * Modifiers.INSTANCE.gapBetweenObjects.x;
                 break;
 
         }
@@ -232,12 +232,12 @@ public class SpriteList : IEnumerable
 
             case Enums.DirectionVertical.DOWN:
                 this.coordinatesObjectFinal.y -= this.objectPositionInList.x * this.spriteDimensions.y;
-                this.coordinatesObjectFinal.y -= this.objectPositionInList.x * this.gapBetweenObjects.y;
+                this.coordinatesObjectFinal.y -= this.objectPositionInList.x * Modifiers.INSTANCE.gapBetweenObjects.y;
                 break;
 
             case Enums.DirectionVertical.UP:
                 this.coordinatesObjectFinal.y += this.objectPositionInList.x * this.spriteDimensions.y;
-                this.coordinatesObjectFinal.y += this.objectPositionInList.x * this.gapBetweenObjects.y;
+                this.coordinatesObjectFinal.y += this.objectPositionInList.x * Modifiers.INSTANCE.gapBetweenObjects.y;
                 break;
 
         }
