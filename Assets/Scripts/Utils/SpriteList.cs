@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpriteList : IEnumerable
 {
 
-    public Vector2 coordinates = new Vector2(0, 0);
+    public Vector2 coordinates = new Vector2(0, 0), percentageGapBetweenSprites = new Vector2(100, 100);
     public int objectsPerRow = -1;
     public Enums.LayerZList layerZOrder = Enums.LayerZList.TO_BACK_FIRST_SPRITEVIEW;
     public Enums.RearrangeType rearrangeType = Enums.RearrangeType.LINEAR;
@@ -82,7 +82,7 @@ public class SpriteList : IEnumerable
 
     }
 
-    public void handleLayerZ()
+    private void handleLayerZ()
     {
 
         ArrayList<GameObject> listLayerZ = this.arrayList.clone();
@@ -150,8 +150,15 @@ public class SpriteList : IEnumerable
         if (rows > 1)
             columns = this.objectsPerRow;
 
-        float width = columns * this.spriteDimensions.x + (columns - 1) * Modifiers.INSTANCE.gapBetweenObjects.x;
-        float height = rows * this.spriteDimensions.y + (rows - 1) * Modifiers.INSTANCE.gapBetweenObjects.y;
+        float width = this.spriteDimensions.x + (columns - 1) * this.spriteDimensions.x * this.percentageGapBetweenSprites.x / 100;
+
+        if (this.percentageGapBetweenSprites.x == 100)
+            width += (columns - 1) * Modifiers.INSTANCE.gapBetweenObjects.x;
+
+        float height = this.spriteDimensions.y + (rows - 1) * this.spriteDimensions.y * this.percentageGapBetweenSprites.y / 100;
+
+        if (percentageGapBetweenSprites.y == 100)
+            height += (rows - 1) * Modifiers.INSTANCE.gapBetweenObjects.y;
 
         this.coordinatesFirstObject = new Vector2(this.coordinates.x, this.coordinates.y);
 
@@ -207,18 +214,20 @@ public class SpriteList : IEnumerable
         // horizontal
 
         this.coordinatesObjectFinal.x = this.coordinatesFirstObject.x;
+        float width = this.objectPositionInList.y * this.spriteDimensions.x * this.percentageGapBetweenSprites.x / 100;
+
+        if (percentageGapBetweenSprites.x == 100)
+            width += this.objectPositionInList.y * Modifiers.INSTANCE.gapBetweenObjects.x;
 
         switch (this.horizontalDirection)
         {
 
             case Enums.DirectionHorizontal.RIGHT:
-                this.coordinatesObjectFinal.x += this.objectPositionInList.y * this.spriteDimensions.x;
-                this.coordinatesObjectFinal.x += this.objectPositionInList.y * Modifiers.INSTANCE.gapBetweenObjects.x;
+                this.coordinatesObjectFinal.x += width;
                 break;
 
             case Enums.DirectionHorizontal.LEFT:
-                this.coordinatesObjectFinal.x -= this.objectPositionInList.y * this.spriteDimensions.x;
-                this.coordinatesObjectFinal.x -= this.objectPositionInList.y * Modifiers.INSTANCE.gapBetweenObjects.x;
+                this.coordinatesObjectFinal.x -= width;
                 break;
 
         }
@@ -226,18 +235,20 @@ public class SpriteList : IEnumerable
         // vertical
 
         this.coordinatesObjectFinal.y = this.coordinatesFirstObject.y;
+        float height = this.objectPositionInList.x * this.spriteDimensions.y * this.percentageGapBetweenSprites.y / 100;
+
+        if (percentageGapBetweenSprites.y == 100)
+            height += this.objectPositionInList.x * Modifiers.INSTANCE.gapBetweenObjects.y;
 
         switch (this.verticalDirection)
         {
 
             case Enums.DirectionVertical.DOWN:
-                this.coordinatesObjectFinal.y -= this.objectPositionInList.x * this.spriteDimensions.y;
-                this.coordinatesObjectFinal.y -= this.objectPositionInList.x * Modifiers.INSTANCE.gapBetweenObjects.y;
+                this.coordinatesObjectFinal.y -= height;
                 break;
 
             case Enums.DirectionVertical.UP:
-                this.coordinatesObjectFinal.y += this.objectPositionInList.x * this.spriteDimensions.y;
-                this.coordinatesObjectFinal.y += this.objectPositionInList.x * Modifiers.INSTANCE.gapBetweenObjects.y;
+                this.coordinatesObjectFinal.y += height;
                 break;
 
         }

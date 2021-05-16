@@ -21,11 +21,6 @@ public class SpriteView : MonoBehaviour
         ManagerLayerZ.INSTANCE.executeToFront();
         this.gameObject.transform.parent = ManagerSpriteList.INSTANCE.spriteParent.transform;
 
-    }
-
-    void Start()
-    {
-
         if (this.spriteRenderer.sprite != null)
         {
 

@@ -432,6 +432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7a314a792f0b043b5f88f1e447c8ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabGreen: {fileID: 9218707046152943909, guid: f303e7c61696e314d9d62685e0802aba, type: 3}
+  prefabGray: {fileID: 2441072316819096426, guid: 1d3d77899e30c8d40af8fc3b0a87e7eb, type: 3}
 --- !u!114 &1285260555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb17916555d18143ac101a0314f4f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gapBorders: {x: 0, y: 0}
+  gapBetweenObjects: {x: 0, y: 0}
 --- !u!1001 &1621268059
 PrefabInstance:
   m_ObjectHideFlags: 0
