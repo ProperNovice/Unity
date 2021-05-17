@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpriteList : IEnumerable
 {
 
-    public Vector2 coordinates = new Vector2(0, 0), percentageGapBetweenSprites = new Vector2(100, 100);
+    public Vector2 coordinates = new Vector2(0, 1440), percentageGapBetweenSprites = new Vector2(100, 100);
     public int objectsPerRow = -1;
     public Enums.LayerZList layerZOrder = Enums.LayerZList.TO_BACK_FIRST_SPRITEVIEW;
     public Enums.RearrangeType rearrangeType = Enums.RearrangeType.LINEAR;
