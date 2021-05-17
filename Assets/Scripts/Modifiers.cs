@@ -11,8 +11,6 @@ public class Modifiers : MonoBehaviour
     private void Awake()
     {
         INSTANCE = this;
-        this.gapBorders = new Vector2(25, 25);
-        this.gapBetweenObjects = new Vector2(10, 10);
     }
 
 }
