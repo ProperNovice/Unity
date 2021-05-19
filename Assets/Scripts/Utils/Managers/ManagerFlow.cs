@@ -29,7 +29,7 @@ public class ManagerFlow : MonoBehaviour
 
     }
 
-    public void executeGameState(GameState aGameState)
+    public void executeGameState(params GameState[] aGameState)
     {
         this.list.addFirst(aGameState);
         proceed();
