@@ -8,6 +8,7 @@ public class ManagerText : MonoBehaviour
     public GameObject text;
     public Transform parent;
     public Vector2 coordinates;
+    public Enums.RearrangeType rearrangeType = Enums.RearrangeType.LINEAR;
     public static ManagerText INSTANCE;
     private ArrayList<TextView> listComplete, listShowing;
     private Dictionary<EText, TextView> dictionary;
@@ -43,7 +44,6 @@ public class ManagerText : MonoBehaviour
 
     public void showText(EText eText)
     {
-
         TextView textView = this.dictionary[eText];
 
         if (this.listShowing.contains(textView))
@@ -51,11 +51,24 @@ public class ManagerText : MonoBehaviour
 
         this.listShowing.addLast(this.dictionary[eText]);
 
-        float y = this.coordinates.y - 50 * (this.listShowing.size() - 1);
+        relocateTexts();
+    }
 
+    private void relocateTexts()
+    {
 
-        textView.relocate(this.coordinates.x, y);
-        textView.setActive(true);
+        float y = this.coordinates.y;
+
+        if (this.rearrangeType.Equals(Enums.RearrangeType.PIVOT))
+            y += this.listShowing.size() * 50 / 2;
+
+        foreach (TextView textView in this.listShowing)
+        {
+            textView.relocate(this.coordinates.x, y);
+            textView.setActive(true);
+
+            y -= 50;
+        }
 
     }
 
