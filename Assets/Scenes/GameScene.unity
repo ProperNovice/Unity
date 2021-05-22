@@ -256,8 +256,8 @@ GameObject:
   - component: {fileID: 1285260547}
   - component: {fileID: 1285260552}
   - component: {fileID: 1285260546}
-  - component: {fileID: 1285260555}
   - component: {fileID: 1285260554}
+  - component: {fileID: 1285260555}
   - component: {fileID: 1285260545}
   m_Layer: 0
   m_Name: Scripts
