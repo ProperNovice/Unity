@@ -6,6 +6,7 @@ using UnityEngine;
 public class Main : MonoBehaviour
 {
 
+    public GameObject prefabSprite;
     private Vector2 screenResolution;
 
     void Start()

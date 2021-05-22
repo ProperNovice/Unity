@@ -259,6 +259,7 @@ GameObject:
   - component: {fileID: 1285260546}
   - component: {fileID: 1285260555}
   - component: {fileID: 1285260554}
+  - component: {fileID: 1285260545}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -330,6 +331,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9e4814e272233347b3663ddba583615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1285260545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285260539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3507ae916313e3946a186c43ffb1e0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1285260546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +358,7 @@ MonoBehaviour:
   text: {fileID: 5559654764558446934, guid: 4f76b8556a5c6d94dbc5d80332a392e9, type: 3}
   parent: {fileID: 1796716826}
   coordinates: {x: 0, y: 1440}
+  rearrangeType: 0
 --- !u!114 &1285260547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,6 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7a314a792f0b043b5f88f1e447c8ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabSprite: {fileID: 764608779315627465, guid: 977b0b72c353de443931b2d155588e37, type: 3}
 --- !u!114 &1285260555
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,12 +7,14 @@ public class ManagerSpriteList : MonoBehaviour, Interfaces.SaveLoadAble
 
     public static ManagerSpriteList INSTANCE;
     public GameObject spriteParent;
-    public ArrayList<SpriteList> lists;
+    public Dictionary<EList, SpriteList> list = new Dictionary<EList, SpriteList>();
 
     public void Awake()
     {
         INSTANCE = this;
-        this.lists = new ArrayList<SpriteList>();
+
+        foreach (EList eList in System.Enum.GetValues(typeof(EList)))
+            this.list.Add(eList, new SpriteList());
     }
 
     private void Start()
@@ -22,25 +24,21 @@ public class ManagerSpriteList : MonoBehaviour, Interfaces.SaveLoadAble
 
     public void loadStart()
     {
-        foreach (SpriteList spriteList in this.lists)
-            spriteList.arrayList.loadStart();
+
     }
 
     public void loadState()
     {
-        foreach (SpriteList spriteList in this.lists)
-            spriteList.arrayList.loadState();
+
     }
 
     public void saveStart()
     {
-        foreach (SpriteList spriteList in this.lists)
-            spriteList.arrayList.saveStart();
+
     }
 
     public void saveState()
     {
-        foreach (SpriteList spriteList in this.lists)
-            spriteList.arrayList.saveState();
+
     }
 }
