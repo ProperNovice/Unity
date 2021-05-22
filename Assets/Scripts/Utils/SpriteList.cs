@@ -33,12 +33,6 @@ public class SpriteList : IEnumerable
         executeAction(Enums.SpriteViewAction.ANIMATE, Enums.AnimateSynch.SYNCHRONOUS);
     }
 
-    public void animateSynchronousLock(Action action)
-    {
-        executeAction(Enums.SpriteViewAction.ANIMATE, Enums.AnimateSynch.SYNCHRONOUS);
-        ManagerLock.INSTANCE.acquire(action);
-    }
-
     public void relocateSprites()
     {
         executeAction(Enums.SpriteViewAction.RELOCATE, Enums.AnimateSynch.ASYNCHRONOUS);

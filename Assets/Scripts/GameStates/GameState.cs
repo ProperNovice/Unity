@@ -5,7 +5,15 @@ using UnityEngine;
 public abstract class GameState
 {
 
-    public abstract void start();
+    public virtual void startFunction()
+    {
+
+    }
+
+    public virtual IEnumerator startCoroutine()
+    {
+        yield break;
+    }
 
     public void notifyTextOptionPressed(EText eText)
     {
@@ -17,6 +25,17 @@ public abstract class GameState
     protected virtual void executeTextOption(EText eText)
     {
 
+    }
+
+    protected SpriteList getList(EList eList)
+    {
+        return ManagerSpriteList.INSTANCE.list[eList];
+    }
+
+    protected IEnumerator acquirePermit()
+    {
+        // yield return acquirePermit();
+        yield return new WaitWhile(() => ManagerAnimation.INSTANCE.isAnimatingSynchronous());
     }
 
 }

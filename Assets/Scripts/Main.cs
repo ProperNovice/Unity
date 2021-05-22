@@ -21,7 +21,7 @@ public class Main : MonoBehaviour
     private void instantiates()
     {
 
-        for (int counter = 1; counter <= 10; counter++)
+        for (int counter = 1; counter <= 30; counter++)
         {
             GameObject gameObject = Instantiate(this.prefabSprite);
             SpriteView spriteView = gameObject.GetComponent<SpriteView>();

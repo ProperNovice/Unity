@@ -25,27 +25,11 @@ public class ManagerAnimation : MonoBehaviour
     {
 
         if (!this.listSynchronous.isEmpty())
-            animateListSynchronous();
+            animateExecute(this.listSynchronous);
 
         if (!this.listAsynchronous.isEmpty())
-            animateListAsynchronous();
+            animateExecute(this.listAsynchronous);
 
-    }
-
-    private void animateListSynchronous()
-    {
-        animateExecute(this.listSynchronous);
-
-        if (!this.listSynchronous.isEmpty())
-            return;
-
-        ManagerLock.INSTANCE.release();
-
-    }
-
-    private void animateListAsynchronous()
-    {
-        animateExecute(this.listAsynchronous);
     }
 
     private void animateExecute(ArrayList<AnimateAction> arrayList)
@@ -127,12 +111,6 @@ public class ManagerAnimation : MonoBehaviour
     public void moveAsynchronousToSynchronous()
     {
         this.listSynchronous.addLast(this.listAsynchronous.removeAll());
-    }
-
-    public void moveAsynchronousToSynchronousLock(Action action)
-    {
-        moveAsynchronousToSynchronous();
-        ManagerLock.INSTANCE.acquire(action);
     }
 
     private class AnimateAction
