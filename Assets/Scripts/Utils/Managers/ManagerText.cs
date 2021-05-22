@@ -60,14 +60,23 @@ public class ManagerText : MonoBehaviour
         float y = this.coordinates.y;
 
         if (this.rearrangeType.Equals(Enums.RearrangeType.PIVOT))
-            y += this.listShowing.size() * 50 / 2;
+        {
+
+            float totalY = 0;
+
+            foreach (TextView textView in this.listShowing)
+                totalY += textView.getHeight();
+
+            y += totalY / 2;
+
+        }
 
         foreach (TextView textView in this.listShowing)
         {
             textView.relocate(this.coordinates.x, y);
             textView.setActive(true);
 
-            y -= 50;
+            y -= textView.getHeight();
         }
 
     }

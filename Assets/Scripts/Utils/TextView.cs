@@ -10,6 +10,7 @@ public class TextView : MonoBehaviour
     private SpriteRenderer gameObjectChildSpriteRenderer;
     public EText eText;
     public Color black, white, wheat;
+    private BoxCollider2D boxCollider2D;
 
     private void Awake()
     {
@@ -23,13 +24,13 @@ public class TextView : MonoBehaviour
         this.eText = eText;
         this.textMesh.text = this.eText.text;
 
+        this.boxCollider2D = gameObject.AddComponent<BoxCollider2D>();
+
         if (!this.eText.isTextOption)
             return;
 
-        BoxCollider2D boxCollider = gameObject.AddComponent<BoxCollider2D>();
-
-        this.gameObjectChildSpriteRenderer.transform.localPosition = boxCollider.offset;
-        this.gameObjectChildSpriteRenderer.transform.localScale = boxCollider.size;
+        this.gameObjectChildSpriteRenderer.transform.localPosition = this.boxCollider2D.offset;
+        this.gameObjectChildSpriteRenderer.transform.localScale = this.boxCollider2D.size;
 
         OnMouseExit();
 
@@ -38,6 +39,11 @@ public class TextView : MonoBehaviour
     public void relocate(float x, float y)
     {
         this.transform.position = new Vector2(x, y);
+    }
+
+    public float getHeight()
+    {
+        return this.boxCollider2D.size.y;
     }
 
     public void setActive(bool value)
@@ -49,6 +55,9 @@ public class TextView : MonoBehaviour
     public void OnMouseEnter()
     {
 
+        if (!this.eText.isTextOption)
+            return;
+
         this.textMesh.color = white;
         this.gameObjectChildSpriteRenderer.color = black;
 
@@ -57,6 +66,9 @@ public class TextView : MonoBehaviour
     public void OnMouseExit()
     {
 
+        if (!this.eText.isTextOption)
+            return;
+
         this.textMesh.color = black;
         this.gameObjectChildSpriteRenderer.color = wheat;
 
@@ -64,7 +76,12 @@ public class TextView : MonoBehaviour
 
     private void OnMouseDown()
     {
+
+        if (!this.eText.isTextOption)
+            return;
+
         ManagerFlow.INSTANCE.gameStateCurrent.notifyTextOptionPressed(this.eText);
+
     }
 
 }

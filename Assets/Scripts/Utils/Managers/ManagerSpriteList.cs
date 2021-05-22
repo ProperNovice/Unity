@@ -7,19 +7,19 @@ public class ManagerSpriteList : MonoBehaviour, Interfaces.SaveLoadAble
 
     public static ManagerSpriteList INSTANCE;
     public GameObject spriteParent;
-    public Dictionary<EList, SpriteList> list = new Dictionary<EList, SpriteList>();
+    public Dictionary<EList, SpriteList> list;
 
     public void Awake()
     {
         INSTANCE = this;
-
-        foreach (EList eList in System.Enum.GetValues(typeof(EList)))
-            this.list.Add(eList, new SpriteList());
     }
 
     private void Start()
     {
+        this.list = new Dictionary<EList, SpriteList>();
 
+        foreach (EList eList in System.Enum.GetValues(typeof(EList)))
+            this.list.Add(eList, new SpriteList());
     }
 
     public void loadStart()
