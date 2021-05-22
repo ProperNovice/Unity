@@ -137,7 +137,6 @@ public class ManagerAnimation : MonoBehaviour
 
         }
 
-
         public bool isAnimating()
         {
             return this.spriteView.getCoordinatesTopLeft() != this.coordinatesTarget;
