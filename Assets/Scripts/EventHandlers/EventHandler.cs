@@ -5,17 +5,35 @@ using UnityEngine;
 public abstract class EventHandler : MonoBehaviour
 {
 
-    public virtual void OnMouseDown()
+    public void OnMouseDown()
+    {
+        if (!ManagerAnimation.INSTANCE.isAnimatingSynchronous())
+            primary();
+    }
+
+    public void OnMouseEnter()
+    {
+        if (!ManagerAnimation.INSTANCE.isAnimatingSynchronous())
+            enter();
+    }
+
+    public void OnMouseExit()
+    {
+        if (!ManagerAnimation.INSTANCE.isAnimatingSynchronous())
+            exit();
+    }
+
+    protected virtual void primary()
     {
 
     }
 
-    public virtual void OnMouseEnter()
+    protected virtual void enter()
     {
 
     }
 
-    public virtual void OnMouseExit()
+    protected virtual void exit()
     {
 
     }

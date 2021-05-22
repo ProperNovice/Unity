@@ -5,22 +5,17 @@ using UnityEngine;
 public class EventHandlerSelect : EventHandler
 {
 
-    private void Awake()
-    {
-
-    }
-
-    public override void OnMouseDown()
+    protected override void primary()
     {
         getEventHandler().OnMouseDown();
     }
 
-    public override void OnMouseEnter()
+    protected override void enter()
     {
         getEventHandler().OnMouseEnter();
     }
 
-    public override void OnMouseExit()
+    protected override void exit()
     {
         getEventHandler().OnMouseExit();
     }

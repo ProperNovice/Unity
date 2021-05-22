@@ -13,7 +13,7 @@ public class Main : MonoBehaviour
     {
         this.screenResolution = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
 
-        // instantiates();
+        instantiates();
         spriteLists();
 
     }
@@ -25,7 +25,7 @@ public class Main : MonoBehaviour
         {
             GameObject gameObject = Instantiate(this.prefabSprite);
             SpriteView spriteView = gameObject.GetComponent<SpriteView>();
-            spriteView.setFront("Misc/SelectBlackWhite");
+            spriteView.setFront("Misc/SelectGreen");
             spriteView.setWidth(100);
             ManagerSpriteList.INSTANCE.list[EList.DECK].arrayList.addLast(gameObject);
         }
