@@ -24,21 +24,25 @@ public class ManagerSpriteList : MonoBehaviour, Interfaces.SaveLoadAble
 
     public void loadStart()
     {
-
+        foreach (SpriteList spriteList in this.list.Values)
+            spriteList.arrayList.loadStart();
     }
 
     public void loadState()
     {
-
+        foreach (SpriteList spriteList in this.list.Values)
+            spriteList.arrayList.loadState();
     }
 
     public void saveStart()
     {
-
+        foreach (SpriteList spriteList in this.list.Values)
+            spriteList.arrayList.saveStart();
     }
 
     public void saveState()
     {
-
+        foreach (SpriteList spriteList in this.list.Values)
+            spriteList.arrayList.saveState();
     }
 }

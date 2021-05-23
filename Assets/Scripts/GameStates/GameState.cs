@@ -34,7 +34,6 @@ public abstract class GameState
 
     protected IEnumerator acquirePermit()
     {
-        // yield return acquirePermit();
         yield return new WaitWhile(() => ManagerAnimation.INSTANCE.isAnimatingSynchronous());
     }
 

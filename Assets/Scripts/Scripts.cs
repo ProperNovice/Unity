@@ -12,4 +12,9 @@ public class Scripts : MonoBehaviour
         INSTANCE = this;
     }
 
+    private IEnumerator acquirePermit()
+    {
+        yield return new WaitWhile(() => ManagerAnimation.INSTANCE.isAnimatingSynchronous());
+    }
+
 }
