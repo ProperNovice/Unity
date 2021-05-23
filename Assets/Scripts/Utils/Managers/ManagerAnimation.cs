@@ -21,7 +21,7 @@ public class ManagerAnimation : MonoBehaviour
 
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
 
         if (!this.listSynchronous.isEmpty())
