@@ -15,7 +15,6 @@ public class Main : MonoBehaviour
 
         instantiates();
         spriteLists();
-
     }
 
     private void instantiates()
