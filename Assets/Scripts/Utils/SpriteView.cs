@@ -118,6 +118,11 @@ public class SpriteView : MonoBehaviour
 
     }
 
+    public void setDimensions(Vector2 dimensions)
+    {
+        setWidth(dimensions.x);
+    }
+
     public float getWidth()
     {
         return getDimensions().x;
