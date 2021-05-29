@@ -12,6 +12,11 @@ public class Scripts : MonoBehaviour
         INSTANCE = this;
     }
 
+    private SpriteList getList(EList eList)
+    {
+        return ManagerSpriteList.INSTANCE.list[eList];
+    }
+
     private IEnumerator acquirePermit()
     {
         yield return new WaitWhile(() => ManagerAnimation.INSTANCE.isAnimatingSynchronous());

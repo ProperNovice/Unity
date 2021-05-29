@@ -19,12 +19,19 @@ public abstract class GameState
     {
         Logger.log("Text -> " + eText.text);
         ManagerText.INSTANCE.concealText();
+
+        Scripts.INSTANCE.StartCoroutine(executeTextOptionCoroutine(eText));
         executeTextOption(eText);
     }
 
     protected virtual void executeTextOption(EText eText)
     {
 
+    }
+
+    protected virtual IEnumerator executeTextOptionCoroutine(EText eText)
+    {
+        yield break;
     }
 
     protected SpriteList getList(EList eList)
