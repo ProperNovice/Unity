@@ -8,7 +8,7 @@ public class SpriteList : IEnumerable
 
     public Vector2 coordinates = new Vector2(0, 1440), percentageGapBetweenSprites = new Vector2(100, 100);
     public int objectsPerRow = -1;
-    public Enums.LayerZList layerZOrder = Enums.LayerZList.TO_BACK_FIRST_SPRITEVIEW;
+    public Enums.LayerZOrder layerZOrder = Enums.LayerZOrder.TO_BACK_FIRST_SPRITEVIEW;
     public Enums.RearrangeType rearrangeType = Enums.RearrangeType.LINEAR;
     public Enums.DirectionHorizontal horizontalDirection = Enums.DirectionHorizontal.RIGHT;
     public Enums.DirectionVertical verticalDirection = Enums.DirectionVertical.DOWN;
@@ -81,7 +81,7 @@ public class SpriteList : IEnumerable
 
         ArrayList<GameObject> listLayerZ = this.arrayList.clone();
 
-        if (this.layerZOrder.Equals(Enums.LayerZList.TO_FRONT_FIRST_SPRITEVIEW))
+        if (this.layerZOrder.Equals(Enums.LayerZOrder.TO_FRONT_FIRST_SPRITEVIEW))
             listLayerZ.reverse();
 
         foreach (GameObject gameObject in listLayerZ)

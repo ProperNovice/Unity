@@ -35,7 +35,7 @@ public class Enums
         RELOCATE, ANIMATE
     }
 
-    public enum LayerZList
+    public enum LayerZOrder
     {
         TO_BACK_FIRST_SPRITEVIEW, TO_FRONT_FIRST_SPRITEVIEW
     }
