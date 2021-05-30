@@ -5,9 +5,9 @@ using UnityEngine;
 public abstract class GameState
 {
 
-    public virtual void startFunction()
+    public virtual void start()
     {
-
+        Scripts.INSTANCE.StartCoroutine(startCoroutine());
     }
 
     public virtual IEnumerator startCoroutine()

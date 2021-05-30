@@ -26,8 +26,7 @@ public class ManagerFlow : MonoBehaviour
         this.gameStateCurrent = this.list.removeFirst();
         Logger.log("Gamestate -> " + this.gameStateCurrent);
 
-        StartCoroutine(this.gameStateCurrent.startCoroutine());
-        this.gameStateCurrent.startFunction();
+        this.gameStateCurrent.start();
 
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StartGame : GameState
 {
-    public override void startFunction()
+    public override void start()
     {
 
     }
