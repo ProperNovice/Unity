@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scripts : MonoBehaviour
+public class Model : MonoBehaviour
 {
 
-    public static Scripts INSTANCE;
+    public static Model INSTANCE;
 
     private void Awake()
     {

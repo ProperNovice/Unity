@@ -7,7 +7,7 @@ public abstract class GameState
 
     public virtual void start()
     {
-        Scripts.INSTANCE.StartCoroutine(startCoroutine());
+        Model.INSTANCE.StartCoroutine(startCoroutine());
     }
 
     public virtual IEnumerator startCoroutine()
@@ -20,7 +20,7 @@ public abstract class GameState
         Logger.log("Text -> " + eText.text);
         ManagerText.INSTANCE.concealText();
 
-        Scripts.INSTANCE.StartCoroutine(executeTextOptionCoroutine(eText));
+        Model.INSTANCE.StartCoroutine(executeTextOptionCoroutine(eText));
         executeTextOption(eText);
     }
 
