@@ -21,34 +21,6 @@ public class ManagerAnimation : MonoBehaviour
 
     }
 
-    private void LateUpdate()
-    {
-
-        if (!this.listSynchronous.isEmpty())
-            animateExecute(this.listSynchronous);
-
-        if (!this.listAsynchronous.isEmpty())
-            animateExecute(this.listAsynchronous);
-
-    }
-
-    private void animateExecute(ArrayList<AnimateAction> arrayList)
-    {
-
-        foreach (AnimateAction animateAction in arrayList.clone())
-        {
-
-            animateAction.animate();
-
-            if (animateAction.isAnimating())
-                continue;
-
-            arrayList.remove(animateAction);
-
-        }
-
-    }
-
     public void animateTopLeft(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynch)
     {
 
@@ -67,8 +39,7 @@ public class ManagerAnimation : MonoBehaviour
                 break;
         }
 
-        AnimateAction animateAction = new AnimateAction(spriteView, coordinates);
-        list.addLast(animateAction);
+        AnimateAction animateAction = new AnimateAction(spriteView, coordinates, list);
 
     }
 
@@ -116,28 +87,45 @@ public class ManagerAnimation : MonoBehaviour
     private class AnimateAction
     {
 
-        public readonly SpriteView spriteView;
+        public SpriteView spriteView;
         private Vector2 coordinatesTarget;
+        private ArrayList<AnimateAction> list;
 
-        public AnimateAction(SpriteView spriteView, Vector2 coordinatesTarget)
+        public AnimateAction(SpriteView spriteView, Vector2 coordinatesTarget, ArrayList<AnimateAction> list)
         {
             this.spriteView = spriteView;
             this.coordinatesTarget = coordinatesTarget;
+            this.list = list;
+
+            if (!isAnimating())
+                return;
+
+            this.list.addLast(this);
+            Model.INSTANCE.StartCoroutine(animate());
         }
 
-        public void animate()
+        private IEnumerator animate()
         {
 
-            float speed = ManagerAnimation.INSTANCE.speed;
-            float pixelsToMove = speed * Time.deltaTime;
+            while (isAnimating())
+            {
 
-            Vector2 positionCurrent = this.spriteView.getCoordinatesTopLeft();
-            Vector2 positionNext = Vector2.MoveTowards(positionCurrent, this.coordinatesTarget, pixelsToMove);
-            this.spriteView.relocateTopLeft(positionNext);
+                float speed = ManagerAnimation.INSTANCE.speed;
+                float pixelsToMove = speed * Time.deltaTime;
+
+                Vector2 positionCurrent = this.spriteView.getCoordinatesTopLeft();
+                Vector2 positionNext = Vector2.MoveTowards(positionCurrent, this.coordinatesTarget, pixelsToMove);
+                this.spriteView.relocateTopLeft(positionNext);
+
+                yield return null;
+
+            }
+
+            this.list.remove(this);
 
         }
 
-        public bool isAnimating()
+        private bool isAnimating()
         {
             return this.spriteView.getCoordinatesTopLeft() != this.coordinatesTarget;
         }
