@@ -21,10 +21,33 @@ public class ManagerAnimation : MonoBehaviour
 
     }
 
-    public void animateTopLeft(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynch)
+    private IEnumerator coroutine()
+    {
+        while (isAnimating())
+        {
+            animate(this.listSynchronous);
+            animate(this.listAsynchronous);
+
+            yield return null;
+        }
+    }
+
+    private void animate(ArrayList<AnimateAction> list)
     {
 
-        removeSpriteViewIfAnimating(spriteView);
+        foreach (AnimateAction animateAction in list.clone())
+        {
+            animateAction.animate();
+
+            if (!animateAction.isAnimating())
+                list.remove(animateAction);
+        }
+
+    }
+
+    public void animateTopLeft(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynch)
+    {
+        removeSpriteViewIfAnimatingAlready(spriteView);
 
         ArrayList<AnimateAction> list = new ArrayList<AnimateAction>();
 
@@ -39,8 +62,17 @@ public class ManagerAnimation : MonoBehaviour
                 break;
         }
 
-        AnimateAction animateAction = new AnimateAction(spriteView, coordinates, list);
+        AnimateAction animateAction = new AnimateAction(spriteView, coordinates);
 
+        if (!animateAction.isAnimating())
+            return;
+
+        list.addLast(animateAction);
+
+        if (this.listAsynchronous.size() + this.listSynchronous.size() > 1)
+            return;
+
+        StartCoroutine(coroutine());
     }
 
     public void animateCenter(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynch)
@@ -49,7 +81,7 @@ public class ManagerAnimation : MonoBehaviour
         animateTopLeft(spriteView, coordinatesFinal, animateSynch);
     }
 
-    private void removeSpriteViewIfAnimating(SpriteView spriteView)
+    private void removeSpriteViewIfAnimatingAlready(SpriteView spriteView)
     {
         checkListForDuplicateSpriteView(this.listAsynchronous, spriteView);
         checkListForDuplicateSpriteView(this.listSynchronous, spriteView);
@@ -89,43 +121,24 @@ public class ManagerAnimation : MonoBehaviour
 
         public SpriteView spriteView;
         private Vector2 coordinatesTarget;
-        private ArrayList<AnimateAction> list;
 
-        public AnimateAction(SpriteView spriteView, Vector2 coordinatesTarget, ArrayList<AnimateAction> list)
+        public AnimateAction(SpriteView spriteView, Vector2 coordinatesTarget)
         {
             this.spriteView = spriteView;
             this.coordinatesTarget = coordinatesTarget;
-            this.list = list;
-
-            if (!isAnimating())
-                return;
-
-            this.list.addLast(this);
-            Model.INSTANCE.StartCoroutine(animate());
         }
 
-        private IEnumerator animate()
+        public void animate()
         {
+            float speed = ManagerAnimation.INSTANCE.speed;
+            float pixelsToMove = speed * Time.deltaTime;
 
-            while (isAnimating())
-            {
-
-                float speed = ManagerAnimation.INSTANCE.speed;
-                float pixelsToMove = speed * Time.deltaTime;
-
-                Vector2 positionCurrent = this.spriteView.getCoordinatesTopLeft();
-                Vector2 positionNext = Vector2.MoveTowards(positionCurrent, this.coordinatesTarget, pixelsToMove);
-                this.spriteView.relocateTopLeft(positionNext);
-
-                yield return null;
-
-            }
-
-            this.list.remove(this);
-
+            Vector2 positionCurrent = this.spriteView.getCoordinatesTopLeft();
+            Vector2 positionNext = Vector2.MoveTowards(positionCurrent, this.coordinatesTarget, pixelsToMove);
+            this.spriteView.relocateTopLeft(positionNext);
         }
 
-        private bool isAnimating()
+        public bool isAnimating()
         {
             return this.spriteView.getCoordinatesTopLeft() != this.coordinatesTarget;
         }
