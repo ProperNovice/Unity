@@ -21,7 +21,7 @@ public class ManagerAnimation : MonoBehaviour
 
     }
 
-    private IEnumerator coroutine()
+    private IEnumerator animationCoroutine()
     {
         while (isAnimating())
         {
@@ -72,7 +72,7 @@ public class ManagerAnimation : MonoBehaviour
         if (this.listAsynchronous.size() + this.listSynchronous.size() > 1)
             return;
 
-        StartCoroutine(coroutine());
+        StartCoroutine(animationCoroutine());
     }
 
     public void animateCenter(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynch)
