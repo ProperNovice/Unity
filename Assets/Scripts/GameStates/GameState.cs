@@ -19,14 +19,12 @@ public abstract class GameState
     {
         Logger.log("Text -> " + eText.text);
         ManagerText.INSTANCE.concealText();
-
-        Model.INSTANCE.StartCoroutine(executeTextOptionCoroutine(eText));
         executeTextOption(eText);
     }
 
     protected virtual void executeTextOption(EText eText)
     {
-
+        Model.INSTANCE.StartCoroutine(executeTextOptionCoroutine(eText));
     }
 
     protected virtual IEnumerator executeTextOptionCoroutine(EText eText)
