@@ -9,47 +9,24 @@ public class ManagerAnimation : MonoBehaviour
 
     public static ManagerAnimation INSTANCE;
     [SerializeField] private float speed = 1200;
-    private ArrayList<AnimateAction> listSynchronous, listAsynchronous;
+    private ArrayList<AnimateToken> listSynchronous, listAsynchronous;
 
     private void Awake()
     {
 
         INSTANCE = this;
 
-        this.listSynchronous = new ArrayList<AnimateAction>();
-        this.listAsynchronous = new ArrayList<AnimateAction>();
-
-    }
-
-    private IEnumerator animationCoroutine()
-    {
-        while (isAnimating())
-        {
-            animate(this.listSynchronous);
-            animate(this.listAsynchronous);
-
-            yield return null;
-        }
-    }
-
-    private void animate(ArrayList<AnimateAction> list)
-    {
-
-        foreach (AnimateAction animateAction in list.clone())
-        {
-            animateAction.animate();
-
-            if (!animateAction.isAnimating())
-                list.remove(animateAction);
-        }
+        this.listSynchronous = new ArrayList<AnimateToken>();
+        this.listAsynchronous = new ArrayList<AnimateToken>();
 
     }
 
     public void animateTopLeft(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynch)
     {
-        removeSpriteViewIfAnimatingAlready(spriteView);
 
-        ArrayList<AnimateAction> list = new ArrayList<AnimateAction>();
+        removeSpriteViewIfAnimating(spriteView);
+
+        ArrayList<AnimateToken> list = new ArrayList<AnimateToken>();
 
         switch (animateSynch)
         {
@@ -62,17 +39,14 @@ public class ManagerAnimation : MonoBehaviour
                 break;
         }
 
-        AnimateAction animateAction = new AnimateAction(spriteView, coordinates);
+        AnimateToken animateToken = new AnimateToken(spriteView, coordinates);
 
-        if (!animateAction.isAnimating())
+        if (!animateToken.isAnimating())
             return;
 
-        list.addLast(animateAction);
+        list.addLast(animateToken);
+        StartCoroutine(animateToken.animate());
 
-        if (this.listAsynchronous.size() + this.listSynchronous.size() > 1)
-            return;
-
-        StartCoroutine(animationCoroutine());
     }
 
     public void animateCenter(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynch)
@@ -81,15 +55,15 @@ public class ManagerAnimation : MonoBehaviour
         animateTopLeft(spriteView, coordinatesFinal, animateSynch);
     }
 
-    private void removeSpriteViewIfAnimatingAlready(SpriteView spriteView)
+    private void removeSpriteViewIfAnimating(SpriteView spriteView)
     {
         checkListForDuplicateSpriteView(this.listAsynchronous, spriteView);
         checkListForDuplicateSpriteView(this.listSynchronous, spriteView);
     }
 
-    private void checkListForDuplicateSpriteView(ArrayList<AnimateAction> list, SpriteView spriteView)
+    private void checkListForDuplicateSpriteView(ArrayList<AnimateToken> list, SpriteView spriteView)
     {
-        foreach (AnimateAction animateAction in list.clone())
+        foreach (AnimateToken animateAction in list.clone())
         {
             if (animateAction.spriteView.Equals(spriteView))
                 list.remove(animateAction);
@@ -116,26 +90,37 @@ public class ManagerAnimation : MonoBehaviour
         this.listSynchronous.addLast(this.listAsynchronous.removeAll());
     }
 
-    private class AnimateAction
+    private class AnimateToken
     {
 
         public SpriteView spriteView;
         private Vector2 coordinatesTarget;
 
-        public AnimateAction(SpriteView spriteView, Vector2 coordinatesTarget)
+        public AnimateToken(SpriteView spriteView, Vector2 coordinatesTarget)
         {
             this.spriteView = spriteView;
             this.coordinatesTarget = coordinatesTarget;
         }
 
-        public void animate()
+        public IEnumerator animate()
         {
-            float speed = ManagerAnimation.INSTANCE.speed;
-            float pixelsToMove = speed * Time.deltaTime;
 
-            Vector2 positionCurrent = this.spriteView.getCoordinatesTopLeft();
-            Vector2 positionNext = Vector2.MoveTowards(positionCurrent, this.coordinatesTarget, pixelsToMove);
-            this.spriteView.relocateTopLeft(positionNext);
+            while (isAnimating())
+            {
+
+                float speed = ManagerAnimation.INSTANCE.speed;
+                float pixelsToMove = speed * Time.deltaTime;
+
+                Vector2 positionCurrent = this.spriteView.getCoordinatesTopLeft();
+                Vector2 positionNext = Vector2.MoveTowards(positionCurrent, this.coordinatesTarget, pixelsToMove);
+                this.spriteView.relocateTopLeft(positionNext);
+
+                yield return null;
+
+            }
+
+            ManagerAnimation.INSTANCE.removeSpriteViewIfAnimating(this.spriteView);
+
         }
 
         public bool isAnimating()
