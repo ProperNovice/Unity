@@ -76,7 +76,7 @@ public class SpriteList : IEnumerable
 
     }
 
-    public void orderLayerZ()
+    private void orderLayerZ()
     {
 
         ArrayList<GameObject> listLayerZ = this.arrayList.clone();
