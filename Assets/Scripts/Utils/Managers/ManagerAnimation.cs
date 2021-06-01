@@ -57,16 +57,18 @@ public class ManagerAnimation : MonoBehaviour
 
     private void removeSpriteViewIfAnimating(SpriteView spriteView)
     {
-        checkListForDuplicateSpriteView(this.listAsynchronous, spriteView);
-        checkListForDuplicateSpriteView(this.listSynchronous, spriteView);
-    }
+        ArrayList<ArrayList<AnimateToken>> list = new ArrayList<ArrayList<AnimateToken>>();
+        list.addLast(this.listSynchronous);
+        list.addLast(this.listAsynchronous);
 
-    private void checkListForDuplicateSpriteView(ArrayList<AnimateToken> list, SpriteView spriteView)
-    {
-        foreach (AnimateToken animateAction in list.clone())
+        foreach (ArrayList<AnimateToken> listToken in list)
         {
-            if (animateAction.spriteView.Equals(spriteView))
-                list.remove(animateAction);
+
+            foreach (AnimateToken animateAction in listToken.clone())
+            {
+                if (animateAction.spriteView.Equals(spriteView))
+                    listToken.remove(animateAction);
+            }
         }
     }
 
