@@ -165,9 +165,10 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
 
     }
 
-    public void reverse()
+    public ArrayList<T> reverse()
     {
         this.list.Reverse();
+        return this;
     }
 
     public int size()
