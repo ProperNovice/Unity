@@ -13,16 +13,22 @@ public class Main : MonoBehaviour
     {
         this.screenResolution = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
 
-        instantiates();
-        spriteLists();
+        instantiateSprites();
+        setUpSpriteLists();
+        setUpTextCoordinates();
     }
 
-    private void instantiates()
+    private void instantiateSprites()
     {
 
     }
 
-    private void spriteLists()
+    private void setUpSpriteLists()
+    {
+
+    }
+
+    private void setUpTextCoordinates()
     {
 
     }
