@@ -25,7 +25,7 @@ public class ManagerFlow : MonoBehaviour
 
         if (this.list.isEmpty())
         {
-            Logger.log("flow is empty");
+            Logger.log("Flow is empty");
             this.gameStateCurrent = null;
             return;
         }
