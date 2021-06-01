@@ -23,6 +23,12 @@ public class ManagerFlow : MonoBehaviour
     public void proceed()
     {
 
+        if (this.list.isEmpty())
+        {
+            ShutDown.execute(this);
+            return;
+        }
+
         this.gameStateCurrent = this.list.removeFirst();
         Logger.log("Gamestate -> " + this.gameStateCurrent);
 
