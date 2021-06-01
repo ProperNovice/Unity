@@ -8,7 +8,7 @@ public class EText
 {
 
     public static ArrayList<EText> list = new ArrayList<EText>();
-    public static EText START = new EText("Start", true);
+    public static EText START_GAME = new EText("Start game", true);
     public static EText CONTINUE = new EText("Continue", true);
 
     public readonly string text;
