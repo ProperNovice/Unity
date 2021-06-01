@@ -66,8 +66,11 @@ public class ManagerAnimation : MonoBehaviour
 
             foreach (AnimateToken animateAction in listToken.clone())
             {
-                if (animateAction.spriteView.Equals(spriteView))
-                    listToken.remove(animateAction);
+                if (!animateAction.spriteView.Equals(spriteView))
+                    continue;
+
+                listToken.remove(animateAction);
+                animateAction.stopAnimation();
             }
         }
     }
@@ -97,6 +100,7 @@ public class ManagerAnimation : MonoBehaviour
 
         public SpriteView spriteView;
         private Vector2 coordinatesTarget;
+        private bool stopCoroutine = false;
 
         public AnimateToken(SpriteView spriteView, Vector2 coordinatesTarget)
         {
@@ -109,6 +113,9 @@ public class ManagerAnimation : MonoBehaviour
 
             while (isAnimating())
             {
+
+                if (this.stopCoroutine)
+                    yield break;
 
                 float speed = ManagerAnimation.INSTANCE.speed;
                 float pixelsToMove = speed * Time.deltaTime;
@@ -128,6 +135,11 @@ public class ManagerAnimation : MonoBehaviour
         public bool isAnimating()
         {
             return this.spriteView.getCoordinatesTopLeft() != this.coordinatesTarget;
+        }
+
+        public void stopAnimation()
+        {
+            this.stopCoroutine = true;
         }
 
     }
