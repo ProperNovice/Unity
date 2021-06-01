@@ -26,7 +26,7 @@ public class ManagerAnimation : MonoBehaviour
 
         removeSpriteViewIfAnimating(spriteView);
 
-        ArrayList<AnimateToken> list = new ArrayList<AnimateToken>();
+        ArrayList<AnimateToken> list = null;
 
         switch (animateSynch)
         {
