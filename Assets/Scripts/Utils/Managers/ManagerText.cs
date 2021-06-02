@@ -65,7 +65,7 @@ public class ManagerText : MonoBehaviour
             float totalY = 0;
 
             foreach (TextView textView in this.listShowing)
-                totalY += textView.getHeight();
+                totalY += textView.getDimensions().y;
 
             y += totalY / 2;
 
@@ -76,7 +76,7 @@ public class ManagerText : MonoBehaviour
             textView.relocate(this.coordinates.x, y);
             textView.setActive(true);
 
-            y -= textView.getHeight();
+            y -= textView.getDimensions().y;
         }
 
     }

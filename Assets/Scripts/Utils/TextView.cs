@@ -41,9 +41,9 @@ public class TextView : MonoBehaviour
         this.transform.position = new Vector2(x, y);
     }
 
-    public float getHeight()
+    public Vector2 getDimensions()
     {
-        return this.boxCollider2D.size.y;
+        return this.boxCollider2D.size;
     }
 
     public void setActive(bool value)
