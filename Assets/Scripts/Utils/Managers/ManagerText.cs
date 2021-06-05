@@ -30,7 +30,7 @@ public class ManagerText : MonoBehaviour
 
             GameObject gameObject = Instantiate(this.text);
             TextView textView = gameObject.GetComponent<TextView>();
-            textView.setText(eText);
+            textView.setEText(eText);
             textView.setActive(false);
 
             gameObject.transform.parent = this.parent;
@@ -73,7 +73,7 @@ public class ManagerText : MonoBehaviour
 
         foreach (TextView textView in this.listShowing)
         {
-            textView.relocate(this.coordinates.x, y);
+            textView.relocateTopLeft(this.coordinates.x, y);
             textView.setActive(true);
 
             y -= textView.getDimensions().y;

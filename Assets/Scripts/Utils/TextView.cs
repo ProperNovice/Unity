@@ -18,13 +18,11 @@ public class TextView : MonoBehaviour
         this.gameObjectChildSpriteRenderer = this.gameObjectChild.GetComponent<SpriteRenderer>();
     }
 
-    public void setText(EText eText)
+    public void setEText(EText eText)
     {
 
         this.eText = eText;
-        this.textMesh.text = this.eText.text;
-
-        this.boxCollider2D = gameObject.AddComponent<BoxCollider2D>();
+        setText(this.eText.text);
 
         if (!this.eText.isTextOption)
             return;
@@ -36,9 +34,21 @@ public class TextView : MonoBehaviour
 
     }
 
-    public void relocate(float x, float y)
+    public void setText(string text)
+    {
+        this.textMesh.text = text;
+        this.boxCollider2D = gameObject.AddComponent<BoxCollider2D>();
+    }
+
+    public void relocateTopLeft(float x, float y)
     {
         this.transform.position = new Vector2(x, y);
+    }
+
+    public void relocateCenterX(float x, float y)
+    {
+        float width = getDimensions().x;
+        relocateTopLeft(x - width / 2, y);
     }
 
     public Vector2 getDimensions()
@@ -55,7 +65,7 @@ public class TextView : MonoBehaviour
     public void OnMouseEnter()
     {
 
-        if (!this.eText.isTextOption)
+        if (!hasEventHandler())
             return;
 
         this.textMesh.color = white;
@@ -66,7 +76,7 @@ public class TextView : MonoBehaviour
     public void OnMouseExit()
     {
 
-        if (!this.eText.isTextOption)
+        if (!hasEventHandler())
             return;
 
         this.textMesh.color = black;
@@ -77,11 +87,22 @@ public class TextView : MonoBehaviour
     private void OnMouseDown()
     {
 
-        if (!this.eText.isTextOption)
+        if (!hasEventHandler())
             return;
 
         ManagerFlow.INSTANCE.gameStateCurrent.notifyTextOptionPressed(this.eText);
 
+    }
+
+    private bool hasEventHandler()
+    {
+        if (this.eText == null)
+            return false;
+
+        if (!this.eText.isTextOption)
+            return false;
+
+        return true;
     }
 
 }

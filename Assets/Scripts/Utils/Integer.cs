@@ -9,7 +9,7 @@ public class Integer : Interfaces.SaveLoadAble
 
     public Integer() : this(0)
     {
-        Logger.log("null");
+
     }
 
     public Integer(int number)
