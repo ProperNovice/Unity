@@ -18,7 +18,7 @@ public abstract class GameState
     public void notifyTextOptionPressed(EText eText)
     {
         Logger.log("Text -> " + eText.text);
-        ManagerText.INSTANCE.concealText();
+        concealText();
         executeTextOption(eText);
     }
 
