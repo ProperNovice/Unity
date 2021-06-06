@@ -32,11 +32,6 @@ public abstract class GameState
         yield break;
     }
 
-    protected SpriteList getList(EList eList)
-    {
-        return ManagerSpriteList.INSTANCE.list[eList];
-    }
-
     protected void concealText()
     {
         ManagerText.INSTANCE.concealText();

@@ -18,7 +18,7 @@ public class ManagerSpriteList : MonoBehaviour, Interfaces.SaveLoadAble
     {
         this.list = new Dictionary<EList, SpriteList>();
 
-        foreach (EList eList in System.Enum.GetValues(typeof(EList)))
+        foreach (EList eList in EList.list)
             this.list.Add(eList, new SpriteList());
     }
 
