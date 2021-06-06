@@ -95,6 +95,18 @@ public class ManagerAnimation : MonoBehaviour
         this.listSynchronous.addLast(this.listAsynchronous.removeAll());
     }
 
+    public void stopAnimations()
+    {
+        ArrayList<AnimateToken> list = new ArrayList<AnimateToken>();
+
+        list.addLast(this.listSynchronous.removeAll());
+        list.addLast(this.listAsynchronous.removeAll());
+
+        while (!list.isEmpty())
+            list.removeRandom().stopAnimation();
+
+    }
+
     private class AnimateToken
     {
 

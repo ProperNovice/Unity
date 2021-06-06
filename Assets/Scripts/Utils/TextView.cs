@@ -51,6 +51,11 @@ public class TextView : MonoBehaviour
         relocateTopLeft(x - width / 2, y);
     }
 
+    public void relocateCenterX(Vector2 center)
+    {
+        relocateCenterX(center.x, center.y);
+    }
+
     public Vector2 getDimensions()
     {
         return this.boxCollider2D.size;
