@@ -270,3 +270,4 @@ Received Import Request.
   path: Assets/Scripts/Utils/Managers/ManagerDuplicateProtection.cs
   artifactKey: Guid(9915bef0194714f409e4492118e89089) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scripts/Utils/Managers/ManagerDuplicateProtection.cs using Guid(9915bef0194714f409e4492118e89089) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ac1ad3924098d15093907e6df06ccdb') in 0.006692 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
