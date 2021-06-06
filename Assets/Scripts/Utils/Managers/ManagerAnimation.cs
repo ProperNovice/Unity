@@ -123,13 +123,14 @@ public class ManagerAnimation : MonoBehaviour
         public IEnumerator animate()
         {
 
+            float speed = ManagerAnimation.INSTANCE.speed;
+
             while (isAnimating())
             {
 
                 if (this.stopCoroutine)
                     yield break;
 
-                float speed = ManagerAnimation.INSTANCE.speed;
                 float pixelsToMove = speed * Time.deltaTime;
 
                 Vector2 positionCurrent = this.spriteView.getCoordinatesTopLeft();
