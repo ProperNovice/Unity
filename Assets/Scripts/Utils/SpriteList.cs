@@ -65,18 +65,19 @@ public class SpriteList : IEnumerable
                     break;
 
                 case Enums.SpriteViewAction.ANIMATE:
-                    ManagerAnimation.INSTANCE.animateTopLeft(spriteView, this.coordinatesObjectFinal, animateSynchEnum);
+                    ManagerAnimation.INSTANCE.animateTopLeft(spriteView, this.coordinatesObjectFinal,
+                        animateSynchEnum, this);
                     break;
 
             }
 
         }
 
-        orderLayerZ();
+        executeLayerZ();
 
     }
 
-    private void orderLayerZ()
+    public void executeLayerZ()
     {
 
         ArrayList<GameObject> listLayerZ = this.arrayList.clone();

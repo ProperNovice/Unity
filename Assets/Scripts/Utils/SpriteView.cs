@@ -18,7 +18,6 @@ public class SpriteView : MonoBehaviour
         this.boxCollider2D = GetComponent<BoxCollider2D>();
 
         ManagerLayerZ.INSTANCE.addGameObject(this);
-        ManagerLayerZ.INSTANCE.executeToFront();
         this.gameObject.transform.parent = ManagerSpriteList.INSTANCE.spriteParent.transform;
 
         if (this.spriteRenderer.sprite != null)

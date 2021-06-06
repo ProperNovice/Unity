@@ -21,12 +21,13 @@ public class ManagerAnimation : MonoBehaviour
 
     }
 
-    public void animateTopLeft(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynch)
+    public void animateTopLeft(SpriteView spriteView, Vector2 coordinates,
+        Enums.AnimateSynch animateSynch, SpriteList spriteList)
     {
 
         removeSpriteViewIfAnimating(spriteView);
 
-        AnimateToken animateToken = new AnimateToken(spriteView, coordinates);
+        AnimateToken animateToken = new AnimateToken(spriteView, coordinates, spriteList);
 
         if (!animateToken.isAnimating())
             return;
@@ -49,10 +50,16 @@ public class ManagerAnimation : MonoBehaviour
 
     }
 
+    public void animateTopLeft(SpriteView spriteView, Vector2 coordinates,
+        Enums.AnimateSynch animateSynch)
+    {
+        animateTopLeft(spriteView, coordinates, animateSynch, null);
+    }
+
     public void animateCenter(SpriteView spriteView, Vector2 coordinates, Enums.AnimateSynch animateSynch)
     {
         Vector2 coordinatesFinal = new Vector2(coordinates.x - spriteView.getWidth() / 2, coordinates.y + spriteView.getHeight() / 2);
-        animateTopLeft(spriteView, coordinatesFinal, animateSynch);
+        animateTopLeft(spriteView, coordinatesFinal, animateSynch, null);
     }
 
     private void removeSpriteViewIfAnimating(SpriteView spriteView)
@@ -113,11 +120,18 @@ public class ManagerAnimation : MonoBehaviour
         public SpriteView spriteView;
         private Vector2 coordinatesTarget;
         private bool stopCoroutine = false;
+        private SpriteList spriteList = null;
 
         public AnimateToken(SpriteView spriteView, Vector2 coordinatesTarget)
         {
             this.spriteView = spriteView;
             this.coordinatesTarget = coordinatesTarget;
+        }
+
+        public AnimateToken(SpriteView spriteView, Vector2 coordinatesTarget, SpriteList spriteList)
+            : this(spriteView, coordinatesTarget)
+        {
+            this.spriteList = spriteList;
         }
 
         public IEnumerator animate()
@@ -131,6 +145,9 @@ public class ManagerAnimation : MonoBehaviour
                 if (this.stopCoroutine)
                     yield break;
 
+                this.spriteView.toFront();
+                executeLayerZ();
+
                 float pixelsToMove = speed * Time.deltaTime;
 
                 Vector2 positionCurrent = this.spriteView.getCoordinatesTopLeft();
@@ -141,7 +158,21 @@ public class ManagerAnimation : MonoBehaviour
 
             }
 
+            executeLayerZ();
+
             ManagerAnimation.INSTANCE.removeSpriteViewIfAnimating(this.spriteView);
+
+        }
+
+        private void executeLayerZ()
+        {
+
+            if (this.spriteList.rearrangeType.Equals(Enums.RearrangeType.LINEAR))
+                if (spriteList.percentageGapBetweenSprites.x == 100)
+                    if (spriteList.percentageGapBetweenSprites.y == 100)
+                        return;
+
+            this.spriteList.executeLayerZ();
 
         }
 

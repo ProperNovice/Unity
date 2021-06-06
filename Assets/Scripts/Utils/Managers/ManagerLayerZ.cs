@@ -8,6 +8,7 @@ public class ManagerLayerZ : MonoBehaviour
     public static ManagerLayerZ INSTANCE;
     private Dictionary<ELayerZ, ArrayList<GameObject>> listLayerZ;
     private Dictionary<GameObject, SpriteView> listSpriteViews;
+    private bool executeToFront = false;
 
     private void Awake()
     {
@@ -30,7 +31,7 @@ public class ManagerLayerZ : MonoBehaviour
         arrayListGameObject.remove(gameObject);
         arrayListGameObject.addLast(gameObject);
 
-        executeToFront();
+        this.executeToFront = true;
 
     }
 
@@ -41,12 +42,17 @@ public class ManagerLayerZ : MonoBehaviour
         arrayListGameObject.remove(gameObject);
         arrayListGameObject.addFirst(gameObject);
 
-        executeToFront();
+        this.executeToFront = true;
 
     }
 
-    public void executeToFront()
+    private void LateUpdate()
     {
+
+        if (!this.executeToFront)
+            return;
+
+        this.executeToFront = false;
 
         int sortingOrder = -1;
 
