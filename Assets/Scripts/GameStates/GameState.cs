@@ -37,6 +37,11 @@ public abstract class GameState
         return ManagerSpriteList.INSTANCE.list[eList];
     }
 
+    protected void concealText()
+    {
+        ManagerText.INSTANCE.concealText();
+    }
+
     protected IEnumerator acquirePermit()
     {
         yield return new WaitWhile(() => ManagerAnimation.INSTANCE.isAnimatingSynchronous());
