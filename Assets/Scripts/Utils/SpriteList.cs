@@ -19,7 +19,7 @@ public class SpriteList : IEnumerable
 
     public SpriteList()
     {
-        this.arrayList = new ArrayList<GameObject>();
+        this.arrayList = new ArraySpriteList<GameObject>();
         ManagerDuplicateProtection.INSTANCE.lists.addLast(this.arrayList);
     }
 

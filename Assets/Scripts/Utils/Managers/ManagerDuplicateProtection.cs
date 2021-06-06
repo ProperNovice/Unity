@@ -8,6 +8,7 @@ public class ManagerDuplicateProtection : MonoBehaviour
     public static ManagerDuplicateProtection INSTANCE;
     public ArrayList<ArrayList<GameObject>> lists;
     private ArrayList<GameObject> gameObjects;
+    public bool startDuplicateProtect;
 
     private void Awake()
     {
@@ -15,11 +16,16 @@ public class ManagerDuplicateProtection : MonoBehaviour
 
         this.lists = new ArrayList<ArrayList<GameObject>>();
         this.gameObjects = new ArrayList<GameObject>();
+        this.startDuplicateProtect = false;
     }
 
     void Update()
     {
 
+        if (!this.startDuplicateProtect)
+            return;
+
+        this.startDuplicateProtect = false;
         this.gameObjects.clear();
 
         foreach (ArrayList<GameObject> arraylist in this.lists)
@@ -36,6 +42,8 @@ public class ManagerDuplicateProtection : MonoBehaviour
             }
 
         }
+
+        Logger.log("duplicate protected");
 
     }
 

@@ -26,12 +26,12 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
             addLast(t);
     }
 
-    public void addFirst(T t)
+    public virtual void addFirst(T t)
     {
         this.list.Insert(0, t);
     }
 
-    public void addFirst(ArrayList<T> list)
+    public virtual void addFirst(ArrayList<T> list)
     {
 
         list.reverse();
@@ -41,7 +41,7 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
 
     }
 
-    public void addFirst(params T[] list)
+    public virtual void addFirst(params T[] list)
     {
 
         ArrayList<T> arrayList = new ArrayList<T>(list);
@@ -49,12 +49,12 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
 
     }
 
-    public void addLast(T t)
+    public virtual void addLast(T t)
     {
         this.list.Add(t);
     }
 
-    public void addLast(ArrayList<T> list)
+    public virtual void addLast(ArrayList<T> list)
     {
 
         foreach (T t in list)
@@ -62,7 +62,7 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
 
     }
 
-    public void addLast(params T[] list)
+    public virtual void addLast(params T[] list)
     {
 
         ArrayList<T> arrayList = new ArrayList<T>(list);
@@ -90,12 +90,13 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
         return this.list[index];
     }
 
-    public void remove(T t)
+    public virtual T remove(T t)
     {
         this.list.Remove(t);
+        return t;
     }
 
-    public T removeFirst()
+    public virtual T removeFirst()
     {
 
         T t = this.list[0];
@@ -104,7 +105,7 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
 
     }
 
-    public T removeLast()
+    public virtual T removeLast()
     {
 
         int index = this.list.Count - 1;
@@ -115,14 +116,14 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
 
     }
 
-    public T remove(int index)
+    public virtual T remove(int index)
     {
         T t = get(index);
         this.list.Remove(t);
         return t;
     }
 
-    public T removeRandom()
+    public virtual T removeRandom()
     {
 
         int index = Random.Int(0, this.list.Count - 1);
@@ -134,7 +135,7 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
 
     }
 
-    public ArrayList<T> removeAll()
+    public virtual ArrayList<T> removeAll()
     {
 
         ArrayList<T> arrayList = this.clone();
@@ -148,7 +149,7 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
         return this.list.IndexOf(t);
     }
 
-    public void clear()
+    public virtual void clear()
     {
         this.list.Clear();
     }
@@ -239,7 +240,7 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
         this.listState.AddRange(this.list);
     }
 
-    public void loadState()
+    public virtual void loadState()
     {
         this.list.Clear();
         this.list.AddRange(this.listState);
@@ -251,7 +252,7 @@ public class ArrayList<T> : IEnumerable, Interfaces.SaveLoadAble
         this.listStart.AddRange(this.list);
     }
 
-    public void loadStart()
+    public virtual void loadStart()
     {
         this.list.Clear();
         this.list.AddRange(this.listStart);
