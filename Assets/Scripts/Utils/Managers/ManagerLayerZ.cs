@@ -6,17 +6,20 @@ public class ManagerLayerZ : MonoBehaviour
 {
 
     public static ManagerLayerZ INSTANCE;
-    public Dictionary<ELayerZ, ArrayList<GameObject>> list;
+    private Dictionary<ELayerZ, ArrayList<GameObject>> listLayerZ;
+    private Dictionary<GameObject, SpriteView> listSpriteViews;
 
     private void Awake()
     {
 
         INSTANCE = this;
 
-        this.list = new Dictionary<ELayerZ, ArrayList<GameObject>>();
+        this.listLayerZ = new Dictionary<ELayerZ, ArrayList<GameObject>>();
 
         foreach (ELayerZ eLayerZ in System.Enum.GetValues(typeof(ELayerZ)))
-            this.list.Add(eLayerZ, new ArrayList<GameObject>());
+            this.listLayerZ.Add(eLayerZ, new ArrayList<GameObject>());
+
+        this.listSpriteViews = new Dictionary<GameObject, SpriteView>();
 
     }
 
@@ -50,9 +53,9 @@ public class ManagerLayerZ : MonoBehaviour
         foreach (ELayerZ eLayerZ in System.Enum.GetValues(typeof(ELayerZ)))
         {
 
-            foreach (GameObject gameObject in this.list[eLayerZ])
+            foreach (GameObject gameObject in this.listLayerZ[eLayerZ])
             {
-                SpriteView spriteView = gameObject.GetComponent<SpriteView>();
+                SpriteView spriteView = this.listSpriteViews[gameObject];
                 spriteView.setSortingOrder(sortingOrder++);
             }
 
@@ -63,14 +66,20 @@ public class ManagerLayerZ : MonoBehaviour
     private ArrayList<GameObject> getListContainingGameObject(GameObject gameObject)
     {
 
-        foreach (ELayerZ eLayerZ in this.list.Keys)
-            if (this.list[eLayerZ].contains(gameObject))
-                return this.list[eLayerZ];
+        foreach (ELayerZ eLayerZ in this.listLayerZ.Keys)
+            if (this.listLayerZ[eLayerZ].contains(gameObject))
+                return this.listLayerZ[eLayerZ];
 
         ShutDown.execute(this);
 
         return new ArrayList<GameObject>();
 
+    }
+
+    public void addGameObject(SpriteView spriteView)
+    {
+        this.listLayerZ[spriteView.layerZ].addLast(spriteView.gameObject);
+        this.listSpriteViews.Add(spriteView.gameObject, spriteView);
     }
 
 }
