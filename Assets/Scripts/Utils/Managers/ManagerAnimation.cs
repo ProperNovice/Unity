@@ -26,6 +26,11 @@ public class ManagerAnimation : MonoBehaviour
 
         removeSpriteViewIfAnimating(spriteView);
 
+        AnimateToken animateToken = new AnimateToken(spriteView, coordinates);
+
+        if (!animateToken.isAnimating())
+            return;
+
         ArrayList<AnimateToken> list = null;
 
         switch (animateSynch)
@@ -38,11 +43,6 @@ public class ManagerAnimation : MonoBehaviour
                 list = this.listAsynchronous;
                 break;
         }
-
-        AnimateToken animateToken = new AnimateToken(spriteView, coordinates);
-
-        if (!animateToken.isAnimating())
-            return;
 
         list.addLast(animateToken);
         StartCoroutine(animateToken.animate());
