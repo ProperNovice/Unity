@@ -6,7 +6,6 @@ public class ManagerText : MonoBehaviour
 {
 
     public GameObject text;
-    public Transform parent;
     public Vector2 coordinates;
     public Enums.RearrangeType rearrangeType = Enums.RearrangeType.LINEAR;
     public static ManagerText INSTANCE;
@@ -33,7 +32,7 @@ public class ManagerText : MonoBehaviour
             textView.setEText(eText);
             textView.setActive(false);
 
-            gameObject.transform.parent = this.parent;
+            gameObject.transform.parent = ManagerParents.INSTANCE.parentText.transform;
 
             this.listComplete.addLast(textView);
             this.dictionary.Add(eText, textView);

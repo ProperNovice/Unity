@@ -2,19 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EList
+public class EList : Interfaces.SaveLoadAble
 {
 
-    public static ArrayList<EList> list = new ArrayList<EList>();
+    private static ArrayList<SpriteList> lists = new ArrayList<SpriteList>();
+
+    public SpriteList list = null;
 
     private EList()
     {
-        list.addLast(this);
+        this.list = new SpriteList();
+        lists.addLast(this.list);
     }
 
-    public SpriteList get()
+    public void loadStart()
     {
-        return ManagerSpriteList.INSTANCE.list[this];
+        foreach (SpriteList spriteList in lists)
+            spriteList.arrayList.loadStart();
     }
 
+    public void loadState()
+    {
+        foreach (SpriteList spriteList in lists)
+            spriteList.arrayList.loadState();
+    }
+
+    public void saveStart()
+    {
+        foreach (SpriteList spriteList in lists)
+            spriteList.arrayList.saveStart();
+    }
+
+    public void saveState()
+    {
+        foreach (SpriteList spriteList in lists)
+            spriteList.arrayList.saveState();
+    }
 }
