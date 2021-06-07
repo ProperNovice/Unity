@@ -253,7 +253,6 @@ GameObject:
   - component: {fileID: 1285260544}
   - component: {fileID: 1285260548}
   - component: {fileID: 1285260543}
-  - component: {fileID: 1285260540}
   - component: {fileID: 1285260547}
   - component: {fileID: 1285260552}
   - component: {fileID: 1285260546}
@@ -267,19 +266,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1285260540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1285260539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de6b0c6f3de57e34a80ef22eb63786f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteParent: {fileID: 321594170}
 --- !u!114 &1285260541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +344,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 5559654764558446934, guid: 4f76b8556a5c6d94dbc5d80332a392e9, type: 3}
-  parent: {fileID: 1796716826}
   coordinates: {x: 0, y: 1440}
   rearrangeType: 0
 --- !u!114 &1285260547
