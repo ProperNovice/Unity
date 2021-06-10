@@ -12,7 +12,6 @@ public class ManagerLayerZ : MonoBehaviour
 
     private void Awake()
     {
-
         INSTANCE = this;
 
         this.listLayerZ = new Dictionary<ELayerZ, ArrayList<GameObject>>();
@@ -22,12 +21,10 @@ public class ManagerLayerZ : MonoBehaviour
 
         this.listSpriteViews = new Dictionary<GameObject, SpriteView>();
         this.executeToFront = false;
-
     }
 
     public void toFront(GameObject gameObject)
     {
-
         ArrayList<GameObject> arrayListGameObject = getListContainingGameObject(gameObject);
         arrayListGameObject.remove(gameObject);
         arrayListGameObject.addLast(gameObject);
@@ -41,7 +38,6 @@ public class ManagerLayerZ : MonoBehaviour
 
     public void toBack(GameObject gameObject)
     {
-
         ArrayList<GameObject> arrayListGameObject = getListContainingGameObject(gameObject);
         arrayListGameObject.remove(gameObject);
         arrayListGameObject.addFirst(gameObject);
