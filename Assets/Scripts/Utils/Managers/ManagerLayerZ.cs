@@ -56,24 +56,21 @@ public class ManagerLayerZ : MonoBehaviour
     private IEnumerator update()
     {
         yield return new WaitForFixedUpdate();
+        this.executeToFront = false;
         execute();
     }
 
     private void execute()
     {
-        this.executeToFront = false;
-
         int sortingOrder = -1;
 
         foreach (ELayerZ eLayerZ in System.Enum.GetValues(typeof(ELayerZ)))
         {
-
             foreach (GameObject gameObject in this.listLayerZ[eLayerZ])
             {
                 SpriteView spriteView = this.listSpriteViews[gameObject];
                 spriteView.setSortingOrder(sortingOrder++);
             }
-
         }
     }
 
