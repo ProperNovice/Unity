@@ -8,7 +8,7 @@ public class ManagerLayerZ : MonoBehaviour
     public static ManagerLayerZ INSTANCE;
     private Dictionary<ELayerZ, ArrayList<GameObject>> listLayerZ;
     private Dictionary<GameObject, SpriteView> listSpriteViews;
-    private bool executeToFront = false;
+    private bool executeToFront;
 
     private void Awake()
     {
@@ -21,6 +21,7 @@ public class ManagerLayerZ : MonoBehaviour
             this.listLayerZ.Add(eLayerZ, new ArrayList<GameObject>());
 
         this.listSpriteViews = new Dictionary<GameObject, SpriteView>();
+        this.executeToFront = false;
 
     }
 
@@ -31,8 +32,11 @@ public class ManagerLayerZ : MonoBehaviour
         arrayListGameObject.remove(gameObject);
         arrayListGameObject.addLast(gameObject);
 
-        this.executeToFront = true;
+        if (this.executeToFront)
+            return;
 
+        this.executeToFront = true;
+        StartCoroutine(update());
     }
 
     public void toBack(GameObject gameObject)
@@ -42,16 +46,21 @@ public class ManagerLayerZ : MonoBehaviour
         arrayListGameObject.remove(gameObject);
         arrayListGameObject.addFirst(gameObject);
 
-        this.executeToFront = true;
-
-    }
-
-    private void LateUpdate()
-    {
-
-        if (!this.executeToFront)
+        if (this.executeToFront)
             return;
 
+        this.executeToFront = true;
+        StartCoroutine(update());
+    }
+
+    private IEnumerator update()
+    {
+        yield return new WaitForFixedUpdate();
+        execute();
+    }
+
+    private void execute()
+    {
         this.executeToFront = false;
 
         int sortingOrder = -1;
@@ -66,7 +75,6 @@ public class ManagerLayerZ : MonoBehaviour
             }
 
         }
-
     }
 
     private ArrayList<GameObject> getListContainingGameObject(GameObject gameObject)
@@ -78,7 +86,7 @@ public class ManagerLayerZ : MonoBehaviour
 
         ShutDown.execute(this);
 
-        return new ArrayList<GameObject>();
+        return null;
 
     }
 
