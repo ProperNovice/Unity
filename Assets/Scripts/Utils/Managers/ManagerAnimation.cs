@@ -158,8 +158,6 @@ public class ManagerAnimation : MonoBehaviour
 
             }
 
-            executeLayerZ();
-
             ManagerAnimation.INSTANCE.removeSpriteViewIfAnimating(this.spriteView);
 
         }
