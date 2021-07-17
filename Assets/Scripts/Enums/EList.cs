@@ -7,13 +7,7 @@ public class EList
 
     private static ArrayList<SpriteList> lists = new ArrayList<SpriteList>();
 
-    public SpriteList list = null;
-
-    private EList()
-    {
-        this.list = new SpriteList();
-        lists.addLast(this.list);
-    }
+    public static SpriteList list = null;
 
     public static void loadStart()
     {
