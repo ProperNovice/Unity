@@ -28,22 +28,28 @@ public class ManagerDuplicateProtection : MonoBehaviour
         this.startDuplicateProtect = false;
         this.gameObjects.clear();
 
+        bool duplicateFound = false;
+
         foreach (ArrayList<GameObject> arraylist in this.lists)
         {
 
             foreach (GameObject gameObject in arraylist)
             {
-
                 if (this.gameObjects.contains(gameObject))
-                    ShutDown.execute(this);
+                    duplicateFound = true;
                 else
                     this.gameObjects.addLast(gameObject);
-
             }
 
         }
 
-        Logger.log("duplicate protected");
+        if (duplicateFound)
+        {
+            Logger.log("duplicate found");
+            ShutDown.execute(this);
+        }
+        else
+            Logger.log("duplicate protected");
 
     }
 
