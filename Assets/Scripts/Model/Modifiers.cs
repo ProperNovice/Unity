@@ -6,7 +6,7 @@ public class Modifiers : MonoBehaviour
 {
 
     public static Modifiers INSTANCE;
-    public Vector2 gapBorders, gapBetweenObjects;
+    public Vector2 gapBorders, gapBetweenSprites;
 
     private void Awake()
     {

@@ -148,12 +148,12 @@ public class SpriteList : IEnumerable
         float width = this.spriteDimensions.x + (columns - 1) * this.spriteDimensions.x * this.percentageGapBetweenSprites.x / 100;
 
         if (this.percentageGapBetweenSprites.x == 100)
-            width += (columns - 1) * Modifiers.INSTANCE.gapBetweenObjects.x;
+            width += (columns - 1) * Modifiers.INSTANCE.gapBetweenSprites.x;
 
         float height = this.spriteDimensions.y + (rows - 1) * this.spriteDimensions.y * this.percentageGapBetweenSprites.y / 100;
 
         if (percentageGapBetweenSprites.y == 100)
-            height += (rows - 1) * Modifiers.INSTANCE.gapBetweenObjects.y;
+            height += (rows - 1) * Modifiers.INSTANCE.gapBetweenSprites.y;
 
         this.coordinatesFirstObject = new Vector2(this.coordinates.x, this.coordinates.y);
 
@@ -212,7 +212,7 @@ public class SpriteList : IEnumerable
         float width = this.objectPositionInList.y * this.spriteDimensions.x * this.percentageGapBetweenSprites.x / 100;
 
         if (percentageGapBetweenSprites.x == 100)
-            width += this.objectPositionInList.y * Modifiers.INSTANCE.gapBetweenObjects.x;
+            width += this.objectPositionInList.y * Modifiers.INSTANCE.gapBetweenSprites.x;
 
         switch (this.horizontalDirection)
         {
@@ -233,7 +233,7 @@ public class SpriteList : IEnumerable
         float height = this.objectPositionInList.x * this.spriteDimensions.y * this.percentageGapBetweenSprites.y / 100;
 
         if (percentageGapBetweenSprites.y == 100)
-            height += this.objectPositionInList.x * Modifiers.INSTANCE.gapBetweenObjects.y;
+            height += this.objectPositionInList.x * Modifiers.INSTANCE.gapBetweenSprites.y;
 
         switch (this.verticalDirection)
         {
