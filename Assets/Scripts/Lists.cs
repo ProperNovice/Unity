@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EList
+public class Lists
 {
 
     private static ArrayList<SpriteList> lists = new ArrayList<SpriteList>();
 
-    public static SpriteList list = null;
+    public static SpriteList list = new SpriteList();
 
     public static void loadStart()
     {
